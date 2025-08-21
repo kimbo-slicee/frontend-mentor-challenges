@@ -1,7 +1,7 @@
 /*==========Custom Font===========*/
 @font-face {
     font-family: "Inter";
-    src: url("public/assets/fonts/inter.ttf") format("ttf");
+    src: url("../public/fonts/inter.ttf") format("ttf");
     font-weight: 200 900;
     font-display: swap;
 }
