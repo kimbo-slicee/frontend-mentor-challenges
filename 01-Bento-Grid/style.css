@@ -81,10 +81,8 @@
     }
     h1, h2 {
         font-size: var(--heading-font-size, var(--fs-3xl));
-        font-weight: var(--heading-font-weight, var(--fw-500));
-        color:var(--heading-color,inherit);
         text-wrap: pretty;
-        line-height: var(--lh-xs, 1.1);
+        line-height: var(--lh-xs, 1.2);
         /*---bcs we have span only in side the heading we can use nested selected --*/
         span {
             color: var(--heading-span-color, var(--yellow-500));
@@ -100,8 +98,10 @@
 /* ============= Layout ============= */
 @layer layout {
     .wrapper{
-        width: 80%;
-        padding: 2em;
+        max-width: 1200px;
+        width: 100%;
+        padding: 1rem;
+
         --_grid-gap:1rem;
         margin-inline: auto;
         display: grid;
@@ -115,7 +115,7 @@
         "card6"
         "card7"
         "card8"
-        ;
+    ;
         @media (min-height: 660px) {
             grid-template-areas:
             "card1 card1"
@@ -124,6 +124,7 @@
             "card4 card7"
             "card5 card8"
         }
+
         @media (width > 960px) {
             grid-template-areas:
                     "card7 card1 card1 card4"
@@ -170,15 +171,15 @@
         --heading-clr: var(--white);
         --heading-font-weight: var(--fw-600);
         --heading-font-size: var(--fs-6xl);
-        --image-size:70%;
+        --image-size:50%;
         --image-order: 0;
         --margin-block-end: 1px;
         img{
             margin-inline: auto;
         }
         @media (width  > 960px){
-            --padding-block: 3em;
-            --padding-inline: 3rem;
+            --padding-block: 1em;
+            --padding-inline: 2rem;
             --image-size: 30%;
             --heading-font-size: var(--fs-6xl);
             --bento-card-gap: 1rem;
@@ -209,8 +210,6 @@
         }
         @media (width > 960px ) {
             --text-alignement: left;
-            --padding-inline: 2rem;
-            --image-size: 80%;
             --heading-font-size: var(--fs-4xl);
             img{
                 margin:0 0 -90px 0;
@@ -225,17 +224,11 @@
         --text-alignement: center;
         --heading-font-size: var(--fs-xl);
         --image-size: 90%;
-        /*line-height: var(--lh-sm);*/
-        /*font-size: var(--fs-lg);*/
         @media (width > 960px ) {
             --heading-font-size: var(--fs-3xl);
-            --bento-card-vertical-alignment: center;
-            --bento-card-horizontal-alignment: center;
             --text-alignement:left;
-            --bento-card-gap: 0rem;
             --image-size: 150%;
             --card-image-width: 150%;
-            padding-inline-start: 2rem;
             img{
                 min-height: 110%;
             }
@@ -265,6 +258,7 @@
             --padding-block:1rem;
             --padding-inline: 1rem;
             --heading-font-size: var(--fs-4xl);
+
         }
     }
     .wrapper > :nth-child(6){
