@@ -1,0 +1,14 @@
+---
+import PrimaryLayout from "../layouts/PrimaryLayout.astro"
+import FeaturedArticles from "../components/FeaturedArticales/featuredArticles.astro";
+import PopularArticles from "../components/PopularArticles/popularArticales.astro";
+import NewArticles from "../components/NewArticles/newArticles.astro";
+---
+
+<PrimaryLayout title="Front End Mentor Blog">
+    <div class="grid-col-3 section-xl">
+        <FeaturedArticles class="span-2"/>
+        <NewArticles/>
+    </div>
+    <PopularArticles class="grid-col-3 section-xl"/>
+</PrimaryLayout>

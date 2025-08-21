@@ -1,0 +1,71 @@
+---
+const {class:className}=Astro.props
+---
+<h2 class="visually-hidden">Popular Articles</h2>
+<ul class:list={[className]} role="list">
+    <li>
+        <article>
+            <img src="/public/assets/images/image-retro-pcs.jpg" alt=""/>
+            <div>
+                <h3><a href="#">Reviving Retro PCs</a></h3>
+                <p>What happens when old PCs are given modern upgrades?</p>
+            </div>
+        </article>
+    </li>
+    <li>
+        <article>
+            <img src="/public/assets/images/image-top-laptops.jpg" alt=""/>
+            <div>
+                <h3><a href="#">Top 10 Laptops of 2022</a></h3>
+                <p>Our best picks for various needs and budgets.</p>
+            </div>
+        </article>
+    </li>
+    <li>
+        <article>
+            <img src="/public/assets/images/image-gaming-growth.jpg" alt=""/>
+            <div>
+                <h3><a href="#">The Growth of Gaming</a></h3>
+                <p>How the pandemic has sparked fresh opportunities.</p>
+            </div>
+        </article>
+    </li>
+</ul>
+<style>
+    ul{
+        padding: 0;
+    }
+    article{
+        display: grid;
+        gap: .5rem;
+        grid-template-columns: 100px auto;
+
+        >div{
+            display: grid;
+            gap:.5rem;
+            &::before{
+                content:counter(article-counter,decimal-leading-zero);
+                display: block;
+                line-height: 1;
+                color: var(--clr-orange-400);
+                font-size: var(--fs-700);
+                font-weight: var(--fw-semi-bold);
+            }
+        }
+
+    }
+    ul{
+        counter-reset:article-counter;
+    }
+    li{
+        counter-increment: article-counter;
+    }
+    h3 a {
+        color:var(--heading-clr);
+        &:hover,
+        &:focus-visible{
+            color: var(--clr-orange-400);
+        }
+    }
+
+</style>
