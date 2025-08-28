@@ -13,19 +13,14 @@ The designs were created to the following widths:
 
 ### Primary
 
-- Blue 950: hsl(213, 96%, 18%)
-- Purple 600: hsl(243, 100%, 62%)
-- Blue 300: hsl(228, 100%, 84%)
-- Blue 200: hsl(206, 94%, 87%)
-- Red 500: hsl(354, 84%, 57%)
+- Red: hsl(4, 100%, 67%)
 
 ### Neutral
 
-- Grey 500: hsl(231, 11%, 63%)
-- Purple 200: hsl(229, 24%, 87%)
-- Blue 100: hsl(218, 100%, 97%)
-- Blue 50: hsl(231, 100%, 99%)
-- White: hsl(0, 100%, 100%)
+- Blue 800: hsl(234, 29%, 20%)
+- Blue 700: hsl(235, 18%, 26%)
+- Grey: hsl(0, 0%,58%)
+- White: hsl(0, 0%, 100%)
 
 ## Typography
 
@@ -35,7 +30,7 @@ The designs were created to the following widths:
 
 ### Font
 
-- Family: [Ubuntu](https://fonts.google.com/specimen/Ubuntu)
-- Weights: 400, 500, 700
+- Family: [Roboto](https://fonts.google.com/specimen/Roboto)
+- Weights: 400, 700
 
 > 💎 [Upgrade to Pro](https://www.frontendmentor.io/pro?ref=style-guide) for design file access to see all design details and get hands-on experience using a professional workflow with tools like Figma.

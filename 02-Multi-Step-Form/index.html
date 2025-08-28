@@ -2,125 +2,145 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="style.css">
   <title>Frontend Mentor | Multi-step form</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
-
-  <!-- Sidebar start -->
-
-  Step 1
-  Your info
-
-  Step 2
-  Select plan
-
-  Step 3
-  Add-ons
-
-  Step 4
-  Summary
-
-  <!-- Sidebar end -->
-
-  <!-- Step 1 start -->
-
-  Personal info
-  Please provide your name, email address, and phone number.
-
-  Name
-  e.g. Stephen King
-
-  Email Address
-  e.g. stephenking@lorem.com
-
-  Phone Number
-  e.g. +1 234 567 890
-
-  Next Step
-
-  <!-- Step 1 end -->
-
-  <!-- Step 2 start -->
-
-  Select your plan
-  You have the option of monthly or yearly billing.
-
-  Arcade
-  $9/mo
-
-  Advanced
-  $12/mo
-
-  Pro
-  $15/mo
-
-  Monthly
-  Yearly
-
-  Go Back
-  Next Step
-
-  <!-- Step 2 end -->
-
-  <!-- Step 3 start -->
-
-  Pick add-ons
-  Add-ons help enhance your gaming experience.
-
-  Online service
-  Access to multiplayer games
-  +$1/mo
-
-  Larger storage
-  Extra 1TB of cloud save
-  +$2/mo
-
-  Customizable Profile
-  Custom theme on your profile
-  +$2/mo
-
-  Go Back
-  Next Step
-
-  <!-- Step 3 end -->
-
-  <!-- Step 4 start -->
-
-  Finishing up
-  Double-check everything looks OK before confirming.
-
-  <!-- Dynamically add subscription and add-on selections here -->
-
-  Total (per month/year)
-
-  Go Back
-  Confirm
-
-  <!-- Step 4 end -->
-
-  <!-- Step 5 start -->
-
-  Thank you!
-
-  Thanks for confirming your subscription! We hope you have fun 
-  using our platform. If you ever need support, please feel free 
-  to email us at support@loremgaming.com.
-
-  <!-- Step 5 end -->
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+<main>
+  <!-- Page title (visually hidden but SEO + accessibility friendly) -->
+  <h1 class="visually-hidden">Multi-step Form</h1>
+  <div class="container grid-container">
+      <aside id="sidebar">
+            <nav aria-label="Steps">
+                <ol role="list">
+                    <li>
+                        <span class="step-number active">1</span>
+                        <div class="step-info">
+                            <span class="step-title">Step 1</span>
+                            <span class="step-subtitle">Your Info</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-number">2</span>
+                        <div class="step-info">
+                            <span class="step-title">Step 2</span>
+                            <span class="step-subtitle">Select Plan</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-number">3</span>
+                        <div class="step-info">
+                            <span class="step-title">Step 3</span>
+                            <span class="step-subtitle">Add-ons</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-number">4</span>
+                        <div class="step-info">
+                            <span class="step-title">Step 4</span>
+                            <span class="step-subtitle">Summary</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </aside>
+    <div class="from-wrapper">
+        <!--
+        Form Steps
+            1. Personal Info
+            2. Select Plan
+            3. Add-ons
+            4. Summary
+        -->
+        <h1 class="visually-hidden">Form Steps</h1>
+        <section id="personal-info" >
+            <h2>Personal info</h2>
+            <p>Please provide your name, email address, and phone number.</p>
+            <form>
+                <div class="row">
+                  <label for="name">
+                      Name
+                      <span class="error-message" id="name-error" hidden>This filed is required</span>
+                  </label>
+                  <input type="text" placeholder="e.g. Stephen King" id="name" required>
+                </div>
+                <div class="row">
+                    <label for="email">
+                        Email Address
+                        <span class="error-message" id="email-error" hidden>This filed is required</span>
+                    </label>
+                    <input type="email" placeholder="e.g. stephenking@lorem.com" id="email" required>
+                </div>
+                <div class="row">
+                    <label for="phone">
+                        Phone Number
+                        <span class="error-message" id="phone-error" hidden>This filed is required</span>
+                    </label>
+                    <input type="tel" placeholder="e.g. +1 234 567 890" id="phone" required>
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="btn next-step" disabled>Next Step</button>
+                </div>
+            </form>
+        </section>
+        <section id="user-plan">
+            <h2>Select your plan</h2>
+            <p>You have the option of monthly or yearly billing.</p>
+            <div class="cards-plan-container grid grid-3">
+                <article class="card-plan flex flex-column justify-between gap-3 selected" id="arcade">
+                    <img src="assets/images/icon-arcade.svg" alt="Arcade plan icon">
+                    <div class="card-details">
+                        <h3>Arcade</h3>
+                        <p class="monthly-price">$9/mo</p>
+                        <div class="yearly" hidden>
+                            <p>$90/yr</p>
+                            <small>2 months free</small>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-plan flex flex-column justify-between gap-3" id="advanced">
+                    <img src="assets/images/icon-advanced.svg" alt="Advanced Plan Icon">
+                    <div class="card-details">
+                        <h3>Advanced</h3>
+                        <p class="monthly-price">$12/mo</p>
+                        <div class="yearly" hidden>
+                            <p>$120/yr</p>
+                            <small>2 months free</small>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-plan flex flex-column justify-between gap-3" id="pro">
+                    <img src="assets/images/icon-pro.svg" alt="card-icon">
+                    <div class="card-details">
+                        <h3>Pro</h3>
+                        <p class="monthly-price">$15/mo</p>
+                        <div class="yearly" hidden>
+                            <p>$150/yr</p>
+                            <small>2 months free</small>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="billing-period-wrapper flex justify-center">
+                <span class="billing-period active">Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="toggle-billing" aria-controls="cards-plan-container">
+                    <span aria-labelledby="cards-plan-container"></span>
+                </label>
+                <span class="billing-period">Yearly</span>
+            </div>
+            <div class="buttons">
+                <button class="btn go-back">Go Back</button>
+                <button class="btn next-step" disabled>Next Step</button>
+            </div>
+        </section>
+        <section id="add-ons" hidden></section>
+        <section id="summary" hidden></section>
+    </div>
   </div>
+</main>
 </body>
 </html>
+
