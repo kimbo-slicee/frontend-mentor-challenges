@@ -185,35 +185,47 @@
         <section id="summary">
             <h2>Finishing up</h2>
             <p>Double-check everything looks OK before confirming.</p>
-            <div class="summary-wrapper">
-                <div class="summary-card">
-                    <div class="card-header flex justify-between align-center">
-                        <div class="selected-plan ">
-                            <span>Arcade (Monthly)</span>
-                            <button class="change-plan">Change</button>
-                        </div>
-                        <div class="plan-price">$9/mo</div>
+            <!--summary container -->
+            <div class="summary-container">
+                <dl class="services-selected">
+                    <!-- Plan row -->
+                    <div class="service-item flex justify-between align-center">
+                        <dt>
+                            <p>Arcade (Monthly)</p>
+                            <button type="button" class="change-plan">Change</button>
+                        </dt>
+                        <dd>+$5/mo</dd>
                     </div>
-                    <div class="services-selected">
-                        <div class="service-item flex justify-between align-center">
-                            <span>Online service</span>
-                            <span>+$1/mo</span>
-                        </div>
-                        <div class="service-item flex justify-between align-center">
-                            <span>Larger storage</span>
-                            <span>+$2/mo</span>
-                        </div>
+                    <!-- Add-ons -->
+                    <div class="service-item flex justify-between align-center">
+                        <dt>Online service</dt>
+                        <dd>+$1/mo</dd>
                     </div>
-                </div>
-                <div class="total">
-                    <span>Total (per month)</span>
-                    <span class="total-price">$12/mo</span>
-                </div>
+                    <div class="service-item flex justify-between align-center">
+                        <dt>Larger storage</dt>
+                        <dd>+$2/mo</dd>
+                    </div>
+                    <!-- Total -->
+                </dl>
+                <div class="total flex justify-between align-center">
+                        <p>Total (per year)</p>
+                        <span aria-label="total-price"><strong>+$99/yr</strong></span>
+                 </div>
             </div>
             <div class="buttons">
                 <button class="btn go-back">Go Back</button>
-                <button class="btn next-step" disabled>Confirm</button>
+                <button class="btn next-step">Confirm</button>
             </div>
+        </section>
+        <section id="thank-you" class="flex flex-column align-center justify-center ">
+                <img src="assets/images/icon-thank-you.svg" alt="thank you image">
+                <div class="thank-you-message">
+                    <h2>Thank you!</h2>
+                    <p>
+                        Thanks For Confirming your subscription! We hope you have fun using our platform.
+                        if you ever need support, please feel free ro email us at support@loremgaming.com
+                    </p>
+                </div>
         </section>
     </div>
   </div>
