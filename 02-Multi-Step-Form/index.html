@@ -9,225 +9,107 @@
 </head>
 <body>
 <main>
-  <!-- Page title (visually hidden but SEO + accessibility friendly) -->
-  <h1 class="visually-hidden">Multi-step Form</h1>
-  <div class="container grid-container">
-      <aside id="sidebar">
-            <nav aria-label="Steps">
-                <ol role="list">
-                    <li>
-                        <span class="step-number active">1</span>
-                        <div class="step-info">
-                            <span class="step-title">Step 1</span>
-                            <span class="step-subtitle">Your Info</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="step-number">2</span>
-                        <div class="step-info">
-                            <span class="step-title">Step 2</span>
-                            <span class="step-subtitle">Select Plan</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="step-number">3</span>
-                        <div class="step-info">
-                            <span class="step-title">Step 3</span>
-                            <span class="step-subtitle">Add-ons</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="step-number">4</span>
-                        <div class="step-info">
-                            <span class="step-title">Step 4</span>
-                            <span class="step-subtitle">Summary</span>
-                        </div>
-                    </li>
-                </ol>
-            </nav>
-        </aside>
-    <div class="wrapper">
-        <h1 class="visually-hidden">Form Steps</h1>
-        <section id="personal-info" >
-            <h2>Personal info</h2>
-            <p>Please provide your name, email address, and phone number.</p>
-            <form>
-                <div class="row">
-                  <label for="name">
-                      Name
-                      <span class="error-message" id="name-error" hidden>This filed is required</span>
-                  </label>
-                  <input type="text" placeholder="e.g. Stephen King" id="name" required>
-                </div>
-                <div class="row">
-                    <label for="email">
-                        Email Address
-                        <span class="error-message" id="email-error" hidden>This filed is required</span>
-                    </label>
-                    <input type="email" placeholder="e.g. stephenking@lorem.com" id="email" required>
-                </div>
-                <div class="row">
-                    <label for="phone">
-                        Phone Number
-                        <span class="error-message" id="phone-error" hidden>This filed is required</span>
-                    </label>
-                    <input type="tel" placeholder="e.g. +1 234 567 890" id="phone" required>
-                </div>
-                <div class="buttons">
-                    <button type="submit" class="btn next-step" disabled>Next Step</button>
-                </div>
-            </form>
-        </section>
-        <section id="user-plan">
-            <h2>Select your plan</h2>
-            <p>You have the option of monthly or yearly billing.</p>
-            <div class="cards-plan-container grid grid-3">
-                <article class="card-plan flex flex-column justify-between gap-1 selected" id="arcade">
-                    <img src="assets/images/icon-arcade.svg" alt="Arcade plan icon">
-                    <div class="card-details">
-                        <h3>Arcade</h3>
-                        <p class="monthly-price">$9/mo</p>
-                        <div class="yearly" hidden>
-                            <p>$90/yr</p>
-                            <small>2 months free</small>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-plan flex flex-column justify-between gap-1" id="advanced">
-                    <img src="assets/images/icon-advanced.svg" alt="Advanced Plan Icon">
-                    <div class="card-details">
-                        <h3>Advanced</h3>
-                        <p class="monthly-price">$12/mo</p>
-                        <div class="yearly" hidden>
-                            <p>$120/yr</p>
-                            <small>2 months free</small>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-plan flex flex-column justify-between gap-1" id="pro">
-                    <img src="assets/images/icon-pro.svg" alt="card-icon">
-                    <div class="card-details">
-                        <h3>Pro</h3>
-                        <p class="monthly-price">$15/mo</p>
-                        <div class="yearly" hidden>
-                            <p>$150/yr</p>
-                            <small>2 months free</small>
-                        </div>
-                    </div>
-                </article>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <h1 class="sr-only">Multi-step Form</h1>
+      <nav aria-label="Steps">
+        <ol role="list">
+          <li>
+            <span class="step-number active">1</span>
+            <div class="step-info">
+              <span class="step-title">Step 1</span>
+              <span class="step-subtitle">Your Info</span>
             </div>
-            <div class="billing-period-wrapper flex justify-center">
-                <span class="billing-period active">Monthly</span>
-                <label class="switch">
-                    <input type="checkbox" id="toggle-billing" aria-controls="cards-plan-container">
-                    <span aria-labelledby="cards-plan-container"></span>
-                </label>
-                <span class="billing-period">Yearly</span>
+          </li>
+          <li>
+            <span class="step-number">2</span>
+            <div class="step-info">
+              <span class="step-title">Step 2</span>
+              <span class="step-subtitle">Select Plan</span>
             </div>
-            <div class="buttons">
-                <button class="btn go-back">Go Back</button>
-                <button class="btn next-step" disabled>Next Step</button>
+          </li>
+          <li>
+            <span class="step-number">3</span>
+            <div class="step-info">
+              <span class="step-title">Step 3</span>
+              <span class="step-subtitle">Add-ons</span>
             </div>
-        </section>
-        <section id="add-ons">
-            <h2>Pick add-ons</h2>
-            <p>Add-ons help enhance your gaming experience</p>
-            <ul class="addons-list grid gap-1" role="list">
-                <li class="selected">
-                    <label class="card-addon flex align-center gap-1">
-                        <input type="checkbox" checked name="addons" value="online-service">
-                        <span class="custom-checkbox"></span>
-                        <div class="addon-details">
-                            <h3>Online service</h3>
-                            <p>Access to multiplayer games</p>
-                        </div>
-                        <div class="addon-price ml-auto">
-                            <small class="monthly-price">+$1/mo</small>
-                            <small class="yearly" hidden>+$10/yr</small>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label class="card-addon flex align-center gap-1">
-                            <input type="checkbox" name="addons" value="larger-storage">
-                            <span class="custom-checkbox"></span>
-                            <div class="addon-details">
-                                <h3>Larger storage</h3>
-                                <p>Extra 1TB of cloud save</p>
-                            </div>
-                        <div class="addon-price ml-auto">
-                            <small class="monthly-price">+$2/mo</small>
-                            <small class="yearly" hidden>+$20/yr</small>
-                        </div>
-                    </label>
-                </li>
+          </li>
+          <li>
+            <span class="step-number">4</span>
+            <div class="step-info">
+              <span class="step-title">Step 4</span>
+              <span class="step-subtitle">Summary</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+    </aside>
 
-                <li>
-                    <label class="card-addon flex align-center gap-1">
-                        <input type="checkbox" name="addons" value="customizable-profile">
-                        <span class="custom-checkbox"></span>
-                        <div class="addon-details ">
-                            <h3>Customizable profile</h3>
-                            <p>Custom theme on your profile</p>
-                        </div>
-                        <div class="addon-price ml-auto">
-                            <small class="monthly-price">+$2/mo</small>
-                            <small class="yearly" hidden>+$20/yr</small>
-                        </div>
-                    </label>
-                </li>
-            </ul>
-            <div class="buttons">
-                <button class="btn go-back">Go Back</button>
-                <button class="btn next-step" disabled>Next Step</button>
-            </div>
-        </section>
-        <section id="summary">
-            <h2>Finishing up</h2>
-            <p>Double-check everything looks OK before confirming.</p>
-            <!--summary container -->
-            <div class="summary-container">
-                <dl class="services-selected">
-                    <!-- Plan row -->
-                    <div class="service-item flex justify-between align-center">
-                        <dt>
-                            <p>Arcade (Monthly)</p>
-                            <button type="button" class="change-plan">Change</button>
-                        </dt>
-                        <dd>+$5/mo</dd>
-                    </div>
-                    <!-- Add-ons -->
-                    <div class="service-item flex justify-between align-center">
-                        <dt>Online service</dt>
-                        <dd>+$1/mo</dd>
-                    </div>
-                    <div class="service-item flex justify-between align-center">
-                        <dt>Larger storage</dt>
-                        <dd>+$2/mo</dd>
-                    </div>
-                    <!-- Total -->
-                </dl>
-                <div class="total flex justify-between align-center">
-                        <p>Total (per year)</p>
-                        <span aria-label="total-price"><strong>+$99/yr</strong></span>
-                 </div>
-            </div>
-            <div class="buttons">
-                <button class="btn go-back">Go Back</button>
-                <button class="btn next-step">Confirm</button>
-            </div>
-        </section>
-        <section id="thank-you" class="flex flex-column align-center justify-center ">
-                <img src="assets/images/icon-thank-you.svg" alt="thank you image">
-                <div class="thank-you-message">
-                    <h2>Thank you!</h2>
-                    <p>
-                        Thanks For Confirming your subscription! We hope you have fun using our platform.
-                        if you ever need support, please feel free ro email us at support@loremgaming.com
-                    </p>
-                </div>
-        </section>
-    </div>
+    <!-- Form Content -->
+    <section id="form-section" hidden>
+      <form>
+        <!-- STEP 1 -->
+        <fieldset aria-labelledby="step-1-title">
+          <legend id="step-1-title" class="sr-only">Step 1: Your Info</legend>
+
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone">
+        </fieldset>
+
+        <!-- STEP 2 -->
+        <fieldset aria-labelledby="step-2-title" hidden>
+          <legend id="step-2-title" class="sr-only">Step 2: Select Plan</legend>
+
+          <label>
+            <input type="radio" name="plan" value="basic" required>
+            Basic Plan
+          </label>
+          <label>
+            <input type="radio" name="plan" value="pro">
+            Pro Plan
+          </label>
+          <label>
+            <input type="radio" name="plan" value="enterprise">
+            Enterprise Plan
+          </label>
+        </fieldset>
+
+        <!-- STEP 3 -->
+        <fieldset aria-labelledby="step-3-title" hidden>
+          <legend id="step-3-title" class="sr-only">Step 3: Add-ons</legend>
+
+          <label>
+            <input type="checkbox" name="addon-newsletter">
+            Weekly Newsletter
+          </label>
+          <label>
+            <input type="checkbox" name="addon-support">
+            24/7 Support
+          </label>
+        </fieldset>
+
+        <!-- STEP 4 -->
+        <fieldset aria-labelledby="step-4-title" hidden>
+          <legend id="step-4-title" class="sr-only">Step 4: Summary</legend>
+          <p>Here you’ll see a summary of your choices.</p>
+        </fieldset>
+
+        <!-- Navigation Buttons -->
+        <div class="form-nav">
+          <button type="button" class="prev" hidden>Back</button>
+          <button type="button" class="next">Next</button>
+          <button type="submit" class="submit" hidden>Submit</button>
+        </div>
+      </form>
+    </section>
   </div>
 </main>
 </body>
