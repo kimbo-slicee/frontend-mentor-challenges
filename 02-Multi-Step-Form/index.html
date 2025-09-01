@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
   <title>Frontend Mentor | Multi-step form</title>
 </head>
 <body>
@@ -259,9 +260,9 @@
 
         <!-- Navigation Buttons -->
         <div class="form-nav mt-auto flex justify-between align-center">
-          <button type="button" class="prev">Go Back</button>
+          <button type="button" class="prev" hidden>Go Back</button>
           <button type="button" class="next ml-auto">Next Step</button>
-          <button type="submit" class="submit ml-auto" hidden>Confirm</button>
+          <button type="submit" class="confirm ml-auto" hidden>Confirm</button>
         </div>
       </form>
     </section>
