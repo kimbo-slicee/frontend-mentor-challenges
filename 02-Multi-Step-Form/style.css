@@ -379,10 +379,6 @@ utilitie;
                         font-weight: var(--fw-400);
                     }
                 }
-                article.selected{
-                    border: 2px solid var(--primary-purple-600);
-                    background-color: var(--blue-50);
-                }
                 & > div:last-child{
                     background: var(--blue-100);
                     margin-top: 1.5rem;
@@ -419,6 +415,10 @@ utilitie;
                             transform: translate(150%, -50%);
                         }
                     }
+                    span.active{
+                        font-weight: var(--fw-700);
+                        color: var(--primary-blue-950);
+                    }
                 }
 
             }
@@ -430,7 +430,7 @@ utilitie;
                     padding: .75em 1.5em;
                     position: relative;
                     &:hover,
-                    &:focus-within{
+                    &:focus-visible{
                         border-color: var(--primary-purple-600);
                         background-color: var(--blue-50);
                     }
@@ -718,6 +718,7 @@ utilitie;
     .selected{
         border: 1px solid var(--primary-purple-600);
         background-color: var(--blue-50);
+
     }
     .error-message{
         color: var(--primary-red-500);
@@ -729,20 +730,9 @@ utilitie;
     .step-header{
         margin-bottom: 1rem;
     }
-
-    /*!* Smooth transition for step indicator *!*/
-    /*ol li > span {*/
-    /*    transition: all 0.3s ease;*/
-    /*    opacity: 0.6;*/
-    /*    transform: scale(0.95);*/
-    /*}*/
-
-    /*ol li > span.active {*/
-    /*    opacity: 1;*/
-    /*    transform: scale(1.12);*/
-    /*    color: #4f46e5; !* example highlight color *!*/
-    /*    font-weight: bold;*/
-    /*}*/
+    .hidden{
+        display: none;
+    }
 
 
 }

@@ -97,9 +97,9 @@
               <input
                     type="tel"
                     id="phone"
-                     name="phone"
-                     placeholder="e.g. +1 234 567 890"
-                     required
+                    name="phone"
+                    placeholder="e.g. +1 234 567 890"
+                    required
               >
             </div>
           </div>
@@ -122,8 +122,8 @@
                 <div class="card-details">
                   <h2>Arcade</h2>
                   <p class="monthly-price">$9/mo</p>
-                  <div class="yearly" hidden>
-                    <p>$90/yr</p>
+                  <div class="yearly hidden">
+                    <p class="yearly-price">$90/yr</p>
                     <small>2 months free</small>
                   </div>
                 </div>
@@ -133,8 +133,8 @@
                 <div class="card-details">
                   <h2>Advanced</h2>
                   <p class="monthly-price">$12/mo</p>
-                  <div class="yearly" hidden>
-                    <p>$120/yr</p>
+                  <div class="yearly hidden">
+                    <p class="yearly-price">$120/yr</p>
                     <small>2 months free</small>
                   </div>
                 </div>
@@ -143,16 +143,16 @@
                 <img src="assets/images/icon-pro.svg" alt="card-icon">
                 <div class="card-details">
                   <h2>Pro</h2>
-                  <p class="monthly-price">$15/mo</p>
-                  <div class="yearly" hidden>
-                    <p>$150/yr</p>
+                  <p class="monthly-price" >$15/mo</p>
+                  <div class="yearly hidden">
+                    <p class="yearly-price">$150/yr</p>
                     <small>2 months free</small>
                   </div>
                 </div>
               </article>
             </div>
             <div class="billing-period-wrapper flex justify-center">
-              <span class="billing-period">Monthly</span>
+              <span class="billing-period active">Monthly</span>
               <label class="switch">
                 <input type="checkbox" id="toggle-billing" aria-controls="cards-plan-container">
                 <span aria-labelledby="cards-plan-container"></span>
@@ -171,40 +171,40 @@
           <ul class="addons-list grid gap-1" role="list">
             <li class="selected">
               <label class="card-addon flex align-center gap-1">
-                <input type="checkbox" checked name="addons" value="online-service">
+                <input type="checkbox" value="online-service" checked>
                 <div class="addon-details">
                   <h2>Online service</h2>
                   <p>Access to multiplayer games</p>
                 </div>
                 <div class="addon-price ml-auto">
                   <small class="monthly-price">+$1/mo</small>
-                  <small class="yearly" hidden>+$10/yr</small>
+                  <small class="yearly hidden">+$10/yr</small>
                 </div>
               </label>
             </li>
             <li>
               <label class="card-addon flex align-center gap-1">
-                <input type="checkbox" name="addons" value="larger-storage">
+                <input type="checkbox" value="larger-storage">
                 <div class="addon-details">
                   <h2>Larger storage</h2>
                   <p>Extra 1TB of cloud save</p>
                 </div>
                 <div class="addon-price ml-auto">
                   <small class="monthly-price">+$2/mo</small>
-                  <small class="yearly" hidden>+$20/yr</small>
+                  <small class="yearly hidden">+$20/yr</small>
                 </div>
               </label>
             </li>
             <li>
               <label class="card-addon flex align-center gap-1">
-                <input type="checkbox" name="addons" value="customizable-profile">
+                <input type="checkbox" value="customizable-profile">
                 <div class="addon-details">
                   <h2>Customizable profile</h2>
                   <p>Custom theme on your profile</p>
                 </div>
                 <div class="addon-price ml-auto">
                   <small class="monthly-price">+$2/mo</small>
-                  <small class="yearly" hidden>+$20/yr</small>
+                  <small class="yearly hidden">+$20/yr</small>
                 </div>
               </label>
             </li>
