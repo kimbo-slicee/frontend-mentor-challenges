@@ -157,9 +157,7 @@ articles.forEach((article)=>{
 /* =======================Step-2 :(Add Ons)=============================== */
            // handel ons price based on period first
            const addOnsList=document.querySelectorAll("ul.addons-list li");
-           const onsList=[];
            const upDateOnsPrice=()=>{
-
                 addOnsList.forEach((ons)=>{
                 const onsMonthlyPrice=ons.getElementsByTagName("small")[0];
                 const onsYearlyPrice=ons.getElementsByTagName("small")[1];
@@ -169,21 +167,43 @@ articles.forEach((article)=>{
                 })
             }
            // Handel Selected Ons
-           addOnsList.forEach(ons=>{
+           addOnsList.forEach((ons,i)=>{
                const addOnsCheckBox=ons.querySelector("input[type='checkbox']");
                addOnsCheckBox.addEventListener("change",()=>{
-               addOnsCheckBox.checked?ons.classList.add("selected"):ons.classList.remove("selected")
+               addOnsCheckBox.checked?ons.classList.add("selected"):ons.classList.remove("selected");
+                    updateOnsList(ons,addOnsCheckBox,i)
                })
            })
-            // Add Selected ons to stat
-
-
-
+            // Add Selected ons to ons List
+            const defaultOnsSelected=document.querySelector("ul.addons-list li.selected");
+            const defaultChecked=defaultOnsSelected.querySelector("input[type='checkbox']");
+            let selectedOnsList=[];
+            const updateOnsList=(ons,checkBox,index)=>{
+               const onsName=ons.querySelector("h2").textContent;
+               const onsPrice=[...ons.querySelectorAll("small")].find(ele=>!ele.classList.contains("hidden")).textContent;
+               let onsInfo={id:index,ons:onsName,onsPrice:onsPrice};
+               if(checkBox.checked && !selectedOnsList.includes(onsInfo)){
+                   selectedOnsList.push(onsInfo)
+               }else{
+                   let uncheckedOnsIndex=selectedOnsList.findIndex((ele)=>ele.id===index);
+                   selectedOnsList.splice(uncheckedOnsIndex,1)
+               }
+               stat.selectedOns=selectedOnsList;
+           }
+           // start the array withe default ons selected
+           updateOnsList(defaultOnsSelected,defaultChecked,0)
 
 /* =======================Step-3 :(Resume)=============================== */
-const finishingUp=()=>{
-
+const olItems=({ons,onsPrice}=stat,period)=>{
+    return`
+            <div class="service-item flex justify-between align-center">
+                <dt>${ons}</dt>
+                <dd>+$${onsPrice}/${period==="monthly"?"mo":"yr" }</dd>
+              </div>
+`
 }
+const summaryContainer= document.querySelectorAll("dl div");
+
 /*========================= proxy functions ==========================*/
 // const proxyFunctions=(currentStep)=>{
 //       switch (currentStep){
