@@ -111,14 +111,16 @@ const formValidation = () => {
         stat.userInfo[input.name]=value // store valid  data in state object
         isFormFieldValid=!isFormFieldValid
     });
+    finishUP()
+    console.log(stat)
     return isFormFieldValid
 };
-/* =======================Step-2 :(Select Plan)=============================== */
+/* =======================Step-2: Select Plan=============================== */
 const selectedPlanInform=(currentArticle,checkBoxStat)=>{
     let planName=currentArticle.querySelector("h2").textContent,
         planPrice=currentArticle.querySelector(periodCheckBox.checked?".yearly-price":".monthly-price").textContent,
         period= checkBoxStat.checked?"Yearly":"Monthly";
-        stat.selectedPlan={plan:planName,price:planPrice,period:period}
+        stat.selectedPlan={plan:planName,planPrice:planPrice,period:period}
     }
     // Handel checkBox toggling
     const billingPeriodWrapper=document.querySelector(".billing-period-wrapper");
@@ -151,10 +153,9 @@ articles.forEach((article)=>{
             })
             selectedPlanInform(selectedArticle,periodCheckBox);
             upDateOnsPrice()
-
     })
 
-/* =======================Step-2 :(Add Ons)=============================== */
+/* =======================Step-3 :(Add Ons)=============================== */
            // handel ons price based on period first
            const addOnsList=document.querySelectorAll("ul.addons-list li");
            const upDateOnsPrice=()=>{
@@ -194,15 +195,46 @@ articles.forEach((article)=>{
            updateOnsList(defaultOnsSelected,defaultChecked,0)
 
 /* =======================Step-3 :(Resume)=============================== */
-const olItems=({ons,onsPrice}=stat,period)=>{
-    return`
-            <div class="service-item flex justify-between align-center">
-                <dt>${ons}</dt>
-                <dd>+$${onsPrice}/${period==="monthly"?"mo":"yr" }</dd>
-              </div>
-`
+const planRow=({plan, planPrice, period})=>{
+    return `<div class="service-item flex justify-between align-center">
+                        <dt>
+                          <p>${plan} (${period})</p>
+                          <a href="#" class="change-plan">Change</a>
+                        </dt>
+                        <dd>${planPrice}</dd>
+                    </div>`
 }
-const summaryContainer= document.querySelectorAll("dl div");
+const optionRows=(options)=>{
+    return options.map(({ons, onsPrice}) => {
+             return `
+                <div class="service-item flex justify-between align-center">
+                       <dt>${ons}</dt>
+                       <dd>${onsPrice}</dd>
+                </div>
+             `
+          }).join('')
+}
+const calcTotal=({selectedPlan,selectedOns})=>{
+    const totalPrice=document.querySelector(".total");
+    const {planPrice,period}=selectedPlan;
+    const planPriceNumber=Number(planPrice.match(/\d/g).join(''));
+    const onsTotalPrice=selectedOns
+        .map(({onsPrice})=>onsPrice.split('')
+            .filter(ele=>!isNaN(ele))
+            .flatMap(ele=>ele).join('')
+        ).reduce((curr,acc)=>Number(curr)+Number(acc));
+    totalPrice.innerHTML=``
+    totalPrice.innerHTML=` <p>Total ${ period.toLowerCase() === "monthly" ? "(per month)":"(per year)"}</p>
+    <span aria-label="total-price"><strong>+$${planPriceNumber + parseInt(onsTotalPrice)}/${ period.toLowerCase() === "monthly" ? "mo":"yr"}</strong></span>`
+}
+const finishUP=()=>{
+    const dl=document.querySelector("dl.services-selected");
+    dl.innerHTML=``;
+    dl.innerHTML=planRow(stat.selectedPlan);
+    dl.innerHTML+=optionRows(stat.selectedOns);
+    calcTotal(stat)
+
+}
 
 /*========================= proxy functions ==========================*/
 // const proxyFunctions=(currentStep)=>{
