@@ -141,7 +141,7 @@ const Navigation = (() => {
         document.getElementById("thank-you").ariaHidden = "false";
     };
 
-    return { next, prev, confirm, setStep };
+    return { next, prev, confirm, setStep , getStep };
 })();
 
 // ================== Plan & Add-ons Module ==================
@@ -252,9 +252,14 @@ const PlansAndOns = (() => {
 
 // ================== Resume & Total Module ==================
 const Resume = (() => {
-
+    const handledChangeButton=()=>{
+        const anchor=document.querySelector(".change-plan");
+        anchor.addEventListener("click",()=>{
+            FormUI.showStep(1);
+        })
+    }
     const planRow = ({ plan, planPrice, period }) => `
-    <div class="service-item flex justify-between align-center">
+    <div class="service-item">
       <dt>
         <p>${plan} (${period})</p>
         <a href="#" class="change-plan">Change</a>
@@ -264,7 +269,7 @@ const Resume = (() => {
 
     const optionRows = (options, period) =>
         options.map(({ ons, monthly, yearly }) => `
-    <div class="service-item flex justify-between align-center">
+    <div class="service-item">
       <dt>${ons}</dt>
       <dd>${period === "Yearly" ? yearly : monthly}</dd>
     </div>`).join("");
@@ -294,8 +299,9 @@ const Resume = (() => {
         dl.innerHTML += optionRows(selectedOns, selectedPlan.period);
 
         calcTotal(AppState.get());
-    };
 
+        handledChangeButton()
+    };
 
 
     return { render };
