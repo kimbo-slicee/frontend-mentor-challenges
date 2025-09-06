@@ -21,15 +21,15 @@ const FormUI = (() => {
     const form = document.querySelector("form");
     const formFields = [...form.querySelectorAll("fieldset")];
 
-    const showStep = (index) => {
+    const showStep = (index,direction) => {
         formFields.forEach((fieldset, i) => {
             fieldset.ariaHidden = i === index ? "false" : "true";
         });
         Navigation.setStep(index);
-        updateUI(index);
+        updateUI(index,direction);
     };
 
-    const updateUI = (step) => {
+    const updateUI = (step,direction) => {
         // Highlight step
         steps.forEach((s, i) => s.classList.toggle("active", i === step));
 
@@ -40,11 +40,14 @@ const FormUI = (() => {
         // Handle next / confirm toggle
         const nextBtn = document.querySelector("button.next");
         const confirmBtn = document.querySelector("button.confirm");
+
         if (nextBtn && confirmBtn) {
             const isLastStep = step === formFields.length - 1;
             nextBtn.style.display = isLastStep ? "none" : "block";
             confirmBtn.style.display = isLastStep ? "block" : "none";
         }
+
+
     };
 
     const removeClasses = (list, className) => {
@@ -126,13 +129,13 @@ const Navigation = (() => {
 
     const next = () => {
         if (step < FormUI.formFields.length - 1 && Validation.validateForm()) {
-            FormUI.showStep(step + 1);
+            FormUI.showStep(step + 1,"next");
         }
     };
 
     const prev = () => {
         if (step > 0) {
-            FormUI.showStep(step - 1);
+            FormUI.showStep(step - 1,"prev");
         }
     };
 

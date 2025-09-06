@@ -307,7 +307,6 @@ utilitie;
             border: 1px solid var(--neutral-200);
             border-radius: var(--border-radius-sm);
             font-weight: var(--fw-500);
-            background-color: var(--white);
             color: var(--blue-950);
             &:focus{
                 border-color: var(--primary-purple-600);
@@ -324,13 +323,7 @@ utilitie;
             font-weight: var(--fw-400);
             color: var(--blue-950);
             margin-bottom: 0.2rem;
-        }
-        fieldset{
-            opacity: 0;
-            appearance: none;
-            background-color: var(--white);
-            transform: translateX(30px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            background-color: white;
         }
         form{
             height: 100%;
@@ -354,6 +347,7 @@ utilitie;
                 left: 50%;
                 width: 90%;
                 transform: translateX(-50%);
+                background-color: var(--white);
             }
             /*-------------------Select Plan Section Styling------------------*/
             &:nth-child(2){
@@ -593,12 +587,12 @@ utilitie;
             margin-bottom: .5rem;
         }
         @container (width < 600px) {
-            background-color: white;
             padding: 5rem 1.5rem;
             margin-top: -25%;
             width: 90%;
             margin-inline: auto;
             border-radius: var(--border-radius-md);
+            background-color: var(--white);
             p{
                 line-height: 1.6;
             }
