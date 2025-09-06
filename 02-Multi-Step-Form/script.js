@@ -1,67 +1,61 @@
-/*============Handle form Buttons (Next Step, Back, Confirm)================*/
-const steps = document.querySelectorAll("ol li > span");
-const form = document.querySelector("form");
-const formFields = [...form.querySelectorAll("fieldset")];
-const buttons = document.querySelectorAll("button[type='button']");
-let step = 0;
-let stat={
-    userInfo:{},
-    selectedPlan:{},
-    selectedOns:[]
-}
-const updateState=()=>{
+// ================== State ==================
 
-}
-/*====================== Helpers ===================*/
-const showStep = (index) => {
-    formFields.forEach((fieldset, i) => {
-        fieldset.ariaHidden = i === index ? "false" : "true";
-    });
-    step = index;
-    updateUI();
-};
-const updateUI = () => {
-    // highlight active step in <ol>
-    steps.forEach((s, i) => s.classList.toggle("active", i === step));
+const AppState = (() => {
+    let state = {
+        userInfo: {},
+        selectedPlan: {},
+        selectedOns: []
+    };
 
-    // handle prev button
-    const prevBtn = document.querySelector("button.prev");
-    if (prevBtn) prevBtn.style.display = step !== 0 ? "block" : "none";
+    const get = () => state;
+    const update = (partial) => state = { ...state, ...partial };
+    const reset=()=>state={userInfo: {}, selectedPlan: {}, selectedOns: []}
 
-    // handle next / confirm toggle
-    const nextBtn = document.querySelector("button.next");
-    const confirmBtn = document.querySelector("button.confirm");
-    if (nextBtn && confirmBtn) {
-        const isLastStep = step === formFields.length - 1;
-        nextBtn.style.display = isLastStep ? "none" : "block";
-        confirmBtn.style.display = isLastStep ? "block" : "none";
-    }
-};
-const removeClasses=(htmlElementsList,className)=>{
-    htmlElementsList.forEach((e)=>e.classList.remove(className))
-}
+    return { get, update ,reset};
+})();
 
-/*====================== Navigation ===================*/
-const displayNextStep = () => {
-    if (step < formFields.length - 1 && formValidation()) {
-        showStep(step + 1);
-    }
-};
+// ================== UI Module ==================
+const FormUI = (() => {
+    /*asked Steps*/
+    const steps = document.querySelectorAll("ol li > span");
+    const form = document.querySelector("form");
+    const formFields = [...form.querySelectorAll("fieldset")];
 
-const displayPrevStep = () => {
-    if (step > 0) {
-        showStep(step - 1);
-    }
-};
+    const showStep = (index) => {
+        formFields.forEach((fieldset, i) => {
+            fieldset.ariaHidden = i === index ? "false" : "true";
+        });
+        Navigation.setStep(index);
+        updateUI(index);
+    };
 
-const displayThanksSection = () => {
-    document.getElementById("form-section").ariaHidden = "true";
-    document.getElementById("thank-you").ariaHidden = "false";
-};
+    const updateUI = (step) => {
+        // Highlight step
+        steps.forEach((s, i) => s.classList.toggle("active", i === step));
 
-/*================ 1. Form Validation ===============*/
-const regexValidation = (input) => {
-    const inputType = input.type;
+        // Handle prev button
+        const prevBtn = document.querySelector("button.prev");
+        if (prevBtn) prevBtn.style.display = step !== 0 ? "block" : "none";
+
+        // Handle next / confirm toggle
+        const nextBtn = document.querySelector("button.next");
+        const confirmBtn = document.querySelector("button.confirm");
+        if (nextBtn && confirmBtn) {
+            const isLastStep = step === formFields.length - 1;
+            nextBtn.style.display = isLastStep ? "none" : "block";
+            confirmBtn.style.display = isLastStep ? "block" : "none";
+        }
+    };
+
+    const removeClasses = (list, className) => {
+        list.forEach((el) => el.classList.remove(className));
+    };
+
+    return { showStep, updateUI, removeClasses, formFields };
+})();
+
+// ================== Validation Module ==================
+const Validation = (() => {
     const patterns = {
         text: {
             regex: /^(?!\s)(?!.*\s$)[\p{L}\s]{3,30}$/u,
@@ -69,216 +63,257 @@ const regexValidation = (input) => {
         },
         email: {
             regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/u,
-            message:"valid email address (e.g. stephenking@lorem.com)",
+            message: "valid email address (e.g. stephenking@lorem.com)",
         },
         tel: {
             regex: /^\+?[0-9]{1,3}[-.\s]?[0-9]{3,15}$/,
-            message:"Valid Phone number (e.g. +1 234 567 890) ",
+            message: "Valid Phone number (e.g. +1 234 567 890)",
         },
     };
 
-    const rule = patterns[inputType];
+    const validateInput = (input) => {
+        const rule = patterns[input.type];
+        if (!rule) return "";
+        return rule.regex.test(input.value) ? "" : rule.message;
+    };
 
-    if (!rule) {
-        console.warn(`Unsupported input type: ${inputType}`);
-        return "";
-    }
+    const validateForm = () => {
+        const inputs = document.querySelectorAll(".form-content input");
+        let isValid = true;
 
-    return rule.regex.test(input.value) ? "" : rule.message;
-};
-/* ======================Step-1: (Personal Info) Functionalities===================== */
-const formValidation = () => {
-    const inputs = document.querySelectorAll(".form-content input");
-    let isFormFieldValid=false;
-    inputs.forEach((input) => {
-        const value = input.value.trim();
-        const parent = input.closest("div");
-        const span = parent.querySelector("span");
-        input.style.border="0";
-        span.textContent = "";
-        if (!value) {
-            span.textContent = "This field is required";
-            input.style.border="2px solid var(--primary-red-500)";
-            return isFormFieldValid;
-        } else {
-            const errorMessage = regexValidation(input);
-            if (errorMessage) {
-                span.textContent = errorMessage;
+        inputs.forEach((input) => {
+            const parent = input.closest("div");
+            const span = parent.querySelector("span");
+            input.style.border = "0";
+            span.textContent = "";
+
+            if (!input.value.trim()) {
+                span.textContent = "This field is required";
                 input.style.border = "2px solid var(--primary-red-500)";
-                return isFormFieldValid;
+                isValid = false;
+            } else {
+                const errorMessage = validateInput(input);
+                if (errorMessage) {
+                    span.textContent = errorMessage;
+                    input.style.border = "2px solid var(--primary-red-500)";
+                    isValid = false;
+                }
             }
-        }
-        stat.userInfo[input.name]=value // store valid  data in state object
-        isFormFieldValid=!isFormFieldValid
-    });
-    finishUP()
-    console.log(stat)
-    return isFormFieldValid
-};
-/* =======================Step-2: Select Plan=============================== */
-const selectedPlanInform=(currentArticle,checkBoxStat)=>{
-    let planName=currentArticle.querySelector("h2").textContent,
-        planPrice=currentArticle.querySelector(periodCheckBox.checked?".yearly-price":".monthly-price").textContent,
-        period= checkBoxStat.checked?"Yearly":"Monthly";
-        stat.selectedPlan={plan:planName,planPrice:planPrice,period:period}
-    }
-    // Handel checkBox toggling
-    const billingPeriodWrapper=document.querySelector(".billing-period-wrapper");
-    const periodCheckBox=document.getElementById("toggle-billing");
-    const articles=document.querySelectorAll("article");
-    let selectedArticle=document.querySelector("article.selected");
-    const monthly=billingPeriodWrapper.firstElementChild;
-    const yearly=billingPeriodWrapper.lastElementChild;
-    selectedPlanInform(selectedArticle,periodCheckBox)
-    // Handel Selected Article
-articles.forEach((article)=>{
-    article.addEventListener("click",()=>{
-        removeClasses(articles,"selected");
-        article.classList.add("selected")
-        selectedArticle=article
-        selectedPlanInform(selectedArticle,periodCheckBox)
-    })
-})
 
-    // Handel toggle period
-    periodCheckBox.addEventListener("input",()=>{
-        yearly.classList.toggle("active")
-        monthly.classList.toggle("active");
-        // toggle monthly and yearly prices
-        articles.forEach((article)=>{
-        const monthlyPrice=article.querySelector(".monthly-price");
-        const yearlyPrice=article.querySelector(".yearly");
-              monthlyPrice.classList.toggle("hidden",periodCheckBox.checked);
-              yearlyPrice.classList.toggle("hidden",!periodCheckBox.checked)
-            })
-            selectedPlanInform(selectedArticle,periodCheckBox);
-            upDateOnsPrice()
-    })
-
-/* =======================Step-3 :(Add Ons)=============================== */
-           // handel ons price based on period first
-           const addOnsList=document.querySelectorAll("ul.addons-list li");
-           const upDateOnsPrice=()=>{
-                addOnsList.forEach((ons)=>{
-                const onsMonthlyPrice=ons.getElementsByTagName("small")[0];
-                const onsYearlyPrice=ons.getElementsByTagName("small")[1];
-                // toggling price based on the input
-                onsMonthlyPrice.classList.toggle("hidden")
-                onsYearlyPrice.classList.toggle("hidden")
-                })
+            if (isValid) {
+                AppState.update({
+                    userInfo: {
+                        ...AppState.get().userInfo,
+                        [input.name]: input.value.trim()
+                    }
+                });
             }
-           // Handel Selected Ons
-           addOnsList.forEach((ons,i)=>{
-               const addOnsCheckBox=ons.querySelector("input[type='checkbox']");
-               addOnsCheckBox.addEventListener("change",()=>{
-               addOnsCheckBox.checked?ons.classList.add("selected"):ons.classList.remove("selected");
-                    updateOnsList(ons,addOnsCheckBox,i)
-               })
-           })
-            // Add Selected ons to ons List
-            const defaultOnsSelected=document.querySelector("ul.addons-list li.selected");
-            const defaultChecked=defaultOnsSelected.querySelector("input[type='checkbox']");
-            let selectedOnsList=[];
-            const updateOnsList=(ons,checkBox,index)=>{
-               const onsName=ons.querySelector("h2").textContent;
-               const onsPrice=[...ons.querySelectorAll("small")].find(ele=>!ele.classList.contains("hidden")).textContent;
-               let onsInfo={id:index,ons:onsName,onsPrice:onsPrice};
-               if(checkBox.checked && !selectedOnsList.includes(onsInfo)){
-                   selectedOnsList.push(onsInfo)
-               }else{
-                   let uncheckedOnsIndex=selectedOnsList.findIndex((ele)=>ele.id===index);
-                   selectedOnsList.splice(uncheckedOnsIndex,1)
-               }
-               stat.selectedOns=selectedOnsList;
-           }
-           // start the array withe default ons selected
-           updateOnsList(defaultOnsSelected,defaultChecked,0)
+        });
 
-/* =======================Step-3 :(Resume)=============================== */
-const planRow=({plan, planPrice, period})=>{
-    return `<div class="service-item flex justify-between align-center">
-                        <dt>
-                          <p>${plan} (${period})</p>
-                          <a href="#" class="change-plan">Change</a>
-                        </dt>
-                        <dd>${planPrice}</dd>
-                    </div>`
-}
-const optionRows=(options)=>{
-    return options.map(({ons, onsPrice}) => {
-             return `
-                <div class="service-item flex justify-between align-center">
-                       <dt>${ons}</dt>
-                       <dd>${onsPrice}</dd>
-                </div>
-             `
-          }).join('')
-}
-const calcTotal=({selectedPlan,selectedOns})=>{
-    const totalPrice=document.querySelector(".total");
-    const {planPrice,period}=selectedPlan;
-    const planPriceNumber=Number(planPrice.match(/\d/g).join(''));
-    const onsTotalPrice=selectedOns
-        .map(({onsPrice})=>onsPrice.split('')
-            .filter(ele=>!isNaN(ele))
-            .flatMap(ele=>ele).join('')
-        ).reduce((curr,acc)=>Number(curr)+Number(acc));
-    totalPrice.innerHTML=``
-    totalPrice.innerHTML=` <p>Total ${ period.toLowerCase() === "monthly" ? "(per month)":"(per year)"}</p>
-    <span aria-label="total-price"><strong>+$${planPriceNumber + parseInt(onsTotalPrice)}/${ period.toLowerCase() === "monthly" ? "mo":"yr"}</strong></span>`
-}
-const finishUP=()=>{
-    const dl=document.querySelector("dl.services-selected");
-    dl.innerHTML=``;
-    dl.innerHTML=planRow(stat.selectedPlan);
-    dl.innerHTML+=optionRows(stat.selectedOns);
-    calcTotal(stat)
+        if (isValid) Resume.render();
+        return isValid;
+    };
 
-}
+    return { validateForm };
+})();
 
-/*========================= proxy functions ==========================*/
-// const proxyFunctions=(currentStep)=>{
-//       switch (currentStep){
-//           case 1:
-//               formValidation();
-//               break;
-//           case 2:
-//               selectedPlanFunctionality();
-//               break;
-//           case 3:
-//               addonsSectionFunctionality();
-//               break
-//           case 4:
-//               finishingUp()
-//               break
-//           default :
-//               console.error("step doesn't Exist");
-//               break
-//       }
-// }
-/*====================== Events ===================*/
-buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-        if (button.classList.contains("prev")) {
-            displayPrevStep();
-        } else if (button.classList.contains("next")) {
-            displayNextStep();
-        } else if (button.classList.contains("confirm")) {
-            displayThanksSection();
+// ================== Navigation Module ==================
+const Navigation = (() => {
+    let step = 0;
+
+    const getStep = () => step;
+    const setStep = (index) => (step = index);
+
+    const next = () => {
+        if (step < FormUI.formFields.length - 1 && Validation.validateForm()) {
+            FormUI.showStep(step + 1);
         }
+    };
+
+    const prev = () => {
+        if (step > 0) {
+            FormUI.showStep(step - 1);
+        }
+    };
+
+    const confirm = () => {
+        document.getElementById("form-section").ariaHidden = "true";
+        document.getElementById("thank-you").ariaHidden = "false";
+    };
+
+    return { next, prev, confirm, setStep };
+})();
+
+// ================== Plan & Add-ons Module ==================
+const PlansAndOns = (() => {
+    const billingPeriodWrapper = document.querySelector(".billing-period-wrapper");
+    const periodCheckBox = document.getElementById("toggle-billing");
+    const articles = document.querySelectorAll("article");
+    let selectedArticle = document.querySelector("article.selected");
+
+    const monthly = billingPeriodWrapper.firstElementChild;
+    const yearly = billingPeriodWrapper.lastElementChild;
+
+    const updateSelectedPlan = () => {
+        const planName = selectedArticle.querySelector("h2").textContent;
+        const planPrice =
+            selectedArticle.querySelector(
+                periodCheckBox.checked
+                    ? ".yearly-price"
+                    : ".monthly-price")
+                    .textContent;
+        const period = periodCheckBox.checked ? "Yearly" : "Monthly";
+
+        AppState.update({ selectedPlan: { plan: planName, planPrice, period } });
+    };
+
+    const initPlans = () => {
+        updateSelectedPlan();
+
+        // Select plan on click
+        articles.forEach((article) => {
+            article.addEventListener("click", () => {
+                FormUI.removeClasses(articles, "selected");
+                article.classList.add("selected");
+                selectedArticle = article;
+                updateSelectedPlan();
+            });
+        });
+
+        // Toggle billing period
+        periodCheckBox.addEventListener("change", () => {
+            yearly.classList.toggle("active");
+            monthly.classList.toggle("active");
+
+            articles.forEach((article) => {
+                const monthlyPrice = article.querySelector(".monthly-price");
+                const yearlyPrice = article.querySelector(".yearly");
+                monthlyPrice.classList.toggle("hidden", periodCheckBox.checked);
+                yearlyPrice.classList.toggle("hidden", !periodCheckBox.checked);
+            });
+
+            updateSelectedPlan();
+            updateOnsPrice();
+        });
+    };
+
+    // Add-ons
+    const addOnsList = document.querySelectorAll("ul.addons-list li");
+    let selectedOnsList = [];
+
+    const updateOnsPrice = () => {
+        addOnsList.forEach((ons) => {
+            const [monthlyPrice, yearlyPrice] = ons.getElementsByTagName("small");
+            monthlyPrice.classList.toggle("hidden");
+            yearlyPrice.classList.toggle("hidden");
+
+        });
+    };
+    const updateOnsList = (ons, checkBox, index) => {
+        const onsName = ons.querySelector("h2").textContent;
+        const [monthlyPrice, yearlyPrice] = ons.querySelectorAll("small");
+
+        const onsInfo = {
+            id: index,
+            ons: onsName,
+            monthly: monthlyPrice.textContent,
+            yearly: yearlyPrice.textContent
+        };
+
+        if (checkBox.checked && !selectedOnsList.find((o) => o.id === index)) {
+            selectedOnsList.push(onsInfo);
+        } else if (!checkBox.checked) {
+            selectedOnsList = selectedOnsList.filter((o) => o.id !== index);
+        }
+
+        AppState.update({ selectedOns: selectedOnsList });
+    };
+
+
+    const initOns = () => {
+        addOnsList.forEach((ons, i) => {
+            const checkBox = ons.querySelector("input[type='checkbox']");
+            checkBox.addEventListener("change", () => {
+                ons.classList.toggle("selected", checkBox.checked);
+                updateOnsList(ons, checkBox, i);
+            });
+        });
+
+        // default selected
+        const defaultOns = document.querySelector("ul.addons-list li.selected");
+        if (defaultOns) {
+            const defaultChecked = defaultOns.querySelector("input[type='checkbox']");
+            updateOnsList(defaultOns, defaultChecked, 0);
+        }
+    };
+
+    return { initPlans, initOns };
+})();
+
+// ================== Resume & Total Module ==================
+const Resume = (() => {
+
+    const planRow = ({ plan, planPrice, period }) => `
+    <div class="service-item flex justify-between align-center">
+      <dt>
+        <p>${plan} (${period})</p>
+        <a href="#" class="change-plan">Change</a>
+      </dt>
+      <dd>${planPrice}</dd>
+    </div>`;
+
+    const optionRows = (options, period) =>
+        options.map(({ ons, monthly, yearly }) => `
+    <div class="service-item flex justify-between align-center">
+      <dt>${ons}</dt>
+      <dd>${period === "Yearly" ? yearly : monthly}</dd>
+    </div>`).join("");
+
+    const calcTotal = ({ selectedPlan, selectedOns }) => {
+        const totalPrice = document.querySelector(".total");
+        const { planPrice, period } = selectedPlan;
+        const planPriceNumber = Number(planPrice.replace(/\D/g, ""));
+
+        const onsTotal = selectedOns.reduce((sum, ons) => {
+            const price = (period === "Yearly" ? ons.yearly : ons.monthly);
+            return sum + Number(price.replace(/\D/g, ""));
+        }, 0);
+
+        totalPrice.innerHTML = `
+    <p>Total ${period === "Monthly" ? "(per month)" : "(per year)"}</p>
+    <span aria-label="total-price"><strong>+$${planPriceNumber + onsTotal}/${period === "Monthly" ? "mo" : "yr"}</strong></span>
+  `;
+    };
+
+
+    const render = () => {
+        const dl = document.querySelector("dl.services-selected");
+        const { selectedPlan, selectedOns } = AppState.get();
+
+        dl.innerHTML = planRow(selectedPlan);
+        dl.innerHTML += optionRows(selectedOns, selectedPlan.period);
+
+        calcTotal(AppState.get());
+    };
+
+
+
+    return { render };
+})();
+
+// ================== Init ==================
+(() => {
+    const buttons = document.querySelectorAll("button[type='button']");
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            if (btn.classList.contains("prev")) Navigation.prev();
+            if (btn.classList.contains("next")) Navigation.next();
+            if (btn.classList.contains("confirm")) Navigation.confirm();
+        });
     });
-});
 
-// Init first step correctly
-showStep(0);
-
-
-
-
-
-
-
-
-
-
-
+    PlansAndOns.initPlans();
+    PlansAndOns.initOns();
+    FormUI.showStep(0);
+})();
