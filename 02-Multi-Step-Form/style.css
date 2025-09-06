@@ -167,6 +167,10 @@ utilitie;
     main{
         background-color: var(--blue-200);
         min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
     }
     h1,
     h2,
@@ -605,9 +609,8 @@ utilitie;
     /*---------------wrapper class styling------------------*/
     .wrapper {
         width: 70%;
-        min-height: 90vh;
+        min-height: 90svh;
         max-width: 1100px;
-        margin: 1rem auto;
         padding: 1em;
         display: grid;
         grid-template-columns: 2fr 4fr;
