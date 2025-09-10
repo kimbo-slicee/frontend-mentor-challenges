@@ -15,7 +15,7 @@
     <h1 id="contact-heading">Contact Us</h1>
 
     <form method="post" novalidate>
-      <!-- Name Row -->
+      <!--Full Name Row -->
       <div class="form-row">
         <div class="form-control">
           <label for="firstName">First Name <span aria-hidden="true">*</span></label>
@@ -36,32 +36,35 @@
           <label for="email">Email Address <span aria-hidden="true">*</span></label>
           <input type="email" id="email" name="email" required>
           <span class="error" id="email-error" aria-live="polite">This field is required</span>
-          <span class="regex-error" id="email-regex-error" aria-live="polite">Please enter a valid email address</span>
+          <span class="regex-error hidden" id="email-regex-error" aria-live="polite">Please enter a valid email
+            address</span>
         </div>
       </div>
 
       <!-- Query Type -->
       <fieldset class="form-row" role="radiogroup" aria-required="true">
-        <legend>Query Type <span aria-hidden="true">*</span></legend>
+          <legend>Query Type <span aria-hidden="true">*</span></legend>
 
-        <div class="form-control">
-          <input type="radio" id="general-enquiry" name="queryType" value="general" required>
-          <label for="general-enquiry">General Enquiry</label>
-        </div>
+          <div class="form-control">
+            <input type="radio" id="general-enquiry" name="queryType" value="general" required>
+            <label for="general-enquiry">General Enquiry</label>
+            <span></span>
+          </div>
 
-        <div class="form-control">
-          <input type="radio" id="support-request" name="queryType" value="support" required>
-          <label for="support-request">Support Request</label>
-        </div>
+          <div class="form-control">
+            <input type="radio" id="support-request" name="queryType" value="support" required>
+            <label for="support-request">Support Request</label>
+            <span></span>
+          </div>
 
-        <span class="error" id="queryType-error" aria-live="polite">Please select a query type</span>
+          <span class="error" id="queryType-error" aria-live="polite">Please select a query type</span>
       </fieldset>
 
       <!-- Message -->
       <div class="form-row">
         <div class="form-control">
           <label for="message">Message <span aria-hidden="true">*</span></label>
-          <textarea id="message" name="message" rows="10" cols="30" required></textarea>
+          <textarea id="message" name="message" rows="5" cols="30" required></textarea>
           <span class="error" id="message-error" aria-live="polite">This field is required</span>
         </div>
       </div>
@@ -71,19 +74,22 @@
         <div class="form-control checkbox-control">
           <input type="checkbox" id="terms" name="terms" required>
           <label for="terms">I consent to being contacted by the team</label>
+          <span></span>
         </div>
-        <span class="error-message" id="terms-error" aria-live="polite">To submit this form, please consent to being contacted</span>
+        <span class="error-message hidden" id="terms-error" aria-live="polite">
+          To submit this form, please consent to being contacted
+        </span>
       </div>
 
       <!-- Submit -->
       <div class="form-actions">
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn">Submit</button>
       </div>
     </form>
   </section>
 
   <!-- Alert Section -->
-  <aside class="alert" role="alert" aria-live="assertive">
+  <aside class="alert hidden" role="alert" aria-live="assertive">
     <h2>Message Sent</h2>
     <p>Thanks for completing the form. We'll be in touch soon!</p>
   </aside>
