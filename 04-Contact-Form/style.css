@@ -1,0 +1,210 @@
+/* ========= CSS Layers ========= */
+@layer reset, fonts, variables, base, theme, components, utilities;
+
+/* ===== Reset ===== */
+@layer reset {
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    ol[role="list"],
+    ul[role="list"] {
+        list-style: none;
+    }
+
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    textarea,
+    select {
+        font: inherit;
+        border: none;
+        background: none;
+    }
+    main,
+    section{
+        container-type: inline-size;
+    }
+}
+
+/* ===== Fonts ===== */
+@layer fonts {
+    @font-face {
+        font-family: "Karla";
+        src: url("assets/fonts/Karla-Regular.woff2") format("woff2"),
+        url("assets/fonts/Karla-Regular.woff") format("woff");
+        font-weight: 400 700;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Karla";
+        src: url("assets/fonts/Karla-Italic.woff2") format("woff2"),
+        url("assets/fonts/Karla-Italic.woff") format("woff");
+        font-weight: 400 700;
+        font-style: italic;
+        font-display: swap;
+    }
+}
+
+/* ===== Variables ===== */
+@layer variables {
+    :root {
+        /* Primary Colors */
+        --clr-primary-600: hsl(169, 82%, 27%);
+        --clr-primary-200: hsl(148, 38%, 91%);
+
+        /* Neutral Palette */
+        --clr-gray-900: hsl(187, 24%, 22%);
+        --clr-gray-500: hsl(186, 15%, 59%);
+        --clr-neutral-900: hsl(0, 0%, 10%);  /* black */
+        --clr-neutral-100: hsl(0, 0%, 100%); /* white */
+
+        /* Status Colors */
+        --clr-error: hsl(0, 66%, 54%);
+        --clr-success: var(--clr-primary-600);
+
+        /* Button Colors */
+        --clr-btn: var(--clr-primary-600);
+        --clr-btn-hover: var(--clr-gray-900);
+
+        /* Background / Text */
+        --clr-bg: var(--clr-primary-200);
+        --clr-text: var(--clr-gray-900);
+
+        /* Typography */
+        --ff-body: "Karla", sans-serif;
+        --fs-xs: 0.75rem;
+        --fs-sm: 0.875rem;
+        --fs-md: 1rem;
+        --fs-lg: 1.125rem;
+        --fs-xl: 1.25rem;
+        --fs-2xl: 1.5rem;
+
+        --fw-400: 400;
+        --fw-500: 500;
+        --fw-700: 700;
+
+        /* Layout */
+        --space-xs: 0.5rem;
+        --space-sm: 0.75rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+
+        /* Effects */
+        --radius-sm: 0.375rem;
+        --radius-md: 0.75rem;
+        --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+        --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+    }
+}
+
+/* ===== Base ===== */
+@layer base {
+    html {
+        font-size: 100%; /* 16px default */
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--ff-body);
+        font-size: var(--fs-md);
+        font-weight: var(--fw-400);
+        line-height: 1.6;
+        color: var(--clr-text);
+        background-color: var(--clr-bg);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: var(--fw-700);
+        line-height: 1.2;
+        color: var(--clr-gray-900);
+    }
+
+    p {
+        margin-bottom: var(--space-md);
+    }
+
+    a {
+        color: var(--clr-primary-600);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+/* ===== Theme (e.g., dark mode) ===== */
+@layer theme {
+    /*@media (prefers-color-scheme: dark) {*/
+    /*    :root {*/
+    /*        --clr-bg: var(--clr-neutral-900);*/
+    /*        --clr-text: var(--clr-neutral-100);*/
+    /*        --clr-btn: var(--clr-primary-200);*/
+    /*        --clr-btn-hover: var(--clr-primary-600);*/
+    /*    }*/
+    /*}*/
+}
+
+/* ===== Components ===== */
+@layer components {
+    .btn {
+        display: inline-block;
+        padding: var(--space-sm) var(--space-lg);
+        border-radius: var(--radius-sm);
+        font-weight: var(--fw-500);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        background-color: var(--clr-btn);
+        color: var(--clr-neutral-100);
+    }
+
+    .btn:hover {
+        background-color: var(--clr-btn-hover);
+    }
+
+    .card {
+        padding: var(--space-lg);
+        border-radius: var(--radius-md);
+        background: var(--clr-neutral-100);
+        box-shadow: var(--shadow-sm);
+    }
+}
+
+/* ===== Utilities ===== */
+@layer utilities {
+    .hidden {
+        display: none !important;
+    }
+
+    .sr-only {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+        white-space: nowrap;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+}
