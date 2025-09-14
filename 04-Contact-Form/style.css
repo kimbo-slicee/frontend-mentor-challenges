@@ -170,8 +170,9 @@
         padding:.5rem 1rem;
         font-size: var(--fs-md);
         font-weight: var(--fw-400);
+        margin-bottom: .5rem;
         &:hover,&:focus-visible{
-            border-color: var(--clr-primary-600);
+            border: 2px solid var(--clr-primary-600);
         }
     }
     textarea{
@@ -180,6 +181,10 @@
     }
     fieldset legend{
         margin-bottom: .5rem;
+    }
+    button[disabled]{
+        opacity: .5;
+        pointer-events: none;
     }
 
 }
@@ -204,12 +209,13 @@
         min-height: 100vh;
     }
     .form-section{
-        width: 60%;
+        width: 40%;
         max-width: 1150px;
         margin-inline: auto;
         background: var(--clr-neutral-100);
         padding: 1rem 2rem;
         border-radius: var(--radius-md);
+        box-shadow: 0 0 10px 1px var(--clr-primary-200);
         @container (width < 700px) {
             width: 90%;
         }
@@ -246,27 +252,29 @@
         padding: .75rem 1rem;
         &:focus-visible,
         &:hover{
-            border: 1px solid var(--clr-primary-600);
+            border: 2px solid var(--clr-primary-600);
         }
+
+        position: relative;
     }
 
     fieldset .form-control label{
-        margin: 0;
-        margin-inline-start:.5rem;
+        width: fit-content;
         cursor: pointer;
-        width: 90%;
+        margin: 0 0 0 .5rem;
     }
     input[type="checkbox"],
     input[type="radio"]{
         width: 20px;
         height: 20px;
-        padding: 0;
+        padding: 0 .5rem;
         display: inline;
+        margin: 0;
     }
     input[type="radio"]:checked{
         border: 0;
         appearance: none;
-        background: url("assets/images/icon-radio-selected.svg") no-repeat ;
+        background: url("assets/images/icon-radio-selected.svg") no-repeat;
     }
     /*-------------CheckBox Style-------------*/
     .checkbox-control{
@@ -285,13 +293,45 @@
     input[type="checkbox"]:checked{
         border: 0;
         appearance: none;
-        background: url("assets/images/icon-checkbox-check.svg") no-repeat ;
+        background: url("assets/images/icon-checkbox-check.svg") center;
     }
     .form-actions{
         width: 100%;
         margin-block: 2rem 1rem;
     }
-
+    /*===============Alert Styling============*/
+    .alert{
+        position: absolute;
+        left: 50%;
+        top: -50%;
+        transform: translateX(-50%);
+        background: var(--clr-gray-900);
+        width:fit-content;
+        border-radius: var(--radius-md);
+        color: var(--clr-neutral-100);
+        padding:1.5rem 2rem;
+        display: block;
+    }
+    .alert-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: .5rem;
+    }
+    .alert-header h2{
+        color: var(--clr-primary-200);
+        margin-left: .5rem;
+        font-size: var(--fs-md);
+        font-weight: var(--fw-700);
+    }
+    .alert-header svg{
+        width: 18px;
+        height: 18px;
+    }
+    .alert p{
+        font-size: var(--fs-sm);
+        color: var(--clr-gray-500);
+    }
 
 }
 
@@ -325,9 +365,17 @@
     .btn:hover,.btn:focus-visible{
         background-color: var(--clr-btn-hover);
     }
-    .error,.error-message,.regex-error{
-        color: var(--clr-error);
+    .error,
+    .error-message,
+    .regex-error{
+        color:var(--clr-error);
         display: none;
-        margin-top: .5rem;
+    }
+    .invalid{
+        border: 2px solid var(--clr-error);
+    }
+    .valid{
+        border: 2px solid var(--clr-primary-600);
     }
 }
+

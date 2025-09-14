@@ -12,85 +12,113 @@
 <main>
   <!-- Contact Form Section -->
   <section class="form-section" aria-labelledby="contact-heading">
-    <h1 class="form-heading">Contact Us</h1>
+    <h1 id="contact-heading" class="form-heading">Contact Us</h1>
 
-    <form method="post" novalidate>
+    <form action="/contact" method="post" novalidate>
       <!-- Name Row -->
       <div class="form-row">
-        <div class="form-control">
+        <div class="form-control col">
           <label for="firstName">First Name <span aria-hidden="true">*</span></label>
-          <input type="text" name="firstName" id="firstName" required>
-          <span class="error" id="firstName-error" aria-live="polite">This field is required</span>
+          <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  required
+                  autocomplete="given-name"
+                  aria-describedby="firstName-error"
+          >
+          <span class="error" id="firstName-error" aria-live="polite"></span>
         </div>
 
-        <div class="form-control">
+        <div class="form-control col">
           <label for="lastName">Last Name <span aria-hidden="true">*</span></label>
-          <input type="text" name="lastName" id="lastName" required>
-          <span class="error" id="lastName-error" aria-live="polite">This field is required</span>
+          <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  required
+                  autocomplete="family-name"
+                  aria-describedby="lastName-error"
+          >
+          <span class="error" id="lastName-error" aria-live="polite"></span>
         </div>
       </div>
 
       <!-- Email -->
-      <div class="form-row">
+      <div class="">
         <div class="form-control">
           <label for="email">Email Address <span aria-hidden="true">*</span></label>
-          <input type="email" id="email" name="email" required>
-          <span class="error " id="email-error" aria-live="polite">This field is required</span>
-          <span class="regex-error" id="email-regex-error" aria-live="polite">Please enter a valid email
-            address</span>
+          <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  aria-describedby="email-error email-regex-error"
+          >
+          <span class="error" id="email-error" aria-live="polite"></span>
         </div>
       </div>
 
       <!-- Query Type -->
-      <div>
-        <fieldset class="form-row" role="radiogroup" aria-required="true">
-          <legend>Query Type <span aria-hidden="true">*</span></legend>
+      <fieldset class="form-row" aria-describedby="queryType-error">
+        <legend>Query Type <span aria-hidden="true">*</span></legend>
 
-          <div class="form-control">
-            <input type="radio" id="general-enquiry" name="queryType" value="general" required>
-            <label for="general-enquiry">General Enquiry</label>
-          </div>
+        <div class="form-control col">
+          <input type="radio" id="general-enquiry" name="queryType" value="general" required>
+          <label for="general-enquiry">General Enquiry</label>
+        </div>
 
-          <div class="form-control">
-            <input type="radio" id="support-request" name="queryType" value="support" required>
-            <label for="support-request">Support Request</label>
-          </div>
-        </fieldset>
-        <span class="error" id="queryType-error" aria-live="polite">Please select a query type</span>
-      </div>
-
+        <div class="form-control col">
+          <input type="radio" id="support-request" name="queryType" value="support" required>
+          <label for="support-request">Support Request</label>
+        </div>
+      </fieldset>
+      <span class="error" id="queryType-error" aria-live="polite">Please select a query type</span>
 
       <!-- Message -->
       <div class="form-row">
         <div class="form-control">
           <label for="message">Message <span aria-hidden="true">*</span></label>
-          <textarea id="message" name="message" rows="10" cols="30" required></textarea>
-          <span class="error" id="message-error" aria-live="polite">This field is required</span>
+          <textarea
+                  id="message"
+                  name="message"
+                  rows="8"
+                  required
+                  aria-describedby="message-error"
+          ></textarea>
+          <span class="error" id="message-error" aria-live="polite"></span>
         </div>
       </div>
 
       <!-- Terms & Consent -->
       <div class="form-row">
         <div class="form-control checkbox-control">
-          <input type="checkbox" id="terms" name="terms" required>
+          <input type="checkbox" id="terms" name="terms" required aria-describedby="terms-error">
           <label for="terms">I consent to being contacted by the team <span aria-hidden="true">*</span></label>
         </div>
-        <span class="error-message" id="terms-error" aria-live="polite">To submit this form, please consent to
-          being contacted</span>
       </div>
+      <span class="error-message" id="terms-error" aria-live="polite">To submit this form, please consent to being contacted</span>
 
       <!-- Submit -->
       <div class="form-actions">
-        <button type="submit" class="btn">Submit</button>
+        <button type="submit" class="btn" disabled>Submit</button>
       </div>
     </form>
   </section>
 
   <!-- Alert Section -->
-<!--  <aside class="alert" role="alert" aria-live="assertive">-->
-<!--    <h2>Message Sent</h2>-->
-<!--    <p>Thanks for completing the form. We'll be in touch soon!</p>-->
-<!--  </aside>-->
+  <aside class="alert" aria-live="assertive" hidden>
+    <div class="alert-header">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="20" height="20" fill="currentColor" viewBox="0 0 20 21" aria-hidden="true" focusable="false">
+        <path fill="currentColor"
+              d="M14.28 7.72a.748.748 0 0 1 0 1.06l-5.25 5.25a.748.748 0 0 1-1.06 0l-2.25-2.25a.75.75 0 1 1 1.06-1.06l1.72 1.72 4.72-4.72a.75.75 0 0 1 1.06 0Zm5.47 2.78A9.75 9.75 0 1 1 10 .75a9.76 9.76 0 0 1 9.75 9.75Zm-1.5 0A8.25 8.25 0 1 0 10 18.75a8.26 8.26 0 0 0 8.25-8.25Z"/>
+      </svg>
+      <h2 class="alert-title">Message Sent!</h2>
+    </div>
+    <p>Thanks for completing the form. We'll be in touch soon!</p>
+  </aside>
 </main>
 
 </body>
