@@ -1,23 +1,29 @@
 const submitBtn=document.querySelector("button[type='submit']");
 const inputs=document.querySelectorAll("input,textarea");
+const inputsState=Array.from(inputs).map((e)=>!e);
 const Utils=(()=>{
 
 })();
 
 /* ================== Validation Module ==================*/
 const Validation=(()=>{
+    let index;
+    const upDateInputSates=(valid)=>{
+        inputsState[index]=valid;
+    }
     const displayError=(input,message)=>{
         const messageSpan=input.nextElementSibling;
-        messageSpan.style.display="block";
         messageSpan.textContent='';
         messageSpan.textContent=message;
-        // input border red
-        input.classList.add("invalid");
+        messageSpan.style.display="block";
+        input.classList.replace("valid","invalid");
+        upDateInputSates(false);
     }
     const hideError=(input)=>{
         const messageSpan=input.nextElementSibling;
-        input.classList.replace("valid","invalid");
         messageSpan.style.display="none";
+        input.classList.add("valid");
+        upDateInputSates(true)
     }
     const regexValidation=(input)=>{
         const patterns = {
@@ -44,12 +50,7 @@ const Validation=(()=>{
             const message=patterns[inputName]?.message;
             const pattern=patterns[inputName]?.pattern;
             if(!pattern.test(inputValue)) displayError(input,message);
-            else {
-                hideError(input);
-                input.classList.add("valid")
-            }
-        }else {
-            console.warn("add Name attr to input filed")
+            else hideError(input);
         }
     }
     const radioAndCheckBoxValidation=(input,type)=>{
@@ -57,9 +58,19 @@ const Validation=(()=>{
         if(type==="radio" && input.checked){
             const radioInputs=document.querySelectorAll("input[type='radio']");
             const currenInputParent=input.parentElement;
-            console.log(currenInputParent)
-            radioInputs.forEach(item=>item.parentElement.classList.remove("active-radio"));
+            radioInputs.forEach(item=> item.parentElement.classList.remove("active-radio"));
             currenInputParent.classList.add("active-radio");
+            upDateInputSates(true,index)
+        }else if(type==="checkbox"){
+            const span=input.closest("div.form-row").nextElementSibling;
+            if(input.checked){
+                span.style.display="none";
+                upDateInputSates(true,index)
+            }else{
+                span.style.display="block";
+                upDateInputSates(false,index)
+            }
+
         }
         // display error message if checkbox unchecked
     }
@@ -68,13 +79,16 @@ const Validation=(()=>{
             const errorMessage="This field is required";
             const inputType=input.type;
             if(!value) displayError(input,errorMessage);
-            else if(value && ( inputType!=="radio" && inputType!=="checkbox" )) regexValidation(input);
+            else if (value && ( inputType!=="radio" && inputType!=="checkbox" ))return regexValidation(input);
             else radioAndCheckBoxValidation(input,inputType);
     }
 
-    const inputValidation=(e)=>{
+    const inputValidation=(e,i)=>{
         const input=e.target;
+        index=i
         regularValidation(input);
+        submitBtn.disabled=!inputsState.every(ele=>ele===true);
+        console.log(inputsState);
     }
     const formValidation=()=>{
 
@@ -93,7 +107,7 @@ const submitForm=(e)=>{
         })
     }
 }
-inputs.forEach(input=>input.addEventListener("input",Validation.inputValidation));
+inputs.forEach((input,index)=>input.addEventListener("input",(e)=>Validation.inputValidation(e,index)));
 submitBtn.addEventListener("submit",submitForm)
 
 
