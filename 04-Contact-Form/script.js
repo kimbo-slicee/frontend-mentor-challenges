@@ -1,6 +1,8 @@
 const submitBtn=document.querySelector("button[type='submit']");
-const inputs=document.querySelectorAll("input:not([type='checkbox'],[type='radio']),textarea");
-const radios=document.querySelectorAll("input[type='radio']");
+const inputs=document.querySelectorAll("input,textarea");
+const Utils=(()=>{
+
+})();
 
 /* ================== Validation Module ==================*/
 const Validation=(()=>{
@@ -47,42 +49,51 @@ const Validation=(()=>{
                 input.classList.add("valid")
             }
         }else {
-            console.error("add Name attr to input filed")
+            console.warn("add Name attr to input filed")
         }
+    }
+    const radioAndCheckBoxValidation=(input,type)=>{
+        // change the bg and border for active radio input
+        if(type==="radio" && input.checked){
+            const radioInputs=document.querySelectorAll("input[type='radio']");
+            const currenInputParent=input.parentElement;
+            console.log(currenInputParent)
+            radioInputs.forEach(item=>item.parentElement.classList.remove("active-radio"));
+            currenInputParent.classList.add("active-radio");
+        }
+        // display error message if checkbox unchecked
     }
     const regularValidation=(input)=>{
             const value=input.value.trim();
             const errorMessage="This field is required";
-            hideError(input);
+            const inputType=input.type;
             if(!value) displayError(input,errorMessage);
-            else regexValidation(input)
+            else if(value && ( inputType!=="radio" && inputType!=="checkbox" )) regexValidation(input);
+            else radioAndCheckBoxValidation(input,inputType);
     }
-    const radioValidation=(input)=>{
-        radios.forEach(input=>{
-            if(input.checked){
-
-            }
-        })
-    }
-    const checkBoxValidation=()=>{
-
-    }
-
 
     const inputValidation=(e)=>{
         const input=e.target;
         regularValidation(input);
     }
+    const formValidation=()=>{
 
-    return {inputValidation}
+    }
+
+    return {inputValidation,formValidation}
 
 })();
 
 /*========Handel From Data Model=======*/
 const submitForm=(e)=>{
     e.preventDefault();
+    if(Validation.formValidation()){
+        const formData=new FormData({
+
+        })
+    }
 }
-inputs.forEach(input=>input.addEventListener("input",Validation.inputValidation))
-submitBtn.addEventListener("click",submitForm)
+inputs.forEach(input=>input.addEventListener("input",Validation.inputValidation));
+submitBtn.addEventListener("submit",submitForm)
 
 
