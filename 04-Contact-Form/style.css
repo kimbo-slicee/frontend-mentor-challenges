@@ -363,21 +363,10 @@
     .btn:focus-visible {
         background-color: var(--btn-hover-clr);
     }
-
-    .error,
-    .error-message {
-        color: var(--clr-error);
-        font-size: var(--fs-md);
-        margin-top: var(--space-xs);
-        display: none;
-    }
-
-    .invalid {
-        border: 2px solid var(--clr-error);
-    }
-
-    .valid{
-        border: 2px solid var(--clr-success);
+    .error{
+        color:var(--clr-error);
+        font-weight: var(--fw-500);
+        font-size: var(--fs-sm);
     }
     .active-radio{
         background-color: var(--clr-primary-200);

@@ -25,9 +25,7 @@
                   id="firstName"
                   required
                   autocomplete="given-name"
-                  aria-describedby="firstName-error"
           >
-          <span class="error" id="firstName-error" aria-live="polite"></span>
         </div>
 
         <div class="form-control col">
@@ -38,9 +36,7 @@
                   id="lastName"
                   required
                   autocomplete="family-name"
-                  aria-describedby="lastName-error"
           >
-          <span class="error" id="lastName-error" aria-live="polite"></span>
         </div>
       </div>
 
@@ -48,15 +44,7 @@
       <div class="">
         <div class="form-control">
           <label for="email">Email Address <span aria-hidden="true">*</span></label>
-          <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  autocomplete="email"
-                  aria-describedby="email-error email-regex-error"
-          >
-          <span class="error" id="email-error" aria-live="polite"></span>
+          <input type="email" id="email" name="email" required autocomplete="email">
         </div>
       </div>
 
@@ -75,20 +63,13 @@
         </div>
 
       </fieldset>
-      <span class="error" id="queryType-error" aria-live="polite">Please select a query type</span>
+<!--      <span class="error" id="queryType-error" aria-live="polite">Please select a query type</span>-->
 
       <!-- Message -->
       <div class="form-row">
         <div class="form-control">
           <label for="message">Message <span aria-hidden="true">*</span></label>
-          <textarea
-                  id="message"
-                  name="message"
-                  rows="8"
-                  required
-                  aria-describedby="message-error"
-          ></textarea>
-          <span class="error" id="message-error" aria-live="polite"></span>
+          <textarea id="message" name="message" rows="8" required></textarea>
         </div>
       </div>
 
@@ -99,7 +80,7 @@
           <label for="terms">I consent to being contacted by the team <span aria-hidden="true">*</span></label>
         </div>
       </div>
-      <span class="error-message" id="terms-error" aria-live="polite">To submit this form, please consent to being contacted</span>
+<!--      <span class="error-message" id="terms-error" aria-live="polite">To submit this form, please consent to being contacted</span>-->
 
       <!-- Submit -->
       <div class="form-actions">
