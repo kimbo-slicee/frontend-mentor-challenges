@@ -363,14 +363,18 @@
     .btn:focus-visible {
         background-color: var(--btn-hover-clr);
     }
-    .error{
+    .error,.error-message{
         color:var(--clr-error);
         font-weight: var(--fw-500);
         font-size: var(--fs-sm);
     }
-    .active-radio{
+    .active{
         background-color: var(--clr-primary-200);
         border: 2px solid var(--clr-success);
     }
+    .error-message{
+        display: none;
+    }
+
 
 }
