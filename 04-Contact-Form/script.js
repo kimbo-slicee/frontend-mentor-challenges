@@ -1,144 +1,173 @@
-
 /**
- in the challenge there is just form validation in submit event So i decide to make challenge more interesting
- and add vaidation for each field and disabled submit btn until all fields are valid also i will add submit form
- validation in case of some one open the console and remove disabled attr
+ * I extended the basic form validation challenge:
+ * - Live validation for each field
+ * - Disable submit button until all fields are valid
+ * - Extra check on submit in case someone manipulates DOM
  */
 
-const submitBtn=document.querySelector("button[type='submit']");
-const inputs=document.querySelectorAll("input:not([type='radio'],[type='checkbox']),textarea");
-const radioAndCheckBox=document.querySelectorAll("input[type='radio'],input[type='checkbox']");
+const submitBtn = document.querySelector("button[type='submit']");
+const inputs = document.querySelectorAll("input:not([type='radio'],[type='checkbox']),textarea");
+const radioAndCheckBox = document.querySelectorAll("input[type='radio'],input[type='checkbox']");
 
 // ================== State ==================
 const FormFieldState = (() => {
-    // Build initial state list
-    const inputsStateList = [...inputs, ...radioAndCheckBox]
-        .map(({ name, type }) => ({ name, type, isValid: false }));
+    const fields = [...inputs, ...radioAndCheckBox].map(({ name, type }) => ({
+        name,
+        type,
+        isValid: false,
+    }));
 
-    // Create Map: key = input name, value = { type, isValid }
-    const stateObj = new Map(
-        inputsStateList.map(({ name, type, isValid }) => [name, { type, isValid }])
-    );
+    const state = new Map(fields.map(({ name, type, isValid }) => [name, { type, isValid }]));
 
-    // Update validity of a specific input
-    const updateInputState = (inputName, isValid) => {
-        if (stateObj.has(inputName)) {
-            const field = stateObj.get(inputName);
-            stateObj.set(inputName, { ...field, isValid });
-        }
+    const update = (name, isValid) => {
+        if (!state.has(name)) return;
+        const field = state.get(name);
+        state.set(name, { ...field, isValid });
     };
 
-    // Get state of one input
-    const getInputState = (inputName) => stateObj.get(inputName);
+    const get = (name) => state.get(name);
 
-    // Get all states (as object or array if you want to debug/log)
-    const getAllStates = () => Object.fromEntries(stateObj);
+    const getAll = () => Object.fromEntries(state);
 
-    // Reset all inputs
     const reset = () => {
-        for (const [name, field] of stateObj) {
-            stateObj.set(name, { ...field, isValid: false });
+        for (const [name, field] of state) {
+            state.set(name, { ...field, isValid: false });
         }
     };
 
-    return { updateInputState, getInputState, getAllStates, reset };
+    const areAllValid = () => [...state.values()].every(({ isValid }) => isValid);
+
+    const getInvalidFields = () =>
+        [...state.entries()]
+            .filter(([, { isValid }]) => !isValid)
+            .map(([name]) => name);
+
+    return { update, get, getAll, reset, areAllValid, getInvalidFields };
 })();
 
+// ================== Utils ==================
+const Utils = (() => {
+    const toggleStyles = (element, state) => {
+        const parent = element.closest("div");
+        const labelSpan = parent?.querySelector("label > span");
 
-const Utilise=(()=>{
-    const toggleStyles=(element,state)=>{
-        const parent=element.closest("div");
-        const start=parent.querySelector("label > span");
-        start.style.color= state === "valid" ? "var(--clr-success)" : "var(--clr-error)";
-        element.style.border=`2px solid ${state === "valid" ? "var(--clr-success)" : "var(--clr-error)"}`;
+        if (labelSpan) {
+            labelSpan.style.color = state === "valid" ? "var(--clr-success)" : "var(--clr-error)";
+        }
 
-    }
-    const displayErrorSpan=(element,message)=>{
-        const span=document.createElement("span");
-        span.className="error";
-        span.textContent=message;
+        element.style.border = `2px solid ${
+            state === "valid" ? "var(--clr-success)" : "var(--clr-error)"
+        }`;
+    };
+
+    const showError = (element, message) => {
+        if (element.nextElementSibling?.classList.contains("error")) {
+            element.nextElementSibling.textContent = message;
+            return;
+        }
+
+        const span = document.createElement("span");
+        span.className = "error";
+        span.textContent = message;
         element.after(span);
-        toggleStyles(element,"invalid");
-    }
-    const haideErrorSpan=(element)=>{
-         const errorSpan=element.nextElementSibling;
-         if(!errorSpan) return;
-         errorSpan.remove();
-         toggleStyles(element,"valid");
-    }
-    const toggleActiveClass=(htmlElements,currentEle,className)=>{
-        htmlElements.forEach(item=>item.classList.remove(className));
-        currentEle.classList.add(className);
-    }
+        toggleStyles(element, "invalid");
+    };
 
-   return {displayErrorSpan,haideErrorSpan,toggleActiveClass};
+    const hideError = (element) => {
+        const errorSpan = element.nextElementSibling;
+        if (!errorSpan || !errorSpan.classList.contains("error")) return;
+        errorSpan.remove();
+        toggleStyles(element, "valid");
+    };
+
+    const toggleActiveClass = (elements, current, className) => {
+        elements.forEach((el) => el.classList.remove(className));
+        current.classList.add(className);
+    };
+
+    return { showError, hideError, toggleActiveClass };
 })();
-const Validation=(()=>{
-    /*check input validation on two phases empty and regex validation*/
-    const regexValidation=(input,inputName,value)=>{
-        const patterns = {
-            firstName: {
-                pattern: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{4,30}$/u,
-                message: "4–30 letters"
-            },
-            lastName: {
-                pattern: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{4,30}$/u,
-                message: "4–30 letters"
-            },
-            email: {
-                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/u,
-                message: "Please Enter a Valid Email"
-            },
-            message: {
-                pattern: /^.{10,500}$/,
-                message: "10–500 chars"
-            }
-        };
-        if(patterns[inputName]){
-            const inputPattern=patterns[inputName]?.pattern
-            const message=patterns[inputName]?.message;
-            let isValid=inputPattern.test(value)
-            if(!isValid)Utilise.displayErrorSpan(input, message);
-            else Utilise.haideErrorSpan(input);
-            return isValid;
-        }
-    }
-    const requiredField=(field)=>{
-        Utilise.displayErrorSpan(field,"This filed Is require");
+
+// ================== Validation ==================
+const Validation = (() => {
+    const patterns = {
+        firstName: {
+            pattern: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{4,30}$/u,
+            message: "4–30 letters",
+        },
+        lastName: {
+            pattern: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{4,30}$/u,
+            message: "4–30 letters",
+        },
+        email: {
+            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/u,
+            message: "Please enter a valid email",
+        },
+        message: {
+            pattern: /^.{10,500}$/,
+            message: "10–500 chars",
+        },
+    };
+
+    const validateRegex = (input, name, value) => {
+        const config = patterns[name];
+        if (!config) return true; // if no regex defined, skip
+
+        const { pattern, message } = config;
+        const isValid = pattern.test(value);
+
+        if (!isValid) Utils.showError(input, message);
+        else Utils.hideError(input);
+
+        return isValid;
+    };
+
+    const validateRequired = (input) => {
+        Utils.showError(input, "This field is required");
         return false;
-    }
-    const inputValidation=(e)=>{
-        const input=e.target;
-        const entryValue=input.value.trim();
-        const name=input.name;
-        Utilise.haideErrorSpan(input);
-        let isFieldValid = !entryValue?requiredField(input):regexValidation(input,name,entryValue);
-        FormFieldState.updateInputState(name,isFieldValid);
-        console.log(FormFieldState.getAllStates())
-    }
-    const radioAndCheckBoxValidation=(e)=>{
-        const input=e.target;
-        const type=input.type;
-        const inputName=input.name;
-        if(type==="radio" && input.checked){
-            const fieldSetElement=input.closest("fieldset");
-            const checkBoxFormControl=fieldSetElement.querySelectorAll(".form-control");
-            const parent=input.parentElement
-            Utilise.toggleActiveClass(checkBoxFormControl,parent,"active");
-            FormFieldState.updateInputState(inputName,input.checked)
-        }else if(type==="checkbox"){
-                const parent=input.closest(".form-row")
-                const errorSpan=parent.nextElementSibling;
-                errorSpan.style.display="block";
-                errorSpan.style.display=input.checked?"none":"bock"
-                FormFieldState.updateInputState(inputName,input.checked);
+    };
 
+    const validateInput = (e) => {
+        const input = e.target;
+        const { name, value } = input;
+        Utils.hideError(input);
+
+        const isValid = value.trim()
+            ? validateRegex(input, name, value.trim())
+            : validateRequired(input);
+
+        FormFieldState.update(name, isValid);
+        toggleSubmit();
+    };
+
+    const validateRadioAndCheckBox = (e) => {
+        const input = e.target;
+        const { type, name, checked } = input;
+
+        if (type === "radio" && checked) {
+            const fieldset = input.closest("fieldset");
+            const controls = fieldset.querySelectorAll(".form-control");
+            Utils.toggleActiveClass(controls, input.parentElement, "active");
+            FormFieldState.update(name, true);
+        } else if (type === "checkbox") {
+            const parentRow = input.closest(".form-row");
+            const errorSpan = parentRow.nextElementSibling;
+            if (errorSpan) errorSpan.style.display = checked ? "none" : "block";
+            FormFieldState.update(name, checked);
         }
-    }
-    return {inputValidation,radioAndCheckBoxValidation}
+
+        toggleSubmit();
+    };
+
+    const toggleSubmit = () => {
+        submitBtn.disabled = !FormFieldState.areAllValid();
+    };
+
+    return { validateInput, validateRadioAndCheckBox };
 })();
-inputs.forEach((input)=>input.addEventListener("input",Validation.inputValidation));
-radioAndCheckBox.forEach((input)=>input.addEventListener("change",Validation.radioAndCheckBoxValidation))
 
-
-
+// ================== Event Listeners ==================
+inputs.forEach((input) => input.addEventListener("input", Validation.validateInput));
+radioAndCheckBox.forEach((input) =>
+    input.addEventListener("change", Validation.validateRadioAndCheckBox)
+);
