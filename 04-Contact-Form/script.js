@@ -8,23 +8,42 @@
 const submitBtn=document.querySelector("button[type='submit']");
 const inputs=document.querySelectorAll("input:not([type='radio'],[type='checkbox']),textarea");
 const radioAndCheckBox=document.querySelectorAll("input[type='radio'],input[type='checkbox']");
+
 // ================== State ==================
-
 const FormFieldState = (() => {
-    const inputsStateList= [...inputs, ...radioAndCheckBox]
-        .map(({name, type}) => new Object({name, type, isValidField: false}))
-    //
-    const uniqueByName = [
-        ...new Map(inputsStateList.map(obj => [obj.name, obj])).values()
-    ];
-    console.log(uniqueByName);
-    const setInputState = (newState) => inputState = {...inputState, ...newState};
+    // Build initial state list
+    const inputsStateList = [...inputs, ...radioAndCheckBox]
+        .map(({ name, type }) => ({ name, type, isValid: false }));
 
-    const getInputSate=()=>inputState;
+    // Create Map: key = input name, value = { type, isValid }
+    const stateObj = new Map(
+        inputsStateList.map(({ name, type, isValid }) => [name, { type, isValid }])
+    );
 
-     return {setInputState,getInputSate}
+    // Update validity of a specific input
+    const updateInputState = (inputName, isValid) => {
+        if (stateObj.has(inputName)) {
+            const field = stateObj.get(inputName);
+            stateObj.set(inputName, { ...field, isValid });
+        }
+    };
 
+    // Get state of one input
+    const getInputState = (inputName) => stateObj.get(inputName);
+
+    // Get all states (as object or array if you want to debug/log)
+    const getAllStates = () => Object.fromEntries(stateObj);
+
+    // Reset all inputs
+    const reset = () => {
+        for (const [name, field] of stateObj) {
+            stateObj.set(name, { ...field, isValid: false });
+        }
+    };
+
+    return { updateInputState, getInputState, getAllStates, reset };
 })();
+
 
 const Utilise=(()=>{
     const toggleStyles=(element,state)=>{
@@ -56,8 +75,7 @@ const Utilise=(()=>{
 })();
 const Validation=(()=>{
     /*check input validation on two phases empty and regex validation*/
-    const regexValidation=(input,value)=>{
-        const inputName=input.name;
+    const regexValidation=(input,inputName,value)=>{
         const patterns = {
             firstName: {
                 pattern: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{4,30}$/u,
@@ -76,40 +94,45 @@ const Validation=(()=>{
                 message: "10–500 chars"
             }
         };
-        // check if pattern exist first
         if(patterns[inputName]){
             const inputPattern=patterns[inputName]?.pattern
             const message=patterns[inputName]?.message;
-            if(!inputPattern.test(value)) Utilise.displayErrorSpan(input,message);
+            let isValid=inputPattern.test(value)
+            if(!isValid)Utilise.displayErrorSpan(input, message);
             else Utilise.haideErrorSpan(input);
+            return isValid;
         }
     }
     const requiredField=(field)=>{
         Utilise.displayErrorSpan(field,"This filed Is require");
+        return false;
     }
     const inputValidation=(e)=>{
         const input=e.target;
         const entryValue=input.value.trim();
+        const name=input.name;
         Utilise.haideErrorSpan(input);
-        !entryValue?requiredField(input):regexValidation(input,entryValue)
+        let isFieldValid = !entryValue?requiredField(input):regexValidation(input,name,entryValue);
+        FormFieldState.updateInputState(name,isFieldValid);
+        console.log(FormFieldState.getAllStates())
     }
     const radioAndCheckBoxValidation=(e)=>{
         const input=e.target;
         const type=input.type;
+        const inputName=input.name;
         if(type==="radio" && input.checked){
             const fieldSetElement=input.closest("fieldset");
             const checkBoxFormControl=fieldSetElement.querySelectorAll(".form-control");
             const parent=input.parentElement
             Utilise.toggleActiveClass(checkBoxFormControl,parent,"active");
-            FormFieldState.getInputSate()
+            FormFieldState.updateInputState(inputName,input.checked)
         }else if(type==="checkbox"){
                 const parent=input.closest(".form-row")
                 const errorSpan=parent.nextElementSibling;
-            if(!input.checked){
-                errorSpan.style.display="block"
-            }else{
-                errorSpan.style.display="none"
-            }
+                errorSpan.style.display="block";
+                errorSpan.style.display=input.checked?"none":"bock"
+                FormFieldState.updateInputState(inputName,input.checked);
+
         }
     }
     return {inputValidation,radioAndCheckBoxValidation}
