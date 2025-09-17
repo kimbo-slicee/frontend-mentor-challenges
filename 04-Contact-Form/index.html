@@ -49,21 +49,20 @@
       </div>
 
       <!-- Query Type -->
-      <fieldset class="form-row" aria-describedby="queryType-error">
-        <legend>Query Type <span aria-hidden="true">*</span></legend>
-
-        <div class="form-control">
-          <input type="radio" id="general-enquiry" name="queryType" value="general" required>
-          <label for="general-enquiry">General Enquiry</label>
-        </div>
-
-        <div class="form-control">
-          <input type="radio" id="support-request" name="queryType" value="support" required>
-          <label for="support-request">Support Request</label>
-        </div>
-
-      </fieldset>
-<!--      <span class="error" id="queryType-error" aria-live="polite">Please select a query type</span>-->
+      <div class="row">
+        <fieldset class="form-row" aria-describedby="queryType-error">
+          <legend>Query Type <span aria-hidden="true">*</span></legend>
+          <div class="form-control">
+            <input type="radio" id="general-enquiry" name="queryType" value="general" required>
+            <label for="general-enquiry">General Enquiry</label>
+          </div>
+          <div class="form-control">
+            <input type="radio" id="support-request" name="queryType" value="support" required>
+            <label for="support-request">Support Request</label>
+          </div>
+        </fieldset>
+        <span class="error-message" aria-live="polite"></span>
+      </div>
 
       <!-- Message -->
       <div class="form-row">
@@ -74,17 +73,19 @@
       </div>
 
       <!-- Terms & Consent -->
+      <div class="row">
         <div class="form-row">
-        <div class="form-control checkbox-control">
-          <input type="checkbox" id="terms" name="terms" required aria-describedby="terms-error">
-          <label for="terms">I consent to being contacted by the team <span aria-hidden="true">*</span></label>
+          <div class="form-control checkbox-control">
+            <input type="checkbox" id="terms" name="terms" required aria-describedby="terms-error">
+            <label for="terms">I consent to being contacted by the team <span aria-hidden="true">*</span></label>
+          </div>
         </div>
       </div>
-      <span class="error-message" id="terms-error" aria-live="polite">To submit this form, please consent to being contacted</span>
+
 
       <!-- Submit -->
       <div class="form-actions">
-        <button type="submit" class="btn" disabled>Submit</button>
+        <button type="submit" class="btn" >Submit</button>
       </div>
     </form>
   </section>

@@ -8,6 +8,7 @@
 const submitBtn = document.querySelector("button[type='submit']");
 const inputs = document.querySelectorAll("input:not([type='radio'],[type='checkbox']),textarea");
 const radioAndCheckBox = document.querySelectorAll("input[type='radio'],input[type='checkbox']");
+const form=document.querySelector("form");
 
 // ================== State ==================
 const FormFieldState = (() => {
@@ -40,7 +41,7 @@ const FormFieldState = (() => {
     const getInvalidFields = () =>
         [...state.entries()]
             .filter(([, { isValid }]) => !isValid)
-            .map(([name]) => name);
+            .map(([name,{type}]) => new Object({name, type}));
 
     return { update, get, getAll, reset, areAllValid, getInvalidFields };
 })();
@@ -48,16 +49,11 @@ const FormFieldState = (() => {
 // ================== Utils ==================
 const Utils = (() => {
     const toggleStyles = (element, state) => {
+        const {type}=element;
         const parent = element.closest("div");
         const labelSpan = parent?.querySelector("label > span");
-
-        if (labelSpan) {
-            labelSpan.style.color = state === "valid" ? "var(--clr-success)" : "var(--clr-error)";
-        }
-
-        element.style.border = `2px solid ${
-            state === "valid" ? "var(--clr-success)" : "var(--clr-error)"
-        }`;
+        if (labelSpan) labelSpan.style.color = state === "valid" ? "var(--clr-success)" : "var(--clr-error)";
+        if(type) element.style.border = `2px solid ${state === "valid" ? "var(--clr-success)" : "var(--clr-error)"}`;
     };
 
     const showError = (element, message) => {
@@ -131,29 +127,31 @@ const Validation = (() => {
         const input = e.target;
         const { name, value } = input;
         Utils.hideError(input);
-
         const isValid = value.trim()
             ? validateRegex(input, name, value.trim())
             : validateRequired(input);
-
         FormFieldState.update(name, isValid);
         toggleSubmit();
     };
 
     const validateRadioAndCheckBox = (e) => {
-        const input = e.target;
-        const { type, name, checked } = input;
-
-        if (type === "radio" && checked) {
+        const input =e instanceof Event ? e.target : e
+        const { type, name, checked} = input;
+        if (type === "radio") {
             const fieldset = input.closest("fieldset");
             const controls = fieldset.querySelectorAll(".form-control");
+            if(!checked) {
+                Utils.showError(fieldset, "Please select a query type");
+                return;
+            }
             Utils.toggleActiveClass(controls, input.parentElement, "active");
             FormFieldState.update(name, true);
         } else if (type === "checkbox") {
             const parentRow = input.closest(".form-row");
-            const errorSpan = parentRow.nextElementSibling;
-            if (errorSpan) errorSpan.style.display = checked ? "none" : "block";
-            FormFieldState.update(name, checked);
+            checked
+                ? Utils.hideError(parentRow)
+                : Utils.showError(parentRow,"To submit this form, please consent to being contacted")
+                FormFieldState.update(name, checked);
         }
 
         toggleSubmit();
@@ -165,9 +163,33 @@ const Validation = (() => {
 
     return { validateInput, validateRadioAndCheckBox };
 })();
+// ================= Form Data =====================
+const FormData=(()=>{
+    const handelFormSubmit=(e)=>{
+        e.preventDefault();
+        // check if all filed are valid
+        const inputsValidationState=FormFieldState.areAllValid();
+        if(!inputsValidationState){
+            const invalidInputsName=FormFieldState.getInvalidFields();
+                [...invalidInputsName]
+                .map(({name,type})=> type === "radio" ||  type === "checkbox"
+                 ? Validation.validateRadioAndCheckBox(document.querySelector(`input[type=${type}]`))
+                 :[{name,type}]
+                        .filter(({name,type})=>type!=="radio" && type!=="checkbox")
+                        .map(({name})=>document.querySelector(`[name=${name}]`))
+                        .forEach((input)=>Utils.showError(input,"This field is Require"))
+                )
 
+        }
+
+
+    }
+    return{handelFormSubmit}
+})();
 // ================== Event Listeners ==================
 inputs.forEach((input) => input.addEventListener("input", Validation.validateInput));
 radioAndCheckBox.forEach((input) =>
     input.addEventListener("change", Validation.validateRadioAndCheckBox)
 );
+
+form.addEventListener("submit",FormData.handelFormSubmit)

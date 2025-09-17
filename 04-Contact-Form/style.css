@@ -150,7 +150,9 @@
     a:hover {
         text-decoration: underline;
     }
-
+   fieldset{
+       border: 0 !important;
+   }
     label {
         display: inline-block;
         font-size: var(--fs-md);
@@ -233,7 +235,7 @@
     .form-heading {
         font-size: var(--fs-3xl);
         font-weight: var(--fw-700);
-        margin-bottom: var(--space-md);
+        margin-bottom: var(--space-sm);
         color: var(--clr-neutral-900);
     }
 
@@ -254,8 +256,9 @@
     fieldset {
         border: none;
         padding: 0;
-        margin-block:1.5rem;
-        padding-block:var(--space-md);
+        margin-block-start:1.5rem;
+        padding-block-start:var(--space-md);
+
     }
 
     fieldset .form-control {
@@ -267,7 +270,6 @@
         padding: 0.75rem 1rem;
         position: relative;
         transition: border-color 0.2s ease;
-        /*background-color: var(--clr-primary-200);*/
     }
 
     fieldset .form-control:hover,
@@ -363,7 +365,8 @@
     .btn:focus-visible {
         background-color: var(--btn-hover-clr);
     }
-    .error,.error-message{
+    .error,
+    .error-message{
         color:var(--clr-error);
         font-weight: var(--fw-500);
         font-size: var(--fs-sm);
@@ -372,9 +375,12 @@
         background-color: var(--clr-primary-200);
         border: 2px solid var(--clr-success);
     }
-    .error-message{
-        display: none;
+    .row{
+        margin-bottom: 1rem;
     }
+    /*.error-message{*/
+    /*    display: none;*/
+    /*}*/
 
 
 }
