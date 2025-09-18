@@ -1,0 +1,123 @@
+@layer
+reset,
+fonts,
+variables,
+base,
+theme,
+components,
+utilitie;
+
+/* ================= Reset Layer ================= */
+@layer reset {
+    *, *::before, *::after {
+        box-sizing: border-box;
+        outline: 0;
+        border: 0;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    input, button, textarea, select {
+        font-family: inherit;
+    }
+    img, video {
+        max-width: 100%;
+        display: block;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    ul[role="list"],
+    ol[role="list"] {
+        list-style: none;
+    }
+    button {
+        cursor: pointer;
+        background: none;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: inherit;
+        line-height: var(--line-height-sm);
+        margin: 0;
+    }
+    [aria-hidden="true"]{
+        display: none !important;
+    }
+
+}
+/* ================= Fonts Layer ================= */
+@layer fonts{
+    @font-face {
+        font-family: 'Roboto';
+        src: url('assets/fonts/Roboto-Bold.woff2') format('woff2'),
+        url('assets/fonts/Roboto-Bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Ubuntu';
+        src: url('assets/fonts/Roboto-Regular.woff2') format('woff2'),
+        url('assets/fonts/Roboto-Regular.woff') format('woff');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+
+}
+/* ================= Variables Layer ================= */
+@layer variables {
+    :root {
+        /*--------------------Main Fonts---------------------*/
+        --font-main: 'Roboto', system-ui, sans-serif;
+        --font-code: 'Courier New', monospace;
+        /*--------------------Font Size---------------------*/
+        --font-size-sm: 0.875rem; /* 14px */
+        --font-size-md: 1rem;     /* 16px */
+        --font-size-lg: 1.125rem; /* 18px */
+        --font-size-xl: 1.25rem;  /* 20px */
+        --font-size-2xl: 1.5rem;  /* 24px */
+        --font-size-3xl: 1.875rem;/* 30px */
+        --font-size-4xl: 2.25rem; /* 36px */
+        --font-size-5xl: 3rem;    /* 48px */
+        /*--------------------Font Weight---------------------*/
+        --fw-400: 400;
+        --fw-500: 500;
+        --fw-700: 700;
+        /* ================Main Colors====================== */
+
+        /* ------------Primary---------- */
+
+        /* ------------Neutral---------- */
+
+        /* ------------Shades of Blue---------- */
+
+        /*-------------line-height-----------*/
+        --line-height-sm: 1.25; /* 20px */
+        --line-height-md: 1.5;  /* 24px */
+        --line-height-lg: 1.75; /* 28px */
+        /*-----Border-Radius----*/
+        --border-radius-sm: 0.5rem;  /* 8px */
+        --border-radius-md: 1rem;    /* 16px */
+        --border-radius-lg: 1.5rem;  /* 24px */
+        --border-radius-full: 9999px; /* Full */
+        /*-----Box-Shadow----*/
+        --box-shadow:
+                0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    }
+}
+/* ================= Theme Layer ================= */
+@layer theme {
+
+}
+/* ================= Base Layer ================= */
+@layer base {  }
+/* ================= Main Layer ================= */
+@layer components {}
+/* ================= Utilities Layer ================= */
+@layer utilities {}
