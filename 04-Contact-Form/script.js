@@ -175,7 +175,7 @@ const Validation = (() => {
         submitBtn.disabled = !FormState.areAllValid();
     };
 
-    return { validateInput, validateRadioAndCheckBox };
+    return { validateInput, validateRadioAndCheckBox ,toggleSubmit};
 })();
 
 // ================== Form Handler ==================
@@ -195,9 +195,11 @@ const FormHandler = (() => {
 
         form.reset();
         FormState.reset();
-        DomUtils.resetRadioAndCheckbox(); // <-- clear radio/checkbox styles
-        inputs.forEach(DomUtils.clearStyles); // <-- clear borders/colors from text inputs
+        DomUtils.resetRadioAndCheckbox();
+        inputs.forEach(DomUtils.clearStyles);
         DomUtils.displayPopup();
+        Validation.toggleSubmit();
+
     };
 
     return { handleFormSubmit };
