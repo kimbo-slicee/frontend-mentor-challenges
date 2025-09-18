@@ -309,6 +309,7 @@
         background: var(--clr-gray-900);
         color: var(--clr-neutral-100);
         box-shadow: var(--shadow-md);
+        transition: top .5s ease;
     }
 
     .alert-header {

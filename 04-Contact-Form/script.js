@@ -81,7 +81,17 @@ const Utils = (() => {
         current.classList.add(className);
     };
 
-    return { showError, hideError, toggleActiveClass };
+    const removeClass=(element,className)=>element.className.remove(className)
+
+    const displayPopup=()=>{
+        const popUp=document.querySelector(".alert");
+        popUp.style.top=`20%`;
+        setTimeout(()=>{
+        popUp.style.top=`-50%`;
+        },2500)
+    }
+
+    return { showError, hideError, toggleActiveClass , displayPopup,removeClass};
 })();
 
 // ================== Validation ==================
@@ -117,7 +127,6 @@ const Validation = (() => {
 
         return isValid;
     };
-
     const validateRequired = (input) => {
         Utils.showError(input, "This field is required");
         return false;
@@ -146,6 +155,7 @@ const Validation = (() => {
             }
             Utils.toggleActiveClass(controls, input.parentElement, "active");
             FormFieldState.update(name, true);
+            Utils.hideError(fieldset)
         } else if (type === "checkbox") {
             const parentRow = input.closest(".form-row");
             checked
@@ -164,12 +174,12 @@ const Validation = (() => {
     return { validateInput, validateRadioAndCheckBox };
 })();
 // ================= Form Data =====================
-const FormData=(()=>{
+const FormDataInstance=(()=>{
     const handelFormSubmit=(e)=>{
-        e.preventDefault();
-        // check if all filed are valid
         const inputsValidationState=FormFieldState.areAllValid();
+        e.preventDefault();
         if(!inputsValidationState){
+            // display errors message for not valid inputs
             const invalidInputsName=FormFieldState.getInvalidFields();
                 [...invalidInputsName]
                 .map(({name,type})=> type === "radio" ||  type === "checkbox"
@@ -178,11 +188,18 @@ const FormData=(()=>{
                         .filter(({name,type})=>type!=="radio" && type!=="checkbox")
                         .map(({name})=>document.querySelector(`[name=${name}]`))
                         .forEach((input)=>Utils.showError(input,"This field is Require"))
-                )
-
+                );
+                return;
         }
-
-
+        // // get object data
+        // const formData=new FormData(form);
+        // for (const [key, value] of formData.entries()) {
+        //     console.log(key, ":", value);
+        // }
+        console.log(FormFieldState.getInvalidFields())
+        form.reset();
+        FormFieldState.reset();
+        Utils.displayPopup();
     }
     return{handelFormSubmit}
 })();
@@ -192,4 +209,4 @@ radioAndCheckBox.forEach((input) =>
     input.addEventListener("change", Validation.validateRadioAndCheckBox)
 );
 
-form.addEventListener("submit",FormData.handelFormSubmit)
+form.addEventListener("submit",FormDataInstance.handelFormSubmit)
