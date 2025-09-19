@@ -66,11 +66,23 @@ utilities;
         --neutral-clr-700: hsl(235, 18%, 26%); /* blue 700 */
         --neutral-clr-800: hsl(234, 29%, 20%); /* blue 800 */
 
+        /* --- Accent color --- */
+        --accent-clr-400:hsl(4,100%,67%);
+        --accent-clr-500:hsl(347,100%,66%);
+
         /* --- Semantic Aliases --- */
-        --color-bg: var(--neutral-clr-100);
+        --color-bg: var(--neutral-clr-800);
         --color-text: var(--neutral-clr-800);
         --color-border: var(--neutral-clr-400);
         --color-link: var(--primary-clr-500);
+
+
+        /* ---- Gradient tokens ----- */
+        --gradient-primary: linear-gradient(
+                90deg,
+                var(--primary-clr-500),
+                var(--accent-clr-400)
+        );
 
         /* --- Line Heights --- */
         --line-height-sm: 1.25;
@@ -86,6 +98,13 @@ utilities;
         /* --- Box Shadow --- */
         --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
         0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+        /* -------- Spacing ---------- */
+        --space-xs: 0.5rem;
+        --space-sm: 0.75rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
     }
 }
 
@@ -110,18 +129,21 @@ utilities;
         -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2{
         font-weight: inherit;
         line-height: var(--line-height-sm);
     }
 
-    img, video, svg, canvas {
+    img,
+    svg {
         max-width: 100%;
         height: auto;
         display: block;
     }
 
-    input, button, select, textarea {
+    input,
+    button{
         font: inherit;
         color: inherit;
         background: none;
@@ -133,7 +155,6 @@ utilities;
     }
 
     input:focus,
-    textarea:focus,
     button:focus {
         outline: none;
         box-shadow: none;
@@ -174,10 +195,20 @@ utilities;
         color: var(--color-text);
     }
 
-    main, section {
+    main,
+    section {
         container-type: inline-size;
     }
-
+    h1,
+    h2{
+        font-weight: var(--fw-700);
+    }
+    h1{
+        font-size:clamp(var(--font-size-3xl),var(--font-size-5xl),calc(var(--font-size-5xl) + 1vw));
+    }
+    h2{
+        font-size: var(--font-size-4xl);
+    }
     p {
         margin-bottom: 1rem;
     }
@@ -185,37 +216,69 @@ utilities;
     label {
         display: block;
         margin-bottom: 0.25rem;
-        font-weight: var(--fw-500);
+        font-weight: var(--fw-700);
+        font-size: var(--font-size-sm);
     }
 
-    input, textarea, select {
+    input{
         display: block;
         width: 100%;
         margin-bottom: 1rem;
-        padding: 0.5rem;
+        padding: var(--space-sm);
         border-radius: var(--border-radius-sm);
         border: 1px solid var(--color-border);
-        background-color: var(--color-bg);
+        background-color: var(--neutral-clr-100);
         color: var(--color-text);
     }
 
     button {
-        padding: 0.5rem 1rem;
-        border-radius: var(--border-radius-md);
-        background-color: var(--primary-clr-500);
+        width: 100%;
+        padding: var(--space-md);
+        border-radius: var(--border-radius-sm);
+        font-weight: var(--fw-700);
+        background: var(--neutral-clr-800);
         color: var(--neutral-clr-100);
-        box-shadow: var(--box-shadow);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        background: var(--gradient-primary);
     }
 }
 
 /* ================= Components Layer ================= */
 @layer components {
+    body{
+        min-height: 100vh;
+        display: grid;
+        align-items: center;
+    }
+    .wrapper{
+        width: 80%;
+        background-color: var(--neutral-clr-100);
+        margin-inline: auto;
+        padding: var(--space-md);
+        border-radius: var(--border-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        gap: var(--space-lg);
+        @container (width < 600px) {
+            flex-direction: column;
+        }
+    }
+
+    aside{
+          min-width: 50%;
+          min-height: 500px;
+          background: url("assets/images/illustration-sign-up-desktop.svg") right/contain no-repeat;
+        @container (width < 600px){
+          background: url("assets/images/illustration-sign-up-mobile.svg") right/contain no-repeat;
+            width: 100%;
+        }
+    }
+
+
     /* Place your reusable components here (cards, navs, buttons, etc.) */
 }
 
