@@ -38,5 +38,6 @@ npm-debug.log*
 *.pem
 .DS_Store
 Thumbs.db
-/space-tourism-website.fig
-/README-template.md
+README-template.md
+style-guide.md
+design
