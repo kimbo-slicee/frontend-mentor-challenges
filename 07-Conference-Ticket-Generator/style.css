@@ -1,0 +1,233 @@
+/* ================= Layer Order ================= */
+@layer reset, fonts, variables, base, components, utilities;
+
+/* ================= Fonts Layer ================= */
+@layer fonts {
+    @font-face {
+        font-family: "Inconsolata";
+        src: local("Inconsolata"),
+        url("assets/fonts/Inconsolata-VariableFont.woff2") format("woff2-variations"),
+        url("assets/fonts/Inconsolata-VariableFont.ttf") format("truetype");
+        font-weight: 100 900; /* supports full range */
+        font-style: normal;
+        font-display: swap; /* good for performance */
+    }
+}
+
+/* ================= Variables Layer ================= */
+@layer variables {
+    :root {
+        /* --- Font Families --- */
+        --font-main: "Roboto", system-ui, sans-serif;
+
+        /* --- Font Sizes --- */
+        --font-size-sm: 0.875rem;   /* 14px */
+        --font-size-md: 1rem;       /* 16px */
+        --font-size-lg: 1.125rem;   /* 18px */
+        --font-size-xl: 1.25rem;    /* 20px */
+        --font-size-2xl: 1.5rem;    /* 24px */
+        --font-size-3xl: 1.875rem;  /* 30px */
+        --font-size-4xl: 2.25rem;   /* 36px */
+        --font-size-5xl: 3rem;      /* 48px */
+
+        /* --- Font Weights --- */
+        --fw-400: 400;
+        --fw-500: 500;
+        --fw-700: 700;
+
+        /* --- Line Heights --- */
+        --line-height-xs: 1.1;
+        --line-height-sm: 1.25;
+        --line-height-md: 1.5;
+        --line-height-lg: 1.75;
+
+        /* --- Border Radius --- */
+        --border-radius-sm: 0.5rem;
+        --border-radius-md: 1rem;
+        --border-radius-lg: 1.5rem;
+        --border-radius-full: 9999px;
+
+        /* --- Spacing --- */
+        --space-xs: 0.5rem;
+        --space-sm: 0.75rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+
+        /* --- Primary Colors (Red Scale) --- */
+
+
+        /* --- Neutral Colors --- */
+
+
+        /* --- Accent Colors --- */
+
+
+        /* --- Semantic Aliases --- */
+
+
+        /* --- Gradients --- */
+
+        /* --- Shadows --- */
+
+
+    }
+}
+
+/* ================= Reset Layer ================= */
+@layer reset {
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        font-family: var(--font-main);
+        line-height: var(--line-height-md);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-weight: inherit;
+        line-height: var(--line-height-xs);
+    }
+
+    img,
+    svg,
+    picture{
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    input, button {
+        font: inherit;
+        color: inherit;
+        background: none;
+        border: none;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    input:focus,
+    button:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    ul[role="list"],
+    ol[role="list"] {
+        list-style: none;
+    }
+
+    [aria-hidden="true"] {
+        display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+}
+
+/* ================= Base Layer ================= */
+@layer base {
+    html {
+
+    }
+
+    body {
+
+    }
+
+    main, section {
+        container-type: inline-size;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4{
+        font-weight: var(--fw-700);
+    }
+
+    h1 {
+
+    }
+
+    h2 {
+
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    label {
+
+    }
+
+    input {
+
+    }
+    input:focus-visible,
+    input:active{
+
+    }
+
+    input::placeholder {
+
+    }
+
+    button {
+
+    }
+
+    button:hover {
+
+    }
+}
+
+/* ================= Components Layer ================= */
+@layer components {}
+
+/* ================= Utilities Layer ================= */
+@layer utilities {
+    .text-center { text-align: center; }
+    .mb-1 { margin-bottom: 0.25rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+
+    .sr-only {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+    }
+    }
