@@ -11,7 +11,7 @@
 <body>
 <main>
   <!-- Newsletter Section -->
-  <section class="newsletter wrapper" aria-labelledby="newsletter-title" aria-hidden="false" >
+  <section class="newsletter wrapper" aria-labelledby="newsletter-title" aria-hidden="true">
     <!-- Illustration -->
 
     <picture class="newsletter__picture">
@@ -41,12 +41,11 @@
 
       <!-- Newsletter Form -->
       <form class="newsletter__form" novalidate>
-
         <div class="newsletter__form-group">
-          <label for="email" class="newsletter__label" aria-errormessage="email-error">Email address</label>
-          <span id="email-error" class="newsletter__error" aria-live="polite" hidden>
-              Valid email required
-            </span>
+          <div class="newsletter__form-label">
+            <label for="email" class="newsletter__label" aria-errormessage="email-error">Email address</label>
+            <span id="email-error" class="newsletter__error" aria-live="polite" hidden>Valid email required</span>
+          </div>
           <input
                   type="email"
                   id="email"
@@ -65,7 +64,7 @@
   </section>
 
   <!-- Success Popup -->
-  <div class="newsletter-success wrapper" role="alertdialog" aria-modal="true" aria-hidden="true">
+  <div class="newsletter-success wrapper" role="alertdialog" aria-modal="true" aria-hidden="false">
     <div class="newsletter-success-container">
       <svg class="newsletter-success__icon" aria-hidden="false" focusable="false">
         <use href="assets/images/icon-success.svg"></use>
