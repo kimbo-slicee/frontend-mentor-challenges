@@ -3,87 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" sizes="32x32" href="./assets/images/logo-mark.svg">
-  <title>Conference Ticket Generator</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/logo-mark.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <title>Frontend Mentor | Conference ticket generator</title>
 </head>
 <body>
-<header>
-  <div class="logo">
-    <img src="assets/images/logo-full.svg" alt="Coding Conf Logo">
-  </div>
-</header>
+<!--<section class="bg-shapes" aria-hidden="true">-->
+<!--    <img src="assets/images/pattern-circle.svg" class="shape circle circle-top" alt="">-->
+<!--    <img src="assets/images/pattern-circle.svg" class="shape circle circle-bottom-right" alt="">-->
+<!--    <img src="assets/images/pattern-lines.svg" class="bg-lines" alt="">-->
+<!--    <img src="assets/images/pattern-squiggly-line-top.svg" class="squiggly-line-top" alt="">-->
+<!--    <picture>-->
+<!--        <source srcset="assets/images/pattern-squiggly-line-bottom-desktop.svg" media="(min-width: 996px)">-->
+<!--        <img src="assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg" alt="">-->
+<!--    </picture>-->
+<!--</section>-->
 
-<main>
-  <!-- Ticket Form Section -->
-  <section aria-labelledby="ticket-form-title">
-    <header class="section-header">
-      <h1 id="ticket-form-title">Your Journey to Coding Conf 2025 Starts Here!</h1>
-      <p>Secure your spot at next year's biggest coding conference.</p>
-    </header>
+<!--<header class="site-header">-->
+<!--    <div class="full-logo">-->
+<!--        <img src="assets/images/logo-full.svg" alt="Conference logo">-->
+<!--    </div>-->
+<!--</header>-->
 
-    <div class="main-content">
-      <form method="post" action="#" enctype="multipart/form-data">
-        <fieldset>
-          <legend>Personal Information</legend>
+<!--<main class="ticket wrapper">-->
+<!--    <section id="ticket-generator-form" aria-labelledby="form-heading">-->
+<!--        <h2 id="form-heading">Generate your ticket</h2>-->
+<!--        &lt;!&ndash; form here &ndash;&gt;-->
+<!--    </section>-->
 
-          <div class="form-control">
-            <label for="upload">Upload Your Photo</label>
-            <input
-                    type="file"
-                    id="upload"
-                    name="image"
-                    accept="image/png, image/jpeg"
-                    required
-            >
-            <span class="label-info">JPG or PNG, max size: 500KB.</span>
-          </div>
-
-          <div class="form-control">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="full-name" required>
-          </div>
-
-          <div class="form-control">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="example@email.com" required>
-          </div>
-
-          <div class="form-control">
-            <label for="github">GitHub Username</label>
-            <input type="text" id="github" name="github" placeholder="@yourusername">
-          </div>
-        </fieldset>
-
-        <button type="submit">Generate My Ticket</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Generated Ticket Section -->
-  <section id="generated-ticket" aria-labelledby="ticket-ready-title">
-    <h2 id="ticket-ready-title">
-      Congrats, <span>Mohammed el aouri</span> — Your ticket is ready!
-    </h2>
-    <p>
-      We've emailed your ticket to <span>mohammedelaouri@gmail.com</span> and will send updates in the run-up to the event.
-    </p>
-
-    <article class="ticket">
-      <header>
-        <h3>Coding Conf</h3>
-        <p><time datetime="2025-01-31">Jan 31, 2025</time> / Austin, TX</p>
-      </header>
-
-      <div class="ticket-user">
-        <img src="assets/images/image-avatar.jpg" alt="Attendee photo">
-        <p><strong>Full Name</strong></p>
-        <svg aria-hidden="true">
-          <use href="assets/images/icon-github.svg"></use>
-        </svg>
-        <p>@githubusername</p>
-      </div>
-    </article>
-  </section>
-</main>
+<!--    <section id="generated-ticket" aria-labelledby="ticket-heading">-->
+<!--        <h2 id="ticket-heading">Your ticket</h2>-->
+<!--        &lt;!&ndash; generated ticket here &ndash;&gt;-->
+<!--    </section>-->
+<!--</main>-->
 </body>
 </html>

@@ -1,7 +1,4 @@
-# Design files (please do not remove 🙂)
-*.sketch
-*.fig
-*.xd
+# remove desigen files
 design
 README-template.md
 style-guide.md
