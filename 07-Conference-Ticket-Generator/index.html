@@ -10,14 +10,95 @@
 </head>
 <body>
 <main>
-  <! --- bg-shapes --- >
-   <div class="bg-shapes" aria-hidden="true"></div>
-  <! --- header-logo --- >
-  <div class="main-logo">
-    <img alt="conference-ticket-logo" src="assets/images/logo-full.svg">
+  <!-- Background shapes (decorative only) -->
+  <div class="bg-shapes" aria-hidden="true"></div>
+
+  <div class="wrapper">
+    <!-- Header / Logo -->
+    <header class="site-header">
+      <a href="#" class="site-logo" aria-label="Conference Ticket Generator Home">
+        <img
+                src="assets/images/logo-full.svg"
+                alt="Conference Ticket Logo"
+                width="180" height="60"
+                loading="lazy">
+      </a>
+    </header>
+
+    <!-- Ticket Generation Form -->
+    <section id="ticket-generation" class="ticket-generation">
+      <h2>Your Journey to Coding Conf 2025 Starts Here!</h2>
+      <p>Secure your spot at next year's biggest coding conference.</p>
+
+      <form action="#" method="post" enctype="multipart/form-data" novalidate>
+        <fieldset>
+          <legend class="sr-only">Ticket Details</legend>
+
+          <!-- Avatar Upload -->
+          <div class="form-group">
+            <label for="avatar">Upload Avatar</label>
+            <div class="upload-area" aria-describedby="avatar-help">
+              <input
+                      type="file"
+                      id="avatar"
+                      name="avatar"
+                      accept="image/png,image/jpeg"
+                      aria-describedby="avatar-help">
+              <p id="avatar-help" class="form-help">
+                Drag and drop or click to upload (JPG or PNG, max size: 500KB)
+              </p>
+              <div class="upload-actions">
+                <button type="button" class="btn btn--small btn--secondary">Remove image</button>
+                <button type="button" class="btn btn--small btn--secondary">Change image</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Full Name -->
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input
+                    type="text"
+                    id="name"
+                    name="full_name"
+                    autocomplete="name"
+                    required>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="example@email.com"
+                    autocomplete="email"
+                    required
+                    aria-describedby="email-error">
+            <span id="email-error" class="error-message" aria-live="polite" hidden>
+              Please enter a valid email address.
+            </span>
+          </div>
+
+          <!-- GitHub -->
+          <div class="form-group">
+            <label for="github">GitHub Username</label>
+            <input
+                    type="text"
+                    id="github"
+                    name="github"
+                    placeholder="@yourusername"
+                    autocomplete="username">
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn--primary">Generate My Ticket</button>
+        </fieldset>
+      </form>
+    </section>
   </div>
-  <! --- ticket-generation --- >
-  <section></section>
 </main>
+
 </body>
 </html>

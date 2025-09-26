@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa" name="Changes" comment="`Feat:setup new style.css and refactor html code to remove redundants`">
+    <list default="true" id="2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa" name="Changes" comment="feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1758816651367</updated>
       <workItem from="1758816655721" duration="21716000" />
-      <workItem from="1758909182470" duration="1949000" />
+      <workItem from="1758909182470" duration="6929000" />
     </task>
     <task id="LOCAL-00001" summary="`Feat:setup new style.css and refactor html code to remove redundants`">
       <option name="closed" value="true" />
@@ -63,18 +64,60 @@
       <option name="project" value="LOCAL" />
       <updated>1758907849961</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices">
+      <option name="closed" value="true" />
+      <created>1758914962972</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758914962972</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;">
+      <option name="closed" value="true" />
+      <created>1758915121365</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758915121365</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origine/dev" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
             <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origine/dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
               <option name="LONG_EDGES_VISIBLE" value="true" />
             </State>
           </value>
@@ -85,9 +128,10 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="`Feat:setup new style.css and refactor html code to remove redundants`" />
-    <MESSAGE value="feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices" />
     <MESSAGE value="`Feat:setup new style.css and refactor html code to remove redundants`&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="`Feat:setup new style.css and refactor html code to remove redundants`&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;" />
+    <MESSAGE value="feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices" />
+    <MESSAGE value="feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
