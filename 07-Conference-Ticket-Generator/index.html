@@ -20,37 +20,33 @@
         <img
                 src="assets/images/logo-full.svg"
                 alt="Conference Ticket Logo"
-                width="180" height="60"
+                width="200"
                 loading="lazy">
       </a>
     </header>
-
     <!-- Ticket Generation Form -->
-    <section id="ticket-generation" class="ticket-generation">
+    <section class="ticket-generation flow" id="ticket-generation">
       <h2>Your Journey to Coding Conf 2025 Starts Here!</h2>
       <p>Secure your spot at next year's biggest coding conference.</p>
-
       <form action="#" method="post" enctype="multipart/form-data" novalidate>
         <fieldset>
           <legend class="sr-only">Ticket Details</legend>
-
           <!-- Avatar Upload -->
-          <div class="form-group">
+          <div class="form-group upload-input">
             <label for="avatar">Upload Avatar</label>
             <div class="upload-area" aria-describedby="avatar-help">
-              <input
-                      type="file"
-                      id="avatar"
-                      name="avatar"
-                      accept="image/png,image/jpeg"
-                      aria-describedby="avatar-help">
-              <p id="avatar-help" class="form-help">
-                Drag and drop or click to upload (JPG or PNG, max size: 500KB)
-              </p>
+              <input accept="image/png,image/jpeg" aria-describedby="avatar-help" id="avatar" name="avatar" type="file">
+              <img alt="upload-file" src="assets/images/icon-upload.svg">
+              <p class="form-help" id="avatar-help">Drag and drop or click to upload</p>
               <div class="upload-actions">
                 <button type="button" class="btn btn--small btn--secondary">Remove image</button>
                 <button type="button" class="btn btn--small btn--secondary">Change image</button>
               </div>
+            </div>
+            <div class="messages">
+              <img alt="" src="assets/images/icon-info.svg">
+              <small class="info-message">Upload your photo (JPG or PNG, max size:500KB)</small>
+              <small class="error-message">File too large. Please upload a photo under 500KB</small>
             </div>
           </div>
 
@@ -76,9 +72,12 @@
                     autocomplete="email"
                     required
                     aria-describedby="email-error">
-            <span id="email-error" class="error-message" aria-live="polite" hidden>
-              Please enter a valid email address.
-            </span>
+            <div class="error-message">
+              <img alt="" src="assets/images/icon-info.svg">
+              <span aria-live="polite" class="error-message" id="email-error">
+                  Please enter a valid email address.
+                </span>
+            </div>
           </div>
 
           <!-- GitHub -->
@@ -96,6 +95,10 @@
           <button type="submit" class="btn btn--primary">Generate My Ticket</button>
         </fieldset>
       </form>
+    </section>
+    <section class="generated-ticket" id="generated-ticket">
+      <h2></h2>
+      <p></p>
     </section>
   </div>
 </main>
