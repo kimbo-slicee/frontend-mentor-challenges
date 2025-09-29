@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/logo-mark.svg">
   <link rel="stylesheet" href="style.css">
-  <script src="assets/" defer></script>
+  <script src="main.js" type="module" defer></script>
   <title>Frontend Mentor | Conference ticket generator</title>
 </head>
 <body>
+
 <main>
   <!-- Background shapes (decorative only) -->
   <div class="bg-shapes" aria-hidden="true"></div>
-
   <div class="wrapper">
     <!-- Header / Logo -->
     <header class="site-header">
@@ -25,7 +25,7 @@
       </a>
     </header>
     <!-- Ticket Generation Form -->
-    <section class="ticket-generation flow" id="ticket-generation" style="display: none">
+    <section class="ticket-generation flow" id="ticket-generation">
       <h2>Your Journey to Coding Conf 2025 Starts Here!</h2>
       <p>Secure your spot at next year's biggest coding conference.</p>
       <form action="#" method="post" enctype="multipart/form-data" novalidate>
@@ -35,18 +35,30 @@
           <div class="form-group upload-input">
             <label for="avatar">Upload Avatar</label>
             <div class="upload-area" aria-describedby="avatar-help">
-              <input accept="image/png,image/jpeg" aria-describedby="avatar-help" id="avatar" name="avatar" type="file">
+              <input type="file" id="avatar" name="avatar" accept="image/png,image/jpeg" aria-describedby="avatar-help" >
               <img alt="upload-file" src="assets/images/icon-upload.svg">
               <p class="form-help" id="avatar-help">Drag and drop or click to upload</p>
               <div class="upload-actions">
-                <button type="button" class="btn btn--small btn--secondary">Remove image</button>
-                <button type="button" class="btn btn--small btn--secondary">Change image</button>
+                <button type="button" class="btn btn--small btn--secondary remove">Remove image</button>
+                <button type="button" class="btn btn--small btn--secondary change">Change image</button>
               </div>
             </div>
             <div class="messages">
-              <img alt="" src="assets/images/icon-info.svg">
-              <small class="info-message">Upload your photo (JPG or PNG, max size:500KB)</small>
-              <small class="error-message">File too large. Please upload a photo under 500KB</small>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/>
+                <path stroke="currentColor"
+                      d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/>
+                <path stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M8.004 10.462V7.596M8 5.569v-.042"/>
+              </svg>
+              <small class="message info">Upload your photo (JPG or PNG, max size:500KB)</small>
+              <small class="message error">File too large. Please upload a photo under 500KB</small>
             </div>
           </div>
 
@@ -72,8 +84,20 @@
                     autocomplete="email"
                     required
                     aria-describedby="email-error">
-            <div class="error-message">
-              <img alt="" src="assets/images/icon-info.svg">
+            <div class="message error">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/>
+                <path stroke="currentColor"
+                      d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/>
+                <path stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M8.004 10.462V7.596M8 5.569v-.042"/>
+              </svg>
               <span aria-live="polite" class="error-message" id="email-error">
                   Please enter a valid email address.
                 </span>
@@ -97,7 +121,7 @@
       </form>
     </section>
     <!--Generated ticket-->
-    <section class="generated-ticket flow" id="generated-ticket">
+    <section class="generated-ticket flow" id="generated-ticket" style="display:none">
       <h2>Congrats, <span class="highlight">Jonatan Karistof!</span> Your ticket is ready</h2>
       <p>
         We've emailed your ticket to

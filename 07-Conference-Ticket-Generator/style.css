@@ -41,6 +41,17 @@
     button, input, label {
         line-height: 1.1;
     }
+    /* Remove default autocomplete background in Chrome / Edge / Safari */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow:none;
+        box-shadow: none;
+        -webkit-text-fill-color: var(--neutral-300);
+        caret-color: var(--neutral-300);
+        transition: background-color 5000s ease-in-out 0s;
+    }
 
     h1, h2, h3, h4 {
         text-wrap: pretty;
@@ -205,21 +216,25 @@
         font-weight: var(--fw-500);
     }
 
-    input, .upload-area {
+    input, .upload-area{
         width: 100%;
-        padding: var(--space-xs) var(--space-md);
+        padding: var(--space-xs) var(--space-sm);
         border: 1px solid var(--neutral-500);
         background: hsl(245, 15%, 58%, .1);
         border-radius: 8px;
-
-        &:focus-visible, &:hover {
+        color: var(--neutral-300);
+        cursor: pointer;
+        &:focus-visible,
+        &:focus {
             box-shadow: var(--hover-border);
+        }
+        &:hover{
+            background: hsl(245, 15%, 58%, .3)
         }
     }
 
     button {
         width: 100%;
-
         &:focus-visible, &:hover {
             box-shadow: var(--hover-border);
         }
@@ -336,32 +351,41 @@
         inset: 0;
         opacity: 0;
         appearance: none;
-        z-index: var(--z-back);
     }
 
     img[alt="upload-file"] {
         background-color: hsl(245, 15%, 58%, .3);
-        padding: var(--space-xs);
         border-radius: var(--radius-sm);
         border: 1px solid var(--neutral-500);
         cursor: pointer;
         display: inline-block;
+        width: 40px;
+        height: 40px;
     }
-
-    button[type='button'] {
+    .upload-actions{
         display: none;
+        grid-template-columns: repeat(2,max-content);
+        justify-content:center;
+        gap: var(--space-sm);
+        margin-top: var(--space-sm);
+    }
+    button[type='button']{
         background-color: hsl(245, 15%, 58%, .3);
         color: var(--neutral-300);
-        backdrop-filter: blur(50%);
-        border: 1px soid var(--neutral-500);
-        text-decoration: underline;
         cursor: pointer;
-        border-radius: 4px;
+        border-radius: 5px;
         font-size: var(--fs-sm);
-        padding: 2px 10px;
+        padding:3px 8px;
+        z-index: var(--z-overlay);
+    }
+    .upload-actions button:first-child{
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
     }
 
     button[type="submit"] {
+        cursor: pointer;
         background: var(--primary-700);
         color: var(--neutral-900);
         padding: var(--space-sm) var(--space-md);
@@ -486,8 +510,13 @@
             margin-bottom: var(--space-md);
         }
     }
+    .highlight {
+        background: var(--text-gradient);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+    }
+    /*input states styling */
 
-    /*info and error message styling */
     .messages {
         color: var(--neutral-500);
         font-size: var(--fs-sm);
@@ -496,15 +525,13 @@
         gap: var(--space-xs);
     }
 
-    .error-message {
+    .message.error {
         display: none;
         color: var(--error);
     }
 
-    .highlight {
-        background: var(--text-gradient);
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
+    svg.error-state{
+        stroke:var(--error);
     }
 
 }
