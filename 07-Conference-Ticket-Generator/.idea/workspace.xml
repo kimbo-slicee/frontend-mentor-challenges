@@ -5,12 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa" name="Changes" comment="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability">
+      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/icon-info.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icon-info.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README-template.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Event.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Ticket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Ticket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/validationService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ValidationService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style-guide.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/dom.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/error-state.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +29,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="tsconfig.json" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -32,8 +42,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -46,14 +64,55 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Jest.ValidationService.returns true if file size is under 500KB.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/Han/Desktop/IT/front-end/projects/Frontend-Mentor-Challenges/07-Conference-Ticket-Generator/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Han\Desktop\IT\front-end\projects\Frontend-Mentor-Challenges\07-Conference-Ticket-Generator\tests\unit" />
+      <recent name="C:\Users\Han\Desktop\IT\front-end\projects\Frontend-Mentor-Challenges\07-Conference-Ticket-Generator/src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.test">
+    <configuration name="ValidationService.returns true if file size is under 500KB" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <jest-options value="--watch" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/service/ValidationService.test.js" />
+      <test-names>
+        <test-name value="ValidationService" />
+        <test-name value="returns true if file size is under 500KB" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.test" />
+        <item itemvalue="Jest.ValidationService.returns true if file size is under 500KB" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,7 +123,8 @@
       <updated>1758816651367</updated>
       <workItem from="1758816655721" duration="21716000" />
       <workItem from="1758909182470" duration="41224000" />
-      <workItem from="1759134653288" duration="15616000" />
+      <workItem from="1759134653288" duration="28552000" />
+      <workItem from="1759184651779" duration="3212000" />
     </task>
     <task id="LOCAL-00001" summary="`Feat:setup new style.css and refactor html code to remove redundants`">
       <option name="closed" value="true" />

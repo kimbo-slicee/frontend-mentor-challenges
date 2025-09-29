@@ -325,6 +325,8 @@
     .form-group {
         text-align: left;
         z-index: var(--z-normal);
+        display: grid;
+        gap: 5px;
     }
 
     .form-group > * {
@@ -376,7 +378,7 @@
         border-radius: 5px;
         font-size: var(--fs-sm);
         padding:3px 8px;
-        z-index: var(--z-overlay);
+        z-index: var(--z-normal);
     }
     .upload-actions button:first-child{
         text-decoration: underline;
@@ -525,13 +527,22 @@
         gap: var(--space-xs);
     }
 
-    .message.error {
+    .message-error {
         display: none;
         color: var(--error);
     }
 
-    svg.error-state{
+    svg.icon-info.error path{
         stroke:var(--error);
     }
+    .show{
+        display: block;
+    }
+    .hidden{
+        display: none !important;
+    }
 
+    .upload-actions.active {
+        display: grid;
+    }
 }
