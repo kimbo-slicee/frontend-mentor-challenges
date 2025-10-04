@@ -1,28 +1,37 @@
-import DOMutils from "../../utils/DOMutils.js";
+// UIService.js
+import DOMutils from "../utils/DOMutils.js";
+
 export default class UIService {
-    static resetMessages(infoMessage, errorMessage, iconInfo) {
-        DOMutils.addClass(infoMessage, "hidden");
-        DOMutils.removeClass(errorMessage, "show");
-        DOMutils.removeClass(iconInfo, "error");
-    }
-
-    static showError(message, infoMessage, errorMessage, iconInfo) {
-        infoMessage.textContent = "";
-        errorMessage.textContent = message;
-        DOMutils.addClass(errorMessage, "show");
-        DOMutils.addClass(iconInfo, "error");
-    }
-
+    // Image preview
     static displayImage(file, imageElement) {
         const reader = new FileReader();
-        reader.onload = (e) => {
-            imageElement.src = e.target.result;
-        };
+        reader.onload = e => imageElement.src = e.target.result;
         reader.readAsDataURL(file);
     }
 
-    static updateUIAfterUpload(helperText, actions) {
-        DOMutils.hideElement(helperText, "hidden");
-        DOMutils.showElement(actions, "active");
+    // Reset all UI to default
+    static resetUI(infoMessage, errorMessage, iconInfo, actions) {
+        DOMutils.removeClass(infoMessage, "hidden");
+        DOMutils.hideElement(errorMessage);
+        DOMutils.removeClass(iconInfo, "error");
+        DOMutils.hideElement(actions);
+    }
+
+    // Actions
+    static displayActions(actions, helperText) {
+        DOMutils.hideElement(helperText);
+        DOMutils.replaceClass(actions, "hidden", "show");
+    }
+
+    static removeActions(actions, helperText) {
+        DOMutils.hideElement(actions);
+        DOMutils.removeClass(helperText, "hidden");
+    }
+
+    // Validation feedback
+    static fileOverSize(infoMessage, errorMessage, iconInfo) {
+        DOMutils.showElement(errorMessage);
+        DOMutils.hideElement(infoMessage);
+        DOMutils.addClass(iconInfo, "error");
     }
 }

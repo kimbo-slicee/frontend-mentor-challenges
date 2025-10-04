@@ -3,35 +3,29 @@
 ![Design preview for the Conference ticket generator coding challenge](./preview.jpg)
 
 ## Project Structure 
-```text
+```GraphQL
+project/
+├── index.html               # Main HTML file
+├── style.css                # Global CSS
+│     
+├── assets/                  # Static resources (global)
+│   ├── images/              # Logos, icons, backgrounds
+│   │    └── logo.png
+│   ├── fonts/               # Custom fonts (woff, ttf...)
+│   │    └── Inter-Regular.woff2
+│   └── icons/               # SVG or PNG icons
+│        └── upload.svg
 │
-├── index.html               # Entry HTML file
-├── style.css                # Global styles 
 │
-├── src/                     # All application source code
-│   │
-│   ├── main.js              # App entry point (initializes controllers)
-│   │
-│   ├── models/              # Models = data layer
-│   │   └── FileModel.js
-│   │
-│   ├── services/            # Services = business logic (reusable)
-│   │   ├── ValidationService.js
-│   │   └── UIService.js
-│   │
-│   ├── controllers/         # Controllers = glue between view & model
-│   │   └── FileController.js
-│   │
-│   ├── utils/               # Small helpers, generic utilities and DOM helpers
-│   │   └── DOMutils.js
-│   │
-│   ├── views/               # (Optional) If you later split UI components
-│   │   └── uploadView.html  # uploaded DOM 
-│   │
-│   └── assets/              # Images, icons, fonts, etc.
-│       ├── images/
-│       │   └── icon-upload.svg
-│       └── fonts/
+├── src/                     # Application source code
+│   ├── controllers/         # Handle events & app flow
+│   │    └── FileController.js
+│   ├── services/            # Core logic (validation, UI updates)
+│   │    ├── ValidationService.js
+│   │    └── UIService.js
+│   ├── utils/               # Small helpers
+│   │    └── formatDate.js
+│   └── main.js              # Entry point, bootstraps everything
 │
 │
 ├── tests/                   # All your tests live here
@@ -44,9 +38,9 @@
 │   └── utils/
 │       └── DOMutils.test.js
 │
+│
+├── README.md                # Project documentation 
 └── package.json             # (if you later use npm/yarn)
-
-
 
 ```
 

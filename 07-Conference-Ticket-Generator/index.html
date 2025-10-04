@@ -38,9 +38,9 @@
               <input type="file" id="avatar" name="avatar" accept="image/png,image/jpeg" aria-describedby="avatar-help" >
               <img alt="upload-file" src="assets/images/icon-upload.svg">
               <p class="form-help" id="avatar-help">Drag and drop or click to upload</p>
-              <div class="upload-actions">
-                <button type="button" class="btn btn--small btn--secondary remove">Remove image</button>
-                <button type="button" class="btn btn--small btn--secondary change">Change image</button>
+              <div class="upload-actions hidden">
+                <button type="button" class="btn remove">Remove image</button>
+                <button type="button" class="btn change">Change image</button>
               </div>
             </div>
             <div class="messages">
@@ -58,8 +58,8 @@
                       stroke-linejoin="round"
                       d="M8.004 10.462V7.596M8 5.569v-.042"/>
               </svg>
-              <small class="message-info">Upload your photo (JPG or PNG, max size:500KB)</small>
-              <small class="message-error">File too large. Please upload a photo under 500KB</small>
+              <small class="info-message">Upload your photo (JPG or PNG, max size:500KB)</small>
+              <small class="error-message hidden">File too large. Please upload a photo under 500KB</small>
             </div>
           </div>
 

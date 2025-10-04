@@ -527,7 +527,7 @@
         gap: var(--space-xs);
     }
 
-    .message-error {
+    .error-message {
         display: none;
         color: var(--error);
     }
@@ -542,7 +542,7 @@
         display: none !important;
     }
 
-    .upload-actions.active {
+    .upload-actions.show {
         display: grid;
     }
 }
