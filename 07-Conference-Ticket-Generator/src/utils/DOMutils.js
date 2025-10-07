@@ -21,9 +21,20 @@ const DOMutils = (() => {
     };
     const replaceClass=(ele, className, newClass)=>{
          if (ele) ele.classList.replace(className,newClass)
+    };
+    const redBorder=(span)=>{
+        const div=span.closest("div.form-group");
+        const input=div.querySelector("input");
+        input.classList.add("error");
+    }
+    const removeBorder=(span)=>{
+        const div=span.closest("div.form-group");
+        const input=div.querySelector("input");
+        input.classList.remove("error");
     }
 
-    return { addClass, removeClass, toggleClass, showElement, hideElement, replaceClass };
+
+    return { addClass, removeClass, toggleClass, showElement, hideElement, replaceClass,redBorder};
 })();
 
 export default DOMutils;

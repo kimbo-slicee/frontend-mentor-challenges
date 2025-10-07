@@ -69,9 +69,26 @@
             <input
                     type="text"
                     id="name"
-                    name="full_name"
+                    name="name"
                     autocomplete="name"
                     required>
+            <div class="message hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon-info error" width="16" height="16" fill="none"
+                   viewBox="0 0 16 16">
+                <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/>
+                <path stroke="currentColor"
+                      d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/>
+                <path stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M8.004 10.462V7.596M8 5.569v-.042"/>
+              </svg>
+              <span aria-live="polite" class="error-message"></span>
+            </div>
           </div>
 
           <!-- Email -->
@@ -85,8 +102,9 @@
                     autocomplete="email"
                     required
                     aria-describedby="email-error">
-            <div class="message error">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+            <div class="messages hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon-info error" width="16" height="16" fill="none"
+                   viewBox="0 0 16 16">
                 <path
                         stroke="currentColor"
                         stroke-linecap="round"
@@ -99,9 +117,7 @@
                       stroke-linejoin="round"
                       d="M8.004 10.462V7.596M8 5.569v-.042"/>
               </svg>
-              <span aria-live="polite" class="error-message" id="email-error">
-                  Please enter a valid email address.
-                </span>
+              <span aria-live="polite" class="error-message"></span>
             </div>
           </div>
 
@@ -114,6 +130,23 @@
                     name="github"
                     placeholder="@yourusername"
                     autocomplete="username">
+            <div class="messages hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon-info error" width="16" height="16" fill="none"
+                   viewBox="0 0 16 16">
+                <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/>
+                <path stroke="currentColor"
+                      d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/>
+                <path stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M8.004 10.462V7.596M8 5.569v-.042"/>
+              </svg>
+              <span aria-live="polite" class="error-message"></span>
+            </div>
           </div>
 
           <!-- Submit -->

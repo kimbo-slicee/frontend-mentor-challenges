@@ -184,6 +184,9 @@
     article{
         container-type: inline-size;
     }
+    svg path{
+        color: var(--neutral-500);
+    }
 
     h1, h2, h3, h4 {
         font-family: var(--ff-heading);
@@ -237,9 +240,9 @@
         width: 100%;
         &:focus-visible, &:hover {
             box-shadow: var(--hover-border);
-        }
-    ;
+        };
     }
+
 
 }
 
@@ -528,8 +531,8 @@
     }
 
     .error-message {
-        display: none;
         color: var(--error);
+        font-size: var(--fs-xs);
     }
 
     svg.icon-info.error path{
@@ -544,5 +547,8 @@
 
     .upload-actions.show {
         display: grid;
+    }
+    input.error{
+        border: 1px solid var(--error);
     }
 }

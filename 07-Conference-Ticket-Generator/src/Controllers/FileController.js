@@ -1,5 +1,5 @@
 // FileController.js
-import ValidationService from "../services/ValidationService.js";
+import FileValidationService from "../services/FileValidationService.js";
 import UIService from "../services/UIService.js";
 import File from "../models/File.js";
 
@@ -33,7 +33,7 @@ export default class FileController {
         // Reset UI before applying new state
         UIService.resetUI(this.infoMessage, this.errorMessage, this.iconInfo, this.actions);
 
-        if (!ValidationService.isValidSize(fileModel.file)) {
+        if (!FileValidationService.isValidSize(fileModel.file)) {
             UIService.fileOverSize(this.infoMessage, this.errorMessage, this.iconInfo);
             this.handleFileRemove();
             return;

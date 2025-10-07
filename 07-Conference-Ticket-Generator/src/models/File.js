@@ -5,7 +5,6 @@ export default class File {
         this.size = file?.size || 0;
         this.type = file?.type || "";
     }
-
     get sizeInKB() {
         return (this.size / 1024).toFixed(2);
     }

@@ -1,4 +1,4 @@
-export default class ValidationService {
+export default class RegexValidationService{
     static patterns = {
         name: {
             pattern: /^[a-zA-Z\s]+$/u,
@@ -9,23 +9,17 @@ export default class ValidationService {
             message: "Please enter a valid email",
         },
         github: {
-            pattern: /^.+$/u, // at least one character
+            pattern: /^.+$/u,
             message: "Please enter your GitHub account",
         },
     };
-
-    static isValidSize(file, maxKB = 500) {
-        return file && file.size / 1024 <= maxKB;
-    }
-
     static regexValidation(name, value) {
         const field = this.patterns[name];
+        let isValid=true;
         if (!field) return `No validation rule for ${name}`;
-
         if (!field.pattern.test(value)) {
-            return field.message;
+            return {message:field["message"],isValid:false};
         }
-
-        return null;
+        return {isValid:isValid};
     }
 }

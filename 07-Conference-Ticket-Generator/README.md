@@ -21,7 +21,7 @@ project/
 │   ├── controllers/         # Handle events & app flow
 │   │    └── FileController.js
 │   ├── services/            # Core logic (validation, UI updates)
-│   │    ├── ValidationService.js
+│   │    ├── FileValidationService.js
 │   │    └── UIService.js
 │   ├── utils/               # Small helpers
 │   │    └── formatDate.js
@@ -34,7 +34,7 @@ project/
 │   ├── controllers/
 │   │   └── FileController.test.js
 │   ├── services/
-│   │   └── ValidationService.test.js
+│   │   └── FileValidationService.test.js
 │   └── utils/
 │       └── DOMutils.test.js
 │
