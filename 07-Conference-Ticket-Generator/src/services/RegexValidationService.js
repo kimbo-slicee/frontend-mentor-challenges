@@ -1,25 +1,60 @@
-export default class RegexValidationService{
-    static patterns = {
+import UIService from "./UIService.js";
+
+/**
+ * Handles regex-based input validation for form fields.
+ * Each field is defined in the static `rules` object.
+ */
+export default class RegexValidationService {
+    // Define validation rules in one centralized map
+    static rules = {
         name: {
             pattern: /^[a-zA-Z\s]+$/u,
             message: "Please enter a valid name",
         },
         email: {
             pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/u,
-            message: "Please enter a valid email",
+            message: "Please enter a valid email address",
         },
         github: {
             pattern: /^.+$/u,
-            message: "Please enter your GitHub account",
+            message: "Please enter your GitHub username or URL",
         },
     };
-    static regexValidation(name, value) {
-        const field = this.patterns[name];
-        let isValid=true;
-        if (!field) return `No validation rule for ${name}`;
-        if (!field.pattern.test(value)) {
-            return {message:field["message"],isValid:false};
+
+    /**
+     * Validate a single input field.
+     * @param {HTMLInputElement} input - The input element to validate.
+     */
+    static validate(input) {
+        const { name, value } = input;
+
+        // 1️⃣ Handle empty input
+        if (!value.trim()) {
+            return this.#setError(input, "This field is required");
         }
-        return {isValid:isValid};
+
+        // 2️⃣ Get the matching rule for the input name
+        const rule = this.rules[name];
+        if (!rule) {
+            console.warn(`[RegexValidationService] No validation rule for "${name}"`);
+            return;
+        }
+
+        // 3️⃣ Test the regex pattern
+        const isValid = rule.pattern.test(value);
+        if (!isValid) {
+            this.#setError(input, rule.message);
+        } else {
+            UIService.cleanInputError(input);
+        }
+    }
+
+    /**
+     * Private helper: Set an error message for an input.
+     * @param {HTMLInputElement} input
+     * @param {string} message
+     */
+    static #setError(input, message) {
+        UIService.inputState(input, message);
     }
 }

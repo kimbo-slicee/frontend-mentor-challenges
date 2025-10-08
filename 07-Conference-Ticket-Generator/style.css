@@ -544,11 +544,8 @@
     .hidden{
         display: none !important;
     }
-
     .upload-actions.show {
         display: grid;
     }
-    input.error{
-        border: 1px solid var(--error);
-    }
+
 }

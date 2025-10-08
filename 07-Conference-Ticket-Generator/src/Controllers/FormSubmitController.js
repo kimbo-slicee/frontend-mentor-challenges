@@ -14,17 +14,14 @@ export default class FormSubmitController {
     init() {
         if (!this.form) return;
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        // interactive validation
+        this.inputs.forEach(input=>input.addEventListener("input",()=>RegexValidationService.validate(input)))
     }
 
     handleSubmit(e){
         e.preventDefault();
-        this.isAllFilesValid();
-    }
-    // check inputs validation
-    isAllFilesValid(){
-        const regexValidation=[...this.inputs].map(({name,value})=>RegexValidationService.regexValidation(name,value));
-        UIService.inputState(this.errors,regexValidation);
+        // check if all input are valid;
+        this.inputs.forEach((input)=>RegexValidationService.validate(input))
     }
 
-    //create user instance
 }
