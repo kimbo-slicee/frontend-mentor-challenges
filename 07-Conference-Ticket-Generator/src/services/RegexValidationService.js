@@ -27,10 +27,12 @@ export default class RegexValidationService {
      */
     static validate(input) {
         const { name, value } = input;
+        let isFormValid=true;
 
         // 1️⃣ Handle empty input
         if (!value.trim()) {
-            return this.#setError(input, "This field is required");
+            this.#setError(input, "This field is required");
+            return false;
         }
 
         // 2️⃣ Get the matching rule for the input name
@@ -44,8 +46,10 @@ export default class RegexValidationService {
         const isValid = rule.pattern.test(value);
         if (!isValid) {
             this.#setError(input, rule.message);
+            return false;
         } else {
             UIService.cleanInputError(input);
+            return isFormValid;
         }
     }
 
