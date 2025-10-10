@@ -609,6 +609,7 @@
     .hidden{
         display: none !important;
     }
+      
     .upload-actions.show{
         display: grid;
     }
