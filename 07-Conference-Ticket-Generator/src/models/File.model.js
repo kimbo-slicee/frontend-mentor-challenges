@@ -8,4 +8,7 @@ export default class File {
     get sizeInKB() {
         return (this.size / 1024).toFixed(2);
     }
+    getFile(){
+        return this.file;
+    }
 }

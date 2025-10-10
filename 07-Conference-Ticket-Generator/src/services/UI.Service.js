@@ -1,5 +1,6 @@
-// UIService.test.js.js
+// UI.Service.test.js.js
 import DOMutils from "../utils/DOMutils.js";
+import Form from "../utils/form.js";
 
 export default class UIService {
     // Image preview
@@ -36,11 +37,13 @@ export default class UIService {
     }
 
     static inputState(input,message){
-        DOMutils.showError(input,message);
+        Form.showError(input,message);
     }
     static cleanInputError(input){
-        // remove error message
-        // and remove red border
-        DOMutils.clearError(input)
+        Form.clearError(input)
+    }
+    static toggleVisibility(eleOne,eleTwo){
+           DOMutils.toggleClass(eleTwo,"hidden");
+           DOMutils.toggleClass(eleOne,"hidden");
     }
 }

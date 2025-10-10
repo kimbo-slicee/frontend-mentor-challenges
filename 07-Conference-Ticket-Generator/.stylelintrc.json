@@ -1,0 +1,8 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "no-empty-source": null,
+    "selector-class-pattern": "^[a-z0-9\\-_]+$",
+    "color-hex-length": "short"
+  }
+}

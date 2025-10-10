@@ -6,10 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa" name="Changes" comment="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/FormSubmitController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/FormSubmitController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Ticket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Ticket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/RegexValidationService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/RegexValidationService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/FileController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/File.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/FormSubmitController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/FormSubmit.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Event.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/File.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/File.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Ticket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Ticket.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/FileValidationService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/FileValidation.Service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/RegexValidationService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/Validation.Service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/UIService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/UI.Service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/DOMutils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/DOMutils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/DateFormat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/DateFormat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/services/UIService.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/services/UI.Service.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/services/ValidationService.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/services/Validation.Service.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +177,7 @@
       <workItem from="1759184651779" duration="8920000" />
       <workItem from="1759273757537" duration="6759000" />
       <workItem from="1759440283873" duration="25317000" />
-      <workItem from="1759773121299" duration="26534000" />
+      <workItem from="1759773121299" duration="59938000" />
     </task>
     <task id="LOCAL-00001" summary="`Feat:setup new style.css and refactor html code to remove redundants`">
       <option name="closed" value="true" />
@@ -259,5 +274,17 @@
     <MESSAGE value="`refactor(html): rebuild structure for SEO, performance, and accessibility`" />
     <MESSAGE value="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability" />
     <option name="LAST_COMMIT_MESSAGE" value="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/utils/DOMutils.js</url>
+          <line>14</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -16,21 +16,21 @@
   <div class="wrapper">
     <!-- Header / Logo -->
     <header class="site-header">
-      <a href="#" class="site-logo" aria-label="Conference Ticket Generator Home">
+      <a href="#" class="site-logo" aria-label="Conference TicketModel Generator Home">
         <img
                 src="assets/images/logo-full.svg"
-                alt="Conference Ticket Logo"
+                alt="Conference TicketModel Logo"
                 width="200"
                 loading="lazy">
       </a>
     </header>
-    <!-- Ticket Generation Form -->
-    <section class="ticket-generation flow" id="ticket-generation">
+    <!-- TicketModel Generation Form -->
+    <section class="ticket-generation flow" id="form-section">
       <h2>Your Journey to Coding Conf 2025 Starts Here!</h2>
       <p>Secure your spot at next year's biggest coding conference.</p>
       <form action="#" method="post" enctype="multipart/form-data" novalidate>
         <fieldset>
-          <legend class="sr-only">Ticket Details</legend>
+          <legend class="sr-only">TicketModel Details</legend>
           <!-- Avatar Upload -->
           <div class="form-group upload-input">
             <label for="avatar">Upload Avatar</label>
@@ -59,7 +59,7 @@
                       d="M8.004 10.462V7.596M8 5.569v-.042"/>
               </svg>
               <small class="info-message">Upload your photo (JPG or PNG, max size:500KB)</small>
-              <small class="error-message hidden">File too large. Please upload a photo under 500KB</small>
+              <small class="error-message hidden">File too Large, Please upload a photo under 500KB</small>
             </div>
           </div>
 
@@ -96,65 +96,29 @@
                     type="text"
                     id="github"
                     name="github"
-                    placeholder="@yourusername"
-                    autocomplete="username">
+                    placeholder="@yourusername">
             <div class="messages"></div>
           </div>
 
           <!-- Submit -->
-          <button type="submit" class="btn btn--primary">Generate My Ticket</button>
+          <button type="submit" class="btn btn--primary">Generate My TicketModel</button>
         </fieldset>
       </form>
     </section>
     <!--Generated ticket-->
-    <section class="generated-ticket flow" id="generated-ticket" style="display:none">
-      <h2>Congrats, <span class="highlight">Jonatan Karistof!</span> Your ticket is ready</h2>
+    <section class="generated-ticket flow hidden" id="generated-ticket">
+      <h2>Congrats, <span class="name-highlighted"></span> Your ticket is ready</h2>
+
       <p>
         We've emailed your ticket to
-        <span class="highlight">jonatan@email.com</span>
+        <span class="email-highlighted"></span>
         and will send updates in the run-up to the event.
       </p>
 
-      <article class="ticket" aria-label="Conference ticket for Jonatan Karistof">
-
-        <!-- Ticket ID -->
-        <p class="ticket__id"><span>#29381</span></p>
-
-        <!-- Ticket Header -->
-        <header class="ticket__header">
-          <img
-                  src="assets/images/logo-mark.svg"
-                  alt="Coding Conf logo"
-                  class="ticket__logo">
-
-          <div class="ticket__event">
-            <h3 class="ticket__title">Coding Conf</h3>
-            <p>
-              <small><time datetime="2025-01-31">Jan 31, 2025</time> / <span class="location">Austin, TX</span></small>
-            </p>
-          </div>
-        </header>
-
-        <!-- Ticket User Info -->
-        <div class="ticket__user">
-          <img
-                  src="assets/images/image-avatar.jpg"
-                  alt="Profile picture of Jonatan Kristof"
-                  class="ticket__avatar">
-
-          <div class="ticket__user-details">
-            <p class="ticket__user-name">Jonatan Kristof</p>
-            <div class="ticket__user-github">
-              <img
-                      src="assets/images/icon-github.svg"
-                      alt="GitHub icon"
-                      class="icon">
-              <span class="ticket__user-handle">@Jonatankristof01010</span>
-            </div>
-          </div>
-        </div>
-      </article>
+      <article class="ticket"></article>
     </section>
+    <!--Loader-->
+    <span class="loader"></span>
   </div>
 </main>
 

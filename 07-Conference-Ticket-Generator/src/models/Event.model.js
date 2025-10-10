@@ -1,4 +1,4 @@
-export default class Event{
+export default class EventModel {
     title;
     date;
     location;
@@ -7,7 +7,7 @@ export default class Event{
         this.date = date;
         this.location = location;
     }
-    // Event Details
+    // EventModel Details
     getEvenetDetails=()=>{
         return {
             title:this.title,

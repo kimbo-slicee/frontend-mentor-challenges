@@ -1,12 +1,12 @@
-// FileController.js
-import FileValidationService from "../services/FileValidationService.js";
-import UIService from "../services/UIService.js";
-import File from "../models/File.js";
-
-const DEFAULT_IMAGE = "assets/images/icon-upload.svg";
+import FileValidationService from "../services/FileValidation.Service.js";
+import UIService from "../services/UI.Service.js";
+import File from "../models/File.model.js";
+import { Store } from '../store/state.store.js';
 
 export default class FileController {
-    constructor({ fileInput, image, helperText, actionsButtons, infoMessage, errorMessage, iconInfo, actions }) {
+     #DEFAULT_IMAGE = "assets/images/icon-upload.svg";
+    constructor({ form, fileInput, image, helperText, actionsButtons, infoMessage, errorMessage, iconInfo, actions }) {
+        this.form = form;
         this.fileInput = fileInput;
         this.image = image;
         this.helperText = helperText;
@@ -17,7 +17,7 @@ export default class FileController {
         this.actions = actions;
     }
 
-    attachEvents() {
+    init() {
         this.fileInput.addEventListener("change", this.handleFileUpload.bind(this));
         this.actionsButtons.forEach(btn =>
             btn.addEventListener("click", this.handleFileActions.bind(this))
@@ -41,23 +41,32 @@ export default class FileController {
 
         UIService.displayImage(fileModel.file, this.image);
         UIService.displayActions(this.actions, this.helperText);
+
+        // ✅ Save file data to store state
+        Store.file = fileModel.file;
     }
 
     handleFileActions(e) {
-        if (e.target.classList.contains("remove")) {
-            this.handleFileRemove();
-        } else {
-            this.handleFileChange();
-        }
+        if (e.target.classList.contains("remove"))this.handleFileRemove()
+        else this.handleFileChange();
     }
 
     handleFileRemove() {
         this.fileInput.value = "";
-        this.image.src = DEFAULT_IMAGE;
+        this.image.src = this.#DEFAULT_IMAGE;
         UIService.removeActions(this.actions, this.helperText);
+
+        // ✅ Clear file data from store state
+        Store.file = null;
     }
 
     handleFileChange() {
         this.fileInput.click();
+    }
+
+    isFileExist() {
+        if (!Store.file) {
+            UIService.fileOverSize(this.infoMessage, this.errorMessage, this.iconInfo);
+        }
     }
 }
