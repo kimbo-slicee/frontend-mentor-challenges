@@ -614,5 +614,7 @@
         display: grid;
     }
 
- 
+    .upload-actions.active {
+        display: grid;
+    }
 }
