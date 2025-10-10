@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa" name="Changes" comment="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability">
+    <list default="true" id="2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/TicketService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/TicketService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/UIService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/UIService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/DateFormat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/GenerateDate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/formUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/FormUtils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/locationGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LocationGenerator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ticket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/TicketUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +59,7 @@
     "Node.js Test Runner.FileController.handleFileUpload calls UIService.fileOverSize if file too big.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "test",
+    "git-widget-placeholder": "restore-tests",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs.jest.jest_package": "C:/Users/Han/Desktop/IT/front-end/projects/Frontend-Mentor-Challenges/07-Conference-Ticket-Generator/node_modules/jest",
@@ -269,7 +264,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/utils/DOMutils.js</url>
           <line>14</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
