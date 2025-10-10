@@ -1,0 +1,605 @@
+Index: style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@layer reset, fonts, variables, base, layout, components, utilities;\r\n\r\n/* ========== RESET ========== */\r\n@layer reset {\r\n\r\n    *,\r\n    *::before,\r\n    *::after {\r\n        box-sizing: border-box;\r\n    }\r\n\r\n    * {\r\n        margin: 0;\r\n        padding: 0;\r\n    }\r\n\r\n    html {\r\n        -moz-text-size-adjust: none;\r\n        -webkit-text-size-adjust: none;\r\n        text-size-adjust: none;\r\n    }\r\n\r\n    body, h1, h2, h3, h4, p,\r\n    figure, blockquote, dl, dd {\r\n        margin-block-end: 0;\r\n    }\r\n\r\n\r\n    ul[role=\"list\"],\r\n    ol[role=\"list\"] {\r\n        list-style: none;\r\n    }\r\n\r\n    body {\r\n        min-height: 100vh;\r\n        line-height: 1.5;\r\n    }\r\n\r\n\r\n    h1, h2, h3, h4,\r\n    button, input, label {\r\n        line-height: 1.1;\r\n    }\r\n    /* Remove default autocomplete background in Chrome / Edge / Safari */\r\n    input:-webkit-autofill,\r\n    input:-webkit-autofill:hover,\r\n    input:-webkit-autofill:focus,\r\n    input:-webkit-autofill:active {\r\n        -webkit-box-shadow:none;\r\n        box-shadow: none;\r\n        -webkit-text-fill-color: var(--neutral-300);\r\n        caret-color: var(--neutral-300);\r\n        transition: background-color 5000s ease-in-out 0s;\r\n    }\r\n\r\n    h1, h2, h3, h4 {\r\n        text-wrap: pretty;\r\n    }\r\n\r\n\r\n    a:not([class]) {\r\n        text-decoration-skip-ink: auto;\r\n        color: currentColor;\r\n    }\r\n\r\n    img,\r\n    picture {\r\n        max-width: 100%;\r\n        display: block;\r\n    }\r\n\r\n\r\n    input, button,\r\n    textarea, select,fieldset {\r\n        font: inherit;\r\n        background: none;\r\n        border: 0;\r\n        outline: 0;\r\n    }\r\n\r\n    textarea:not([rows]) {\r\n        min-height: 10em;\r\n    }\r\n\r\n    :target {\r\n        scroll-margin-block: 5ex;\r\n    }\r\n}\r\n\r\n/* ========== FONTS ========== */\r\n@layer fonts {\r\n    @font-face {\r\n        font-family: \"Inconsolata\";\r\n        src: local(\"Inconsolata\"),\r\n        url(\"assets/fonts/Inconsolata-VariableFont.ttf\") format(\"truetype\");\r\n        font-weight: 100 900;\r\n        font-style: normal;\r\n        font-display: swap;\r\n    }\r\n}\r\n\r\n/* ========== VARIABLES ========== */\r\n@layer variables {\r\n    :root {\r\n        /* ----- Font Families ----- */\r\n        --ff-body: \"Inconsolata\", monospace;\r\n        --ff-heading: \"Inconsolata\", monospace;\r\n\r\n        /* ----- Font Sizes ----- */\r\n        --fs-xs: 0.75rem;\r\n        --fs-sm: 0.875rem;\r\n        --fs-md: 1rem;\r\n        --fs-lg: 1.125rem;\r\n        --fs-xl: 1.25rem;\r\n        --fs-2xl: 1.5rem;\r\n        --fs-3xl: 1.875rem;\r\n        --fs-4xl: 2rem;\r\n        --fs-5xl: 2.5rem;\r\n\r\n        /* ----- Font Weights ----- */\r\n        --fw-400: 400;\r\n        --fw-500: 500;\r\n        --fw-700: 700;\r\n        --fw-800: 800;\r\n\r\n        /* ----- Colors ----- */\r\n        --primary-500: hsl(7, 88%, 67%);\r\n        --primary-700: hsl(7, 71%, 60%);\r\n        --neutral-100: hsl(0, 0%, 100%);\r\n        --neutral-300: hsl(252, 6%, 83%);\r\n        --neutral-500: hsl(245, 15%, 58%);\r\n        --neutral-700: hsl(245, 19%, 35%);\r\n        --neutral-900: hsl(248, 70%, 10%);\r\n        --error: hsl(7, 88%, 67%);\r\n        --success: hsl(152, 80%, 44%);\r\n\r\n        /* ----- Gradients & Shadows ----- */\r\n        --text-gradient: linear-gradient(to right, hsl(7, 86%, 67%), hsl(0, 0%, 100%));\r\n        --hover-border: 0 0 0 3px var(--neutral-900), 0 0 0 4px var(--neutral-300);\r\n\r\n        /* ----- Line Heights ----- */\r\n        --lh-xs: 1.1;\r\n        --lh-sm: 1.25;\r\n        --lh-md: 1.5;\r\n        --lh-lg: 1.75;\r\n\r\n        /* ----- Border Radius ----- */\r\n        --radius-sm: 0.5rem;\r\n        --radius-md: 1rem;\r\n        --radius-lg: 1.5rem;\r\n        --radius-full: 100%;\r\n\r\n        /* ----- Spacing ----- */\r\n        --space-xs: clamp(0.25rem,.5vw,.5rem);\r\n        --space-sm: clamp(0.5rem, 1vw, 1rem);\r\n        --space-md: clamp(1rem, 2vw, 2rem);\r\n        --space-lg: clamp(1.5rem, 3vw, 3rem);\r\n        --space-xl: clamp(2rem, 3.5vw, 3.5rem);\r\n        /* --------- Z-Index --------- */\r\n        --z-back: -1;\r\n        --z-base: 0;\r\n        --z-normal: 1;\r\n        --z-overlay: 5;\r\n        --z-top: 10;\r\n    }\r\n}\r\n\r\n/* ========== BASE ========== */\r\n@layer base {\r\n    html {\r\n        font-size: 100%;\r\n        scroll-behavior: smooth;\r\n    }\r\n\r\n    body {\r\n        font-family: var(--ff-body);\r\n        background: var(--neutral-100);\r\n        color: var(--neutral-100);\r\n    }\r\n    section,\r\n    main,\r\n    form,\r\n    fieldset,\r\n    article{\r\n        container-type: inline-size;\r\n    }\r\n\r\n    h1, h2, h3, h4 {\r\n        font-family: var(--ff-heading);\r\n    }\r\n    h1{\r\n        font-size: clamp(\r\n                var(--fs-5xl),\r\n                calc(var(--fs-4xl) + 2vw), var(--fs-5xl));\r\n    }\r\n    h2{\r\n        font-size: clamp(\r\n                var(--fs-4xl),\r\n                calc(var(--fs-4xl) + 2vw),\r\n                var(--fs-5xl));\r\n    }\r\n\r\n    h3 {\r\n        font-size: clamp(\r\n                var(--fs-2xl),\r\n                calc(var(--fs-2xl) + 2vw),\r\n                var(--fs-3xl));\r\n    }\r\n    p{\r\n        font-size: var(--fs-lg);\r\n        color: var(--neutral-300);\r\n    }\r\n\r\n    label {\r\n        display: block;\r\n        font-weight: var(--fw-500);\r\n    }\r\n\r\n    input, .upload-area{\r\n        width: 100%;\r\n        padding: var(--space-xs) var(--space-sm);\r\n        border: 1px solid var(--neutral-500);\r\n        background: hsl(245, 15%, 58%, .1);\r\n        border-radius: 8px;\r\n        color: var(--neutral-300);\r\n        cursor: pointer;\r\n        &:focus-visible,\r\n        &:focus {\r\n            box-shadow: var(--hover-border);\r\n        }\r\n        &:hover{\r\n            background: hsl(245, 15%, 58%, .3)\r\n        }\r\n    }\r\n\r\n    button {\r\n        width: 100%;\r\n        &:focus-visible, &:hover {\r\n            box-shadow: var(--hover-border);\r\n        }\r\n    ;\r\n    }\r\n\r\n}\r\n\r\n\r\n/* ========== LAYOUT ========== */\r\n@layer layout {\r\n    body {\r\n        background: url(\"assets/images/pattern-lines.svg\"),\r\n        url(\"assets/images/background-mobile.png\") center/cover no-repeat;\r\n    }\r\n\r\n    @media (min-width: 600px) and (max-width: 996px) {\r\n        body {\r\n            background: url(\"assets/images/pattern-lines.svg\"),\r\n            url(\"assets/images/background-tablet.png\") center/cover no-repeat;\r\n        }\r\n    }\r\n\r\n    @media (min-width: 997px) {\r\n        body {\r\n            background: url(\"assets/images/pattern-lines.svg\"),\r\n            url(\"assets/images/background-desktop.png\") center/cover no-repeat;\r\n        }\r\n    }\r\n\r\n    .bg-shapes {\r\n        position: fixed;\r\n        inset: 0;\r\n        pointer-events: none;\r\n        z-index: var(--z-back);\r\n\r\n        background:\r\n                url(\"assets/images/pattern-circle.svg\") top -5% left -15% / 150px no-repeat,\r\n                url(\"assets/images/pattern-circle.svg\") bottom 20% right -35% / 180px no-repeat,\r\n                url(\"assets/images/pattern-squiggly-line-top.svg\") right top 5% / 30% no-repeat,\r\n                url(\"assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg\") bottom left / max(35%, 300px) no-repeat;\r\n\r\n        @container (width > 996px) {\r\n            background:\r\n                    url(\"assets/images/pattern-circle.svg\") top -15% left 10% / 150px no-repeat,\r\n                    url(\"assets/images/pattern-circle.svg\") top 70% right 20% / 180px no-repeat,\r\n                    url(\"assets/images/pattern-squiggly-line-top.svg\") right top 15% / 30% no-repeat,\r\n                    url(\"assets/images/pattern-squiggly-line-bottom-desktop.svg\") bottom left / max(50%,350px) no-repeat;\r\n        }\r\n    }\r\n\r\n    .wrapper {\r\n        text-align: center;\r\n        margin-inline: auto;\r\n        padding: var(--space-sm);\r\n\r\n        @container (width > 996px) {\r\n            width: 50%;\r\n        }\r\n    }\r\n\r\n    form {\r\n        margin-top: var(--space-xl);\r\n        margin-inline: auto;\r\n        @media (width > 996px) {\r\n            width: 60%;\r\n        }\r\n    }\r\n\r\n    fieldset {\r\n        display: grid;\r\n        gap: var(--space-md);\r\n    }\r\n}\r\n\r\n\r\n/* ========== COMPONENTS ========== */\r\n@layer components {\r\n    .site-header {\r\n        padding: var(--space-sm);\r\n    }\r\n\r\n    .site-logo img {\r\n        display: inline-block;\r\n    }\r\n\r\n    /* --- form-styling --- */\r\n    .form-group {\r\n        text-align: left;\r\n        z-index: var(--z-normal);\r\n        display: grid;\r\n        gap: 5px;\r\n    }\r\n\r\n    .form-group > * {\r\n        margin-bottom: var(--space-xs);\r\n    }\r\n\r\n    .upload-area {\r\n        position: relative;\r\n        text-align: center;\r\n        border: 2px dashed var(--neutral-500);\r\n        min-height: 100px;\r\n        padding-block: var(--space-sm);\r\n    }\r\n\r\n    .form-help {\r\n        font-size: var(--fs-sm);\r\n        color: var(--neutral-300);\r\n    }\r\n\r\n    input[type=\"file\"] {\r\n        position: absolute;\r\n        width: 100%;\r\n        height: 100%;\r\n        inset: 0;\r\n        opacity: 0;\r\n        appearance: none;\r\n    }\r\n\r\n    img[alt=\"upload-file\"] {\r\n        background-color: hsl(245, 15%, 58%, .3);\r\n        border-radius: var(--radius-sm);\r\n        border: 1px solid var(--neutral-500);\r\n        cursor: pointer;\r\n        display: inline-block;\r\n        width: 40px;\r\n        height: 40px;\r\n    }\r\n    .upload-actions{\r\n        display: none;\r\n        grid-template-columns: repeat(2,max-content);\r\n        justify-content:center;\r\n        gap: var(--space-sm);\r\n        margin-top: var(--space-sm);\r\n    }\r\n    button[type='button']{\r\n        background-color: hsl(245, 15%, 58%, .3);\r\n        color: var(--neutral-300);\r\n        cursor: pointer;\r\n        border-radius: 5px;\r\n        font-size: var(--fs-sm);\r\n        padding:3px 8px;\r\n        z-index: var(--z-normal);\r\n    }\r\n    .upload-actions button:first-child{\r\n        text-decoration: underline;\r\n        text-underline-offset: 3px;\r\n        text-decoration-thickness: 1px;\r\n    }\r\n\r\n    button[type=\"submit\"] {\r\n        cursor: pointer;\r\n        background: var(--primary-700);\r\n        color: var(--neutral-900);\r\n        padding: var(--space-sm) var(--space-md);\r\n        font-weight: var(--fw-800);\r\n        border-radius: 8px;\r\n    }\r\n\r\n    /*gendered ticket Section styling */\r\n    article.ticket {\r\n        position: relative;\r\n        margin-inline: auto;\r\n        margin-block-start: 3rem;\r\n        background: url(\"assets/images/pattern-ticket.svg\") center/contain no-repeat;\r\n        display: grid;\r\n        padding: var(--space-md);\r\n        gap: clamp(0.75rem, 1.5vw, 1.5rem);\r\n        max-width: 500px;\r\n        width: 100%;\r\n        aspect-ratio: 2 / 1;\r\n    }\r\n\r\n    /* --- Logo ---- */\r\n    header .ticket__logo {\r\n        width: 35px;\r\n    }\r\n\r\n    .ticket__id {\r\n        position: absolute;\r\n        left:80%;\r\n        top: 50%;\r\n        transform:translateY(-50%) rotate(90deg) ;\r\n    }\r\n    .ticket__id span{\r\n        color: var(--neutral-500);\r\n        font-size: var(--fs-3xl);\r\n    }\r\n\r\n    .ticket__header,\r\n    .ticket__user {\r\n        display: flex;\r\n        align-items: flex-start;\r\n        text-align: start;\r\n        gap: var(--space-md);\r\n    }\r\n\r\n\r\n    /* --- ticket user info --- */\r\n    .ticket__user {\r\n        align-items: center;\r\n    }\r\n\r\n    .ticket__user img {\r\n        max-width: 65px;\r\n        border-radius: var(--radius-md);\r\n    }\r\n\r\n    .ticket__user-details h4 {\r\n        margin-bottom: var(--space-xs);\r\n    }\r\n\r\n    .ticket__user-github img {\r\n        width: 18px;\r\n    }\r\n\r\n    .ticket__user-github {\r\n        display: grid;\r\n        grid-template-columns: 1fr auto;\r\n        gap: var(--space-xs);\r\n        font-size: var(--fs-sm);\r\n        color: var(--neutral-500);\r\n    }\r\n}\r\n\r\n/* ========== UTILITIES ========== */\r\n@layer utilities {\r\n    .sr-only {\r\n        position: absolute !important;\r\n        width: 1px;\r\n        height: 1px;\r\n        padding: 0;\r\n        margin: -1px;\r\n        overflow: hidden;\r\n        clip: rect(0 0 0 0);\r\n        white-space: nowrap;\r\n        border: 0;\r\n    }\r\n\r\n    .text-center {\r\n        text-align: center;\r\n    }\r\n\r\n    .m-auto {\r\n        margin-inline: auto\r\n    }\r\n\r\n    .mt-sm {\r\n        margin-top: var(--space-sm);\r\n    }\r\n\r\n    .mt-md {\r\n        margin-top: var(--space-md);\r\n    }\r\n\r\n    .mt-lg {\r\n        margin-top: var(--space-lg);\r\n    }\r\n\r\n    .p-sm {\r\n        padding: var(--space-sm);\r\n    }\r\n\r\n    .p-md {\r\n        padding: var(--space-md);\r\n    }\r\n\r\n    .p-lg {\r\n        padding: var(--space-lg);\r\n    }\r\n\r\n    .flow {\r\n        > * {\r\n            margin-bottom: var(--space-md);\r\n        }\r\n    }\r\n    .highlight {\r\n        background: var(--text-gradient);\r\n        -webkit-text-fill-color: transparent;\r\n        -webkit-background-clip: text;\r\n    }\r\n    /*input states styling */\r\n\r\n    .messages {\r\n        color: var(--neutral-500);\r\n        font-size: var(--fs-sm);\r\n        display: flex;\r\n        align-items: center;\r\n        gap: var(--space-xs);\r\n    }\r\n\r\n    .message-error {\r\n        display: none;\r\n        color: var(--error);\r\n    }\r\n\r\n    svg.icon-info.error path{\r\n        stroke:var(--error);\r\n    }\r\n    .show{\r\n        display: block;\r\n    }\r\n    .hidden{\r\n        display: none !important;\r\n    }\r\n\r\n    .upload-actions.active {\r\n        display: grid;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/style.css b/style.css
+--- a/style.css	
++++ b/style.css	
+@@ -2,45 +2,70 @@
+ 
+ /* ========== RESET ========== */
+ @layer reset {
++<<<<<<< HEAD
+ 
++=======
++    /* Box sizing rules */
++>>>>>>> main
+     *,
+     *::before,
+     *::after {
+         box-sizing: border-box;
+     }
+ 
++<<<<<<< HEAD
+     * {
+         margin: 0;
+         padding: 0;
+     }
+ 
++=======
++    /* Prevent font size inflation */
++>>>>>>> main
+     html {
+         -moz-text-size-adjust: none;
+         -webkit-text-size-adjust: none;
+         text-size-adjust: none;
+     }
+ 
++<<<<<<< HEAD
++=======
++    /* Remove default margins */
++>>>>>>> main
+     body, h1, h2, h3, h4, p,
+     figure, blockquote, dl, dd {
+         margin-block-end: 0;
+     }
+ 
++<<<<<<< HEAD
+ 
++=======
++    /* Remove list styles when role="list" */
++>>>>>>> main
+     ul[role="list"],
+     ol[role="list"] {
+         list-style: none;
+     }
+ 
++<<<<<<< HEAD
++=======
++    /* Core body defaults */
++>>>>>>> main
+     body {
+         min-height: 100vh;
+         line-height: 1.5;
+     }
+ 
++<<<<<<< HEAD
+ 
++=======
++    /* Shorter line heights for headings and controls */
++>>>>>>> main
+     h1, h2, h3, h4,
+     button, input, label {
+         line-height: 1.1;
+     }
++<<<<<<< HEAD
+     /* Remove default autocomplete background in Chrome / Edge / Safari */
+     input:-webkit-autofill,
+     input:-webkit-autofill:hover,
+@@ -58,17 +83,31 @@
+     }
+ 
+ 
++=======
++
++    /* Balance heading text wrapping */
++    h1, h2, h3, h4 {
++        text-wrap: balance;
++    }
++
++    /* Default link style */
++>>>>>>> main
+     a:not([class]) {
+         text-decoration-skip-ink: auto;
+         color: currentColor;
+     }
+ 
++<<<<<<< HEAD
++=======
++    /* Media elements */
++>>>>>>> main
+     img,
+     picture {
+         max-width: 100%;
+         display: block;
+     }
+ 
++<<<<<<< HEAD
+ 
+     input, button,
+     textarea, select,fieldset {
+@@ -78,10 +117,23 @@
+         outline: 0;
+     }
+ 
++=======
++    /* Inherit fonts for form elements */
++    input, button,
++    textarea, select {
++        font: inherit;
++    }
++
++    /* Reasonable textarea height */
++>>>>>>> main
+     textarea:not([rows]) {
+         min-height: 10em;
+     }
+ 
++<<<<<<< HEAD
++=======
++    /* Scroll margin for anchored content */
++>>>>>>> main
+     :target {
+         scroll-margin-block: 5ex;
+     }
+@@ -136,7 +188,13 @@
+ 
+         /* ----- Gradients & Shadows ----- */
+         --text-gradient: linear-gradient(to right, hsl(7, 86%, 67%), hsl(0, 0%, 100%));
++<<<<<<< HEAD
+         --hover-border: 0 0 0 3px var(--neutral-900), 0 0 0 4px var(--neutral-300);
++=======
++        --input-border:
++                0 0 0 2px var(--neutral-500),
++                0 0 0 2px var(--neutral-100);
++>>>>>>> main
+ 
+         /* ----- Line Heights ----- */
+         --lh-xs: 1.1;
+@@ -151,6 +209,7 @@
+         --radius-full: 100%;
+ 
+         /* ----- Spacing ----- */
++<<<<<<< HEAD
+         --space-xs: clamp(0.25rem,.5vw,.5rem);
+         --space-sm: clamp(0.5rem, 1vw, 1rem);
+         --space-md: clamp(1rem, 2vw, 2rem);
+@@ -162,6 +221,13 @@
+         --z-normal: 1;
+         --z-overlay: 5;
+         --z-top: 10;
++=======
++        --space-xs: 0.5rem;
++        --space-sm: 0.75rem;
++        --space-md: 1rem;
++        --space-lg: 1.5rem;
++        --space-xl: 2rem;
++>>>>>>> main
+     }
+ }
+ 
+@@ -175,6 +241,7 @@
+     body {
+         font-family: var(--ff-body);
+         background: var(--neutral-100);
++<<<<<<< HEAD
+         color: var(--neutral-100);
+     }
+     section,
+@@ -183,11 +250,15 @@
+     fieldset,
+     article{
+         container-type: inline-size;
++=======
++        color: var(--neutral-900);
++>>>>>>> main
+     }
+ 
+     h1, h2, h3, h4 {
+         font-family: var(--ff-heading);
+     }
++<<<<<<< HEAD
+     h1{
+         font-size: clamp(
+                 var(--fs-5xl),
+@@ -458,11 +529,37 @@
+         gap: var(--space-xs);
+         font-size: var(--fs-sm);
+         color: var(--neutral-500);
++=======
++}
++
++/* ========== LAYOUT ========== */
++@layer layout {
++    .container {
++        width: min(100% - 2rem, 1200px);
++        margin-inline: auto;
++    }
++}
++
++/* ========== COMPONENTS ========== */
++@layer components {
++    .btn {
++        padding: var(--space-sm) var(--space-md);
++        border-radius: var(--radius-sm);
++        background: var(--primary-500);
++        color: var(--neutral-100);
++        font-weight: var(--fw-500);
++        cursor: pointer;
++        transition: background 0.3s ease;
++    }
++    .btn:hover {
++        background: var(--primary-700);
++>>>>>>> main
+     }
+ }
+ 
+ /* ========== UTILITIES ========== */
+ @layer utilities {
++<<<<<<< HEAD
+     .sr-only {
+         position: absolute !important;
+         width: 1px;
+@@ -545,4 +642,13 @@
+     .upload-actions.active {
+         display: grid;
+     }
++=======
++    .text-center { text-align: center; }
++    .mt-sm { margin-top: var(--space-sm); }
++    .mt-md { margin-top: var(--space-md); }
++    .mt-lg { margin-top: var(--space-lg); }
++    .p-sm { padding: var(--space-sm); }
++    .p-md { padding: var(--space-md); }
++    .p-lg { padding: var(--space-lg); }
++>>>>>>> main
+ }
+Index: index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"./assets/images/logo-mark.svg\">\r\n  <link rel=\"stylesheet\" href=\"style.css\">\r\n  <script src=\"src/main.js\" type=\"module\" defer></script>\r\n  <title>Frontend Mentor | Conference ticket generator</title>\r\n</head>\r\n<body>\r\n\r\n<main>\r\n  <!-- Background shapes (decorative only) -->\r\n  <div class=\"bg-shapes\" aria-hidden=\"true\"></div>\r\n  <div class=\"wrapper\">\r\n    <!-- Header / Logo -->\r\n    <header class=\"site-header\">\r\n      <a href=\"#\" class=\"site-logo\" aria-label=\"Conference Ticket Generator Home\">\r\n        <img\r\n                src=\"assets/images/logo-full.svg\"\r\n                alt=\"Conference Ticket Logo\"\r\n                width=\"200\"\r\n                loading=\"lazy\">\r\n      </a>\r\n    </header>\r\n    <!-- Ticket Generation Form -->\r\n    <section class=\"ticket-generation flow\" id=\"ticket-generation\">\r\n      <h2>Your Journey to Coding Conf 2025 Starts Here!</h2>\r\n      <p>Secure your spot at next year's biggest coding conference.</p>\r\n      <form action=\"#\" method=\"post\" enctype=\"multipart/form-data\" novalidate>\r\n        <fieldset>\r\n          <legend class=\"sr-only\">Ticket Details</legend>\r\n          <!-- Avatar Upload -->\r\n          <div class=\"form-group upload-input\">\r\n            <label for=\"avatar\">Upload Avatar</label>\r\n            <div class=\"upload-area\" aria-describedby=\"avatar-help\">\r\n              <input type=\"file\" id=\"avatar\" name=\"avatar\" accept=\"image/png,image/jpeg\" aria-describedby=\"avatar-help\" >\r\n              <img alt=\"upload-file\" src=\"assets/images/icon-upload.svg\">\r\n              <p class=\"form-help\" id=\"avatar-help\">Drag and drop or click to upload</p>\r\n              <div class=\"upload-actions\">\r\n                <button type=\"button\" class=\"btn btn--small btn--secondary remove\">Remove image</button>\r\n                <button type=\"button\" class=\"btn btn--small btn--secondary change\">Change image</button>\r\n              </div>\r\n            </div>\r\n            <div class=\"messages\">\r\n              <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon-info\" width=\"16\" height=\"16\" fill=\"none\"\r\n                   viewBox=\"0 0 16 16\">\r\n                <path\r\n                        stroke=\"currentColor\"\r\n                        stroke-linecap=\"round\"\r\n                        stroke-linejoin=\"round\"\r\n                        d=\"M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z\"/>\r\n                <path stroke=\"currentColor\"\r\n                      d=\"M8.004 10.462V7.596ZM8 5.57v-.042Z\"/>\r\n                <path stroke=\"currentColor\"\r\n                      stroke-linecap=\"round\"\r\n                      stroke-linejoin=\"round\"\r\n                      d=\"M8.004 10.462V7.596M8 5.569v-.042\"/>\r\n              </svg>\r\n              <small class=\"message-info\">Upload your photo (JPG or PNG, max size:500KB)</small>\r\n              <small class=\"message-error\">File too large. Please upload a photo under 500KB</small>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- Full Name -->\r\n          <div class=\"form-group\">\r\n            <label for=\"name\">Full Name</label>\r\n            <input\r\n                    type=\"text\"\r\n                    id=\"name\"\r\n                    name=\"full_name\"\r\n                    autocomplete=\"name\"\r\n                    required>\r\n          </div>\r\n\r\n          <!-- Email -->\r\n          <div class=\"form-group\">\r\n            <label for=\"email\">Email Address</label>\r\n            <input\r\n                    type=\"email\"\r\n                    id=\"email\"\r\n                    name=\"email\"\r\n                    placeholder=\"example@email.com\"\r\n                    autocomplete=\"email\"\r\n                    required\r\n                    aria-describedby=\"email-error\">\r\n            <div class=\"message error\">\r\n              <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"none\" viewBox=\"0 0 16 16\">\r\n                <path\r\n                        stroke=\"currentColor\"\r\n                        stroke-linecap=\"round\"\r\n                        stroke-linejoin=\"round\"\r\n                        d=\"M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z\"/>\r\n                <path stroke=\"currentColor\"\r\n                      d=\"M8.004 10.462V7.596ZM8 5.57v-.042Z\"/>\r\n                <path stroke=\"currentColor\"\r\n                      stroke-linecap=\"round\"\r\n                      stroke-linejoin=\"round\"\r\n                      d=\"M8.004 10.462V7.596M8 5.569v-.042\"/>\r\n              </svg>\r\n              <span aria-live=\"polite\" class=\"error-message\" id=\"email-error\">\r\n                  Please enter a valid email address.\r\n                </span>\r\n            </div>\r\n          </div>\r\n\r\n          <!-- GitHub -->\r\n          <div class=\"form-group\">\r\n            <label for=\"github\">GitHub Username</label>\r\n            <input\r\n                    type=\"text\"\r\n                    id=\"github\"\r\n                    name=\"github\"\r\n                    placeholder=\"@yourusername\"\r\n                    autocomplete=\"username\">\r\n          </div>\r\n\r\n          <!-- Submit -->\r\n          <button type=\"submit\" class=\"btn btn--primary\">Generate My Ticket</button>\r\n        </fieldset>\r\n      </form>\r\n    </section>\r\n    <!--Generated ticket-->\r\n    <section class=\"generated-ticket flow\" id=\"generated-ticket\" style=\"display:none\">\r\n      <h2>Congrats, <span class=\"highlight\">Jonatan Karistof!</span> Your ticket is ready</h2>\r\n      <p>\r\n        We've emailed your ticket to\r\n        <span class=\"highlight\">jonatan@email.com</span>\r\n        and will send updates in the run-up to the event.\r\n      </p>\r\n\r\n      <article class=\"ticket\" aria-label=\"Conference ticket for Jonatan Karistof\">\r\n\r\n        <!-- Ticket ID -->\r\n        <p class=\"ticket__id\"><span>#29381</span></p>\r\n\r\n        <!-- Ticket Header -->\r\n        <header class=\"ticket__header\">\r\n          <img\r\n                  src=\"assets/images/logo-mark.svg\"\r\n                  alt=\"Coding Conf logo\"\r\n                  class=\"ticket__logo\">\r\n\r\n          <div class=\"ticket__event\">\r\n            <h3 class=\"ticket__title\">Coding Conf</h3>\r\n            <p>\r\n              <small><time datetime=\"2025-01-31\">Jan 31, 2025</time> / <span class=\"location\">Austin, TX</span></small>\r\n            </p>\r\n          </div>\r\n        </header>\r\n\r\n        <!-- Ticket User Info -->\r\n        <div class=\"ticket__user\">\r\n          <img\r\n                  src=\"assets/images/image-avatar.jpg\"\r\n                  alt=\"Profile picture of Jonatan Kristof\"\r\n                  class=\"ticket__avatar\">\r\n\r\n          <div class=\"ticket__user-details\">\r\n            <p class=\"ticket__user-name\">Jonatan Kristof</p>\r\n            <div class=\"ticket__user-github\">\r\n              <img\r\n                      src=\"assets/images/icon-github.svg\"\r\n                      alt=\"GitHub icon\"\r\n                      class=\"icon\">\r\n              <span class=\"ticket__user-handle\">@Jonatankristof01010</span>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </article>\r\n    </section>\r\n  </div>\r\n</main>\r\n\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/index.html b/index.html
+--- a/index.html	
++++ b/index.html	
+@@ -5,11 +5,26 @@
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/logo-mark.svg">
+   <link rel="stylesheet" href="style.css">
++<<<<<<< HEAD
+   <script src="src/main.js" type="module" defer></script>
++=======
++  <script src="script.js" defer></script>
++>>>>>>> main
+   <title>Frontend Mentor | Conference ticket generator</title>
+ </head>
+ <body>
++<!--<section class="bg-shapes" aria-hidden="true">-->
++<!--    <img src="assets/images/pattern-circle.svg" class="shape circle circle-top" alt="">-->
++<!--    <img src="assets/images/pattern-circle.svg" class="shape circle circle-bottom-right" alt="">-->
++<!--    <img src="assets/images/pattern-lines.svg" class="bg-lines" alt="">-->
++<!--    <img src="assets/images/pattern-squiggly-line-top.svg" class="squiggly-line-top" alt="">-->
++<!--    <picture>-->
++<!--        <source srcset="assets/images/pattern-squiggly-line-bottom-desktop.svg" media="(min-width: 996px)">-->
++<!--        <img src="assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg" alt="">-->
++<!--    </picture>-->
++<!--</section>-->
+ 
++<<<<<<< HEAD
+ <main>
+   <!-- Background shapes (decorative only) -->
+   <div class="bg-shapes" aria-hidden="true"></div>
+@@ -173,5 +188,24 @@
+   </div>
+ </main>
+ 
++=======
++<!--<header class="site-header">-->
++<!--    <div class="full-logo">-->
++<!--        <img src="assets/images/logo-full.svg" alt="Conference logo">-->
++<!--    </div>-->
++<!--</header>-->
++
++<!--<main class="ticket wrapper">-->
++<!--    <section id="ticket-generator-form" aria-labelledby="form-heading">-->
++<!--        <h2 id="form-heading">Generate your ticket</h2>-->
++<!--        &lt;!&ndash; form here &ndash;&gt;-->
++<!--    </section>-->
++
++<!--    <section id="generated-ticket" aria-labelledby="ticket-heading">-->
++<!--        <h2 id="ticket-heading">Your ticket</h2>-->
++<!--        &lt;!&ndash; generated ticket here &ndash;&gt;-->
++<!--    </section>-->
++<!--</main>-->
++>>>>>>> main
+ </body>
+ </html>
+\ No newline at end of file
+Index: ../15-Results-Summary/README-template.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Frontend Mentor - Results summary component solution\r\n\r\nThis is a solution to the [Results summary component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/results-summary-component-CE_K6s0maV). Frontend Mentor challenges help you improve your coding skills by building realistic projects. \r\n\r\n## Table of contents\r\n\r\n- [Overview](#overview)\r\n  - [The challenge](#the-challenge)\r\n  - [Screenshot](#screenshot)\r\n  - [Links](#links)\r\n- [My process](#my-process)\r\n  - [Built with](#built-with)\r\n  - [What I learned](#what-i-learned)\r\n  - [Continued development](#continued-development)\r\n  - [Useful resources](#useful-resources)\r\n- [Author](#author)\r\n- [Acknowledgments](#acknowledgments)\r\n\r\n**Note: Delete this note and update the table of contents based on what sections you keep.**\r\n\r\n## Overview\r\n\r\n### The challenge\r\n\r\nUsers should be able to:\r\n\r\n- View the optimal layout for the interface depending on their device's screen size\r\n- See hover and focus states for all interactive elements on the page\r\n- **Bonus**: Use the local JSON data to dynamically populate the content\r\n\r\n### Screenshot\r\n\r\n![](./screenshot.jpg)\r\n\r\nAdd a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select \"Take a Screenshot\". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.\r\n\r\nAlternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. \r\n\r\nThen crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.\r\n\r\n**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**\r\n\r\n### Links\r\n\r\n- Solution URL: [Add solution URL here](https://your-solution-url.com)\r\n- Live Site URL: [Add live site URL here](https://your-live-site-url.com)\r\n\r\n## My process\r\n\r\n### Built with\r\n\r\n- Semantic HTML5 markup\r\n- CSS custom properties\r\n- Flexbox\r\n- CSS Grid\r\n- Mobile-first workflow\r\n- [React](https://reactjs.org/) - JS library\r\n- [Next.js](https://nextjs.org/) - React framework\r\n- [Styled Components](https://styled-components.com/) - For styles\r\n\r\n**Note: These are just examples. Delete this note and replace the list above with your own choices**\r\n\r\n### What I learned\r\n\r\nUse this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.\r\n\r\nTo see how you can add code snippets, see below:\r\n\r\n```html\r\n<h1>Some HTML code I'm proud of</h1>\r\n```\r\n```css\r\n.proud-of-this-css {\r\n  color: papayawhip;\r\n}\r\n```\r\n```js\r\nconst proudOfThisFunc = () => {\r\n  console.log('\uD83C\uDF89')\r\n}\r\n```\r\n\r\nIf you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.\r\n\r\n**Note: Delete this note and the content within this section and replace with your own learnings.**\r\n\r\n### Continued development\r\n\r\nUse this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.\r\n\r\n**Note: Delete this note and the content within this section and replace with your own plans for continued development.**\r\n\r\n### Useful resources\r\n\r\n- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.\r\n- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.\r\n\r\n**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**\r\n\r\n## Author\r\n\r\n- Website - [Add your name here](https://www.your-site.com)\r\n- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)\r\n- Twitter - [@yourusername](https://www.twitter.com/yourusername)\r\n\r\n**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**\r\n\r\n## Acknowledgments\r\n\r\nThis is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.\r\n\r\n**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../15-Results-Summary/README-template.md b/../15-Results-Summary/README-template.md
+--- a/../15-Results-Summary/README-template.md	
++++ b/../15-Results-Summary/README-template.md	
+@@ -1,112 +1,47 @@
++<<<<<<<< HEAD:15-Results-Summary/README-template.md
+ # Frontend Mentor - Results summary component solution
+ 
+ This is a solution to the [Results summary component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/results-summary-component-CE_K6s0maV). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
++========
++ <!-- Form starts -->
+ 
+-## Table of contents
++Your Journey to Coding Conf 2025 Starts Here!
++>>>>>>>> main:07-Conference-Ticket-Generator/README-template.md
+ 
+-- [Overview](#overview)
+-  - [The challenge](#the-challenge)
+-  - [Screenshot](#screenshot)
+-  - [Links](#links)
+-- [My process](#my-process)
+-  - [Built with](#built-with)
+-  - [What I learned](#what-i-learned)
+-  - [Continued development](#continued-development)
+-  - [Useful resources](#useful-resources)
+-- [Author](#author)
+-- [Acknowledgments](#acknowledgments)
++Secure your spot at next year's biggest coding conference.
+ 
+-**Note: Delete this note and update the table of contents based on what sections you keep.**
++Upload Avatar
++Drag and drop or click to upload
++Upload your photo (JPG or PNG, max size: 500KB).
+ 
+-## Overview
++Full Name
+ 
+-### The challenge
++Email Address
++example@email.com
+ 
+-Users should be able to:
++GitHub Username
++@yourusername
+ 
++Generate My Ticket
++
++<<<<<<<< HEAD:15-Results-Summary/README-template.md
+ - View the optimal layout for the interface depending on their device's screen size
+ - See hover and focus states for all interactive elements on the page
+ - **Bonus**: Use the local JSON data to dynamically populate the content
+-
+-### Screenshot
+-
+-![](./screenshot.jpg)
+-
+-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+-
+-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+-
+-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+-
+-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+-
+-### Links
+-
+-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+-
+-## My process
+-
+-### Built with
+-
+-- Semantic HTML5 markup
+-- CSS custom properties
+-- Flexbox
+-- CSS Grid
+-- Mobile-first workflow
+-- [React](https://reactjs.org/) - JS library
+-- [Next.js](https://nextjs.org/) - React framework
+-- [Styled Components](https://styled-components.com/) - For styles
+-
+-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+-
+-### What I learned
+-
+-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+-
+-To see how you can add code snippets, see below:
++========
++<!-- Form ends -->
++>>>>>>>> main:07-Conference-Ticket-Generator/README-template.md
+ 
+-```html
+-<h1>Some HTML code I'm proud of</h1>
+-```
+-```css
+-.proud-of-this-css {
+-  color: papayawhip;
+-}
+-```
+-```js
+-const proudOfThisFunc = () => {
+-  console.log('🎉')
+-}
+-```
+ 
+-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+ 
+-**Note: Delete this note and the content within this section and replace with your own learnings.**
+ 
+-### Continued development
++<!-- Generated tickets starts -->
+ 
+-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
++Congrats, <!-- Full Name -->! Your ticket is ready.
+ 
+-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
++We've emailed your ticket to <!-- Email Address --> and will send updates in the run up to the event.
+ 
+-### Useful resources
++Coding Conf
++Jan 31, 2025 / Austin, TX
+ 
+-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
+-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+-
+-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+-
+-## Author
+-
+-- Website - [Add your name here](https://www.your-site.com)
+-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+-
+-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+-
+-## Acknowledgments
+-
+-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+-
+-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
++<!-- Generated tickets ends -->
+\ No newline at end of file
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># remove desigen files\r\ndesign\r\nREADME-template.md\r\nstyle-guide.md\r\nnode_modules
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	
++++ b/.gitignore	
+@@ -2,4 +2,7 @@
+ design
+ README-template.md
+ style-guide.md
+-node_modules
+\ No newline at end of file
++<<<<<<< HEAD
++node_modules
++=======
++>>>>>>> main
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa\" name=\"Changes\" comment=\"refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gitignore\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/README-template.md\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/README.md\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/README.md\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/index.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/main.js\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/models/Event.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/models/Event.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/models/Ticket.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/models/Ticket.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/models/User.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/models/User.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/services/validationService.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/services/ValidationService.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/style-guide.md\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/style.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/style.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/utils/dom.js\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/utils/error-state.js\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"tsconfig.json\" />\r\n        <option value=\"JavaScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"PREVIOUS_COMMIT_AUTHORS\">\r\n      <list>\r\n        <option value=\"mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;\" />\r\n      </list>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"JsbtTreeLayoutManager\">\r\n    <layout place=\"tools.popupGrunt\">\r\n      <scroll-view-position x=\"0\" y=\"0\" />\r\n    </layout>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"PackageJsonUpdateNotifier\">\r\n    <dismissed value=\"$PROJECT_DIR$/package.json\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 7\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"33CMXt1qaj3yP3mKweCMhJWOZga\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Jest.ValidationService.returns true if file size is under 500KB.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/Han/Desktop/IT/front-end/projects/Frontend-Mentor-Challenges/07-Conference-Ticket-Generator/node_modules/jest&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;npm.test.executor&quot;: &quot;Run&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Han\\Desktop\\IT\\front-end\\projects\\Frontend-Mentor-Challenges\\07-Conference-Ticket-Generator\\tests\\unit\" />\r\n      <recent name=\"C:\\Users\\Han\\Desktop\\IT\\front-end\\projects\\Frontend-Mentor-Challenges\\07-Conference-Ticket-Generator/src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"npm.test\">\r\n    <configuration name=\"ValidationService.returns true if file size is under 500KB\" type=\"JavaScriptTestRunnerJest\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <node-interpreter value=\"project\" />\r\n      <jest-package value=\"$PROJECT_DIR$/node_modules/jest\" />\r\n      <working-dir value=\"$PROJECT_DIR$\" />\r\n      <jest-options value=\"--watch\" />\r\n      <envs />\r\n      <scope-kind value=\"TEST\" />\r\n      <test-file value=\"$PROJECT_DIR$/tests/service/ValidationService.test.js\" />\r\n      <test-names>\r\n        <test-name value=\"ValidationService\" />\r\n        <test-name value=\"returns true if file size is under 500KB\" />\r\n      </test-names>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"test\" type=\"js.build_tools.npm\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <package-json value=\"$PROJECT_DIR$/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"test\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"npm.test\" />\r\n        <item itemvalue=\"Jest.ValidationService.returns true if file size is under 500KB\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa\" name=\"Changes\" comment=\"\" />\r\n      <created>1758816651367</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1758816651367</updated>\r\n      <workItem from=\"1758816655721\" duration=\"21716000\" />\r\n      <workItem from=\"1758909182470\" duration=\"41224000\" />\r\n      <workItem from=\"1759134653288\" duration=\"28552000\" />\r\n      <workItem from=\"1759184651779\" duration=\"3212000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"`Feat:setup new style.css and refactor html code to remove redundants`\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758907849961</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758907849961</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758914962972</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758914962972</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758915121365</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758915121365</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1759013779291</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1759013779291</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1759013840859</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1759013840859</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"origine/dev\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origine/dev\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n              <option name=\"LONG_EDGES_VISIBLE\" value=\"true\" />\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT\" value=\"false\" />\r\n    <option name=\"CHECK_NEW_TODO\" value=\"false\" />\r\n    <MESSAGE value=\"`Feat:setup new style.css and refactor html code to remove redundants`\" />\r\n    <MESSAGE value=\"`Feat:setup new style.css and refactor html code to remove redundants`&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;\" />\r\n    <MESSAGE value=\"feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices\" />\r\n    <MESSAGE value=\"feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;\" />\r\n    <MESSAGE value=\"`refactor(html): rebuild structure for SEO, performance, and accessibility`\" />\r\n    <MESSAGE value=\"refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,6 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
++<<<<<<< HEAD
+     <list default="true" id="2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa" name="Changes" comment="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability">
+       <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+@@ -20,12 +21,25 @@
+       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/utils/dom.js" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/utils/error-state.js" beforeDir="false" />
++=======
++    <list default="true" id="2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/README-template.md" beforeDir="false" afterPath="$PROJECT_DIR$/README-template.md" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/assets/fonts/Inconsolata-Regular.woff" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/assets/fonts/Inconsolata-VariableFont.woff2" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/assets/images/favicon-32x32.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
++>>>>>>> main
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
++<<<<<<< HEAD
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+@@ -57,11 +71,24 @@
+   &quot;customColor&quot;: &quot;&quot;,
+   &quot;associatedIndex&quot;: 7
+ }</component>
++=======
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProjectColorInfo"><![CDATA[{
++  "customColor": "",
++  "associatedIndex": 7
++}]]></component>
++>>>>>>> main
+   <component name="ProjectId" id="33CMXt1qaj3yP3mKweCMhJWOZga" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
++<<<<<<< HEAD
+   <component name="PropertiesComponent">{
+   &quot;keyToString&quot;: {
+     &quot;Jest.ValidationService.returns true if file size is under 500KB.executor&quot;: &quot;Run&quot;,
+@@ -113,6 +140,18 @@
+       </list>
+     </recent_temporary>
+   </component>
++=======
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "git-widget-placeholder": "dev",
++    "node.js.detected.package.eslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm"
++  }
++}]]></component>
++>>>>>>> main
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -121,6 +160,7 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1758816651367</updated>
++<<<<<<< HEAD
+       <workItem from="1758816655721" duration="21716000" />
+       <workItem from="1758909182470" duration="41224000" />
+       <workItem from="1759134653288" duration="28552000" />
+@@ -167,11 +207,16 @@
+       <updated>1759013840859</updated>
+     </task>
+     <option name="localTasksCounter" value="6" />
++=======
++      <workItem from="1758816655721" duration="1835000" />
++    </task>
++>>>>>>> main
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++<<<<<<< HEAD
+   <component name="Vcs.Log.Tabs.Properties">
+     <option name="RECENT_FILTERS">
+       <map>
+@@ -222,4 +267,6 @@
+     <MESSAGE value="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability" />
+     <option name="LAST_COMMIT_MESSAGE" value="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability" />
+   </component>
++=======
++>>>>>>> main
+ </project>
+\ No newline at end of file
+diff --git a/script.js b/script.js
+new file mode 100644
