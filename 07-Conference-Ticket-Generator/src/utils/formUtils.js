@@ -1,6 +1,6 @@
-// Form validation Utils
+// FormUtils validation Utils
 
-const  Form=(()=>{
+const  FormUtils=(()=>{
     const ERROR_COLOR = "var(--error)";
     const NEUTRAL_COLOR = "var(--neutral-500)";
 
@@ -40,6 +40,7 @@ const  Form=(()=>{
         let container = input.nextElementSibling;
         if (!container) {
             container = document.createElement("div");
+            container.className="error-container"
             input.insertAdjacentElement("afterend", container);
         }
         return container;
@@ -70,4 +71,4 @@ const  Form=(()=>{
 })();
 
 
-export default Form;
+export default FormUtils;

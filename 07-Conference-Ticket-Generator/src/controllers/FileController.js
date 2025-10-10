@@ -1,16 +1,16 @@
-import FileValidationService from "../services/FileValidation.Service.js";
-import UIService from "../services/UI.Service.js";
+import FileValidationService from "../services/FileValidationService.js";
+import UIService from "../services/UIService.js";
 import File from "../models/File.model.js";
 import { Store } from '../store/state.store.js';
 
 export default class FileController {
      #DEFAULT_IMAGE = "assets/images/icon-upload.svg";
-    constructor({ form, fileInput, image, helperText, actionsButtons, infoMessage, errorMessage, iconInfo, actions }) {
-        this.form = form;
+    constructor({fileInput, image, helperText, actionsButtons,requiredFiledMessage, infoMessage, errorMessage, iconInfo, actions }) {
         this.fileInput = fileInput;
         this.image = image;
         this.helperText = helperText;
         this.actionsButtons = actionsButtons;
+        this.requiredFiledMessage=requiredFiledMessage;
         this.infoMessage = infoMessage;
         this.errorMessage = errorMessage;
         this.iconInfo = iconInfo;
@@ -31,7 +31,7 @@ export default class FileController {
         const fileModel = new File(file);
 
         // Reset UI before applying new state
-        UIService.resetUI(this.infoMessage, this.errorMessage, this.iconInfo, this.actions);
+        UIService.resetUI(this.requiredFiledMessage,this.infoMessage, this.errorMessage, this.iconInfo, this.actions);
 
         if (!FileValidationService.isValidSize(fileModel.file)) {
             UIService.fileOverSize(this.infoMessage, this.errorMessage, this.iconInfo);

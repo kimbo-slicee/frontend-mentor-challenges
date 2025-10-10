@@ -1,4 +1,4 @@
-export function getFutureDateFormatted() {
+export function getFormatedDate() {
         const DAYS=5
         const date = new Date();
         date.setDate(date.getDate() + DAYS);

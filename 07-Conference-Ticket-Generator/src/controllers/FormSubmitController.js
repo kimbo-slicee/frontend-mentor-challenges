@@ -1,15 +1,15 @@
-import ValidationService from "../services/Validation.Service.js";
+import RegexValidationService from "../services/RegexValidationService.js";
 import User from "../models/User.model.js";
-import UIService from "../services/UI.Service.js"
+import UIService from "../services/UIService.js"
 import {Store} from '../store/state.store.js';
-import TicketService from "../services/Ticket.Service.js";
+import TicketService from "../services/TicketService.js";
 
 export default class FormSubmitController {
-    constructor({form, inputs, errors, submitButton, formSection, generatedTicketSection,ticketWrapper,highlightedName,highlightedEmail}) {
+    constructor({form, inputs, errors, fileInput, formSection, generatedTicketSection,ticketWrapper,highlightedName,highlightedEmail}) {
             this.form = form;
             this.inputs = inputs;
             this.errors = errors;
-            this.submitButton = submitButton;
+            this.fileInput = fileInput;
             this.formSection=formSection;
             this.generatedTicketSection=generatedTicketSection;
             // ticket elements
@@ -31,12 +31,12 @@ export default class FormSubmitController {
 
     handleInput(e) {
         const input = e.target;
-        ValidationService.validate(input);
+        RegexValidationService.validate(input);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        const validationResults = [...this.inputs].map(input => ValidationService.validate(input));
+        const validationResults = [...this.inputs].map(input => RegexValidationService.validate(input));
         const isFormValid = validationResults.every(isValid => isValid === true);
 
         if (!isFormValid) {
@@ -45,7 +45,8 @@ export default class FormSubmitController {
         }
 
         if (!Store.file) {
-            alert("Please upload a file."); // show UI error
+            // Call UI service
+            UIService.fileEmpty(this.fileInput,"Upload image under 500KB")
             return;
         }
 
@@ -69,7 +70,7 @@ export default class FormSubmitController {
     showErrors() {
         this.errors.forEach((errorEl, index) => {
             const input = this.inputs[index];
-            const isValid = ValidationService.validate(input);
+            const isValid = RegexValidationService.validate(input);
             errorEl.textContent = isValid ? "" : "Invalid input";
         });
     }

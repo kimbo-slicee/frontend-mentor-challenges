@@ -1,10 +1,10 @@
-import UIService from "./UI.Service.js";
+import UIService from "./UIService.js";
 
 /**
  * Handles regex-based input validation for form fields.
  * Each field is defined in the static `rules` object.
  */
-export default class ValidationService {
+export default class RegexValidationService {
     // Define validation rules in one centralized map
     static rules = {
         name: {

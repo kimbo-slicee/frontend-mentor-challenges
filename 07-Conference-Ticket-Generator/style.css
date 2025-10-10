@@ -198,9 +198,9 @@
     }
     h2{
         font-size: clamp(
-                var(--fs-4xl),
-                calc(var(--fs-4xl) + 2vw),
-                var(--fs-5xl));
+                var(--fs-3xl),
+                calc(var(--fs-3xl) + 2vw),
+                var(--fs-4xl));
     }
 
     h3 {
@@ -289,27 +289,18 @@
         }
     }
 
+    /* Step 1 — make .wrapper a container */
     .wrapper {
         text-align: center;
         margin-inline: auto;
         padding: var(--space-sm);
-        @container (width > 400px) {
-            width: 80%;
-        }
-        @container (width >996px ) {
-            width: 65%;
+        @container (min-width:650px) {
+            width: 55%;
         }
     }
 
     form {
-        margin-top: var(--space-xl);
-        margin-inline: auto;
-        @container (width > 400px) {
-            width: 80%;
-        }
-        @media (width > 996px) {
-            width: 60%;
-        }
+        padding: var(--space-md);
     }
 
     fieldset {
@@ -329,9 +320,10 @@
         display: inline-block;
     }
     /* ----- Hero Title ------ */
-    h2 p{
+    h2 + p{
         margin-inline: auto;
-        max-width: 50%;
+        max-width: 80%;
+        min-width: 60%;
     }
     /* --- form-styling --- */
     .form-group {
@@ -596,7 +588,7 @@
     }
     /*input states styling */
 
-    .messages {
+    .messages{
         color: var(--neutral-500);
         font-size: var(--fs-sm);
         display: flex;
@@ -604,21 +596,20 @@
         gap: var(--space-xs);
     }
 
-    .error-message {
+    .error-message{
         color: var(--error);
-        font-size: var(--fs-xs);
     }
 
     svg.icon-info.error path{
         stroke:var(--error);
     }
     .show{
-        display: block;
+        display: block ;
     }
     .hidden{
         display: none !important;
     }
-    .upload-actions.show {
+    .upload-actions.show{
         display: grid;
     }
 

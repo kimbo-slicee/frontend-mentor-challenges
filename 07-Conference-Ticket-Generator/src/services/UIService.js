@@ -1,6 +1,6 @@
-// UI.Service.test.js.js
+// UIService.test.js.js
 import DOMutils from "../utils/DOMutils.js";
-import Form from "../utils/form.js";
+import FormUtils from "../utils/formUtils.js";
 
 export default class UIService {
     // Image preview
@@ -11,9 +11,10 @@ export default class UIService {
     }
 
     // Reset all UI to default
-    static resetUI(infoMessage, errorMessage, iconInfo, actions) {
+    static resetUI(requiredFiledMessage,infoMessage, errorMessage, iconInfo, actions) {
         DOMutils.removeClass(infoMessage, "hidden");
         DOMutils.hideElement(errorMessage);
+        DOMutils.hideElement(requiredFiledMessage)
         DOMutils.removeClass(iconInfo, "error");
         DOMutils.hideElement(actions);
     }
@@ -29,7 +30,19 @@ export default class UIService {
         DOMutils.removeClass(helperText, "hidden");
     }
 
-    // Validation feedback
+    // File validation
+    static fileEmpty(inputFile){
+        if(!inputFile) return;
+        const messageContainer=inputFile.closest("div").nextElementSibling;
+        const icon=messageContainer.querySelector("svg");
+        const infoMessage=messageContainer.querySelector(".info-message")
+        const errorMessage=messageContainer.querySelector(".error-message");
+        const requiredFiledMessage=messageContainer.querySelector(".error-message.filed-required");
+        DOMutils.hideElement(infoMessage)
+        DOMutils.hideElement(errorMessage);
+        DOMutils.showElement(requiredFiledMessage)
+        DOMutils.addClass(icon, "error");
+    }
     static fileOverSize(infoMessage, errorMessage, iconInfo) {
         DOMutils.showElement(errorMessage);
         DOMutils.hideElement(infoMessage);
@@ -37,10 +50,10 @@ export default class UIService {
     }
 
     static inputState(input,message){
-        Form.showError(input,message);
+        FormUtils.showError(input,message);
     }
     static cleanInputError(input){
-        Form.clearError(input)
+        FormUtils.clearError(input)
     }
     static toggleVisibility(eleOne,eleTwo){
            DOMutils.toggleClass(eleTwo,"hidden");
