@@ -184,6 +184,9 @@
     article{
         container-type: inline-size;
     }
+    svg path{
+        color: var(--neutral-500);
+    }
 
     h1, h2, h3, h4 {
         font-family: var(--ff-heading);
@@ -195,9 +198,9 @@
     }
     h2{
         font-size: clamp(
-                var(--fs-4xl),
-                calc(var(--fs-4xl) + 2vw),
-                var(--fs-5xl));
+                var(--fs-3xl),
+                calc(var(--fs-3xl) + 2vw),
+                var(--fs-4xl));
     }
 
     h3 {
@@ -213,7 +216,7 @@
 
     label {
         display: block;
-        font-weight: var(--fw-500);
+        font-weight: var(--fw-400);
     }
 
     input, .upload-area{
@@ -237,9 +240,9 @@
         width: 100%;
         &:focus-visible, &:hover {
             box-shadow: var(--hover-border);
-        }
-    ;
+        };
     }
+
 
 }
 
@@ -286,22 +289,18 @@
         }
     }
 
+    /* Step 1 — make .wrapper a container */
     .wrapper {
         text-align: center;
         margin-inline: auto;
         padding: var(--space-sm);
-
-        @container (width > 996px) {
-            width: 50%;
+        @container (min-width:650px) {
+            width: 55%;
         }
     }
 
     form {
-        margin-top: var(--space-xl);
-        margin-inline: auto;
-        @media (width > 996px) {
-            width: 60%;
-        }
+        padding: var(--space-md);
     }
 
     fieldset {
@@ -320,7 +319,12 @@
     .site-logo img {
         display: inline-block;
     }
-
+    /* ----- Hero Title ------ */
+    h2 + p{
+        margin-inline: auto;
+        max-width: 80%;
+        min-width: 60%;
+    }
     /* --- form-styling --- */
     .form-group {
         text-align: left;
@@ -394,24 +398,29 @@
         font-weight: var(--fw-800);
         border-radius: 8px;
     }
+    /* ===================================================
+       COMPONENTS – Gendered ticket Section
+       Description: Styles for Gendered ticket Section
+    ===================================================
+    */
 
-    /*gendered ticket Section styling */
     article.ticket {
         position: relative;
         margin-inline: auto;
         margin-block-start: 3rem;
-        background: url("assets/images/pattern-ticket.svg") center/contain no-repeat;
+        background: url("assets/images/pattern-ticket.svg") center/cover no-repeat;
         display: grid;
         padding: var(--space-md);
         gap: clamp(0.75rem, 1.5vw, 1.5rem);
-        max-width: 500px;
+        max-width: 400px;
+        min-width: 250px;
         width: 100%;
         aspect-ratio: 2 / 1;
     }
 
     /* --- Logo ---- */
     header .ticket__logo {
-        width: 35px;
+        width: 30px;
     }
 
     .ticket__id {
@@ -430,7 +439,7 @@
         display: flex;
         align-items: flex-start;
         text-align: start;
-        gap: var(--space-md);
+        gap: var(--space-sm);
     }
 
 
@@ -440,7 +449,7 @@
     }
 
     .ticket__user img {
-        max-width: 65px;
+        max-width: 50px;
         border-radius: var(--radius-md);
     }
 
@@ -454,11 +463,70 @@
 
     .ticket__user-github {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: auto 1fr;
         gap: var(--space-xs);
         font-size: var(--fs-sm);
         color: var(--neutral-500);
     }
+
+    /*======= Loader Stying ==========*/
+    .loader {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        border: 3px solid;
+        border-color: #FFF #FFF transparent transparent;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+        display: none;
+    }
+    .loader::after,
+    .loader::before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border: 3px solid;
+        border-color: transparent transparent var(--primary-700) var(--primary-700);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        box-sizing: border-box;
+        animation: rotationBack 0.5s linear infinite;
+        transform-origin: center center;
+    }
+    .loader::before {
+        width: 32px;
+        height: 32px;
+        border-color: #FFF #FFF transparent transparent;
+        animation: rotation 1.5s linear infinite;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes rotationBack {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(-360deg);
+        }
+    }
+
+
+
 }
 
 /* ========== UTILITIES ========== */
@@ -512,14 +580,15 @@
             margin-bottom: var(--space-md);
         }
     }
-    .highlight {
+    .name-highlighted,
+    .email-highlighted {
         background: var(--text-gradient);
         -webkit-text-fill-color: transparent;
         -webkit-background-clip: text;
     }
     /*input states styling */
 
-    .messages {
+    .messages{
         color: var(--neutral-500);
         font-size: var(--fs-sm);
         display: flex;
@@ -527,8 +596,7 @@
         gap: var(--space-xs);
     }
 
-    .message-error {
-        display: none;
+    .error-message{
         color: var(--error);
     }
 
@@ -536,10 +604,13 @@
         stroke:var(--error);
     }
     .show{
-        display: block;
+        display: block ;
     }
     .hidden{
         display: none !important;
+    }
+    .upload-actions.show{
+        display: grid;
     }
 
     .upload-actions.active {
