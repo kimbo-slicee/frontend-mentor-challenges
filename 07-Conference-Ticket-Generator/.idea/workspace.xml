@@ -4,47 +4,153 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README-template.md" beforeDir="false" afterPath="$PROJECT_DIR$/README-template.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inconsolata-Regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/Inconsolata-VariableFont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+    <list default="true" id="2eb0253e-ae8a-4a4d-a12b-e5933b9e02fa" name="Changes" comment="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/TicketService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/TicketService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/UIService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/UIService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/DateFormat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/GenerateDate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/formUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/FormUtils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/locationGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LocationGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/ticket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/TicketUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="tsconfig.json" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="33CMXt1qaj3yP3mKweCMhJWOZga" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "dev",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Jest.FileController.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.FileController.handleFileRemove resets input and image.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.UUID Service.should generate an ID with the correct length.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.ValidationService.returns true if file size is under 500KB.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.generateDate.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js Test Runner.FileController.handleFileUpload calls UIService.fileOverSize if file too big.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/Han/Desktop/IT/front-end/projects/Frontend-Mentor-Challenges/07-Conference-Ticket-Generator/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Han\Desktop\IT\front-end\projects\Frontend-Mentor-Challenges\07-Conference-Ticket-Generator\config" />
+      <recent name="C:\Users\Han\Desktop\IT\front-end\projects\Frontend-Mentor-Challenges\07-Conference-Ticket-Generator\src" />
+      <recent name="C:\Users\Han\Desktop\IT\front-end\projects\Frontend-Mentor-Challenges\07-Conference-Ticket-Generator\tests\unit" />
+      <recent name="C:\Users\Han\Desktop\IT\front-end\projects\Frontend-Mentor-Challenges\07-Conference-Ticket-Generator/src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Jest.FileController">
+    <configuration name="FileController" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/tests/unit/services/ValidationService.test.js" />
+      <test-names>
+        <test-name value="FileController" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="FileController.handleFileRemove resets input and image" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/unit/services/ValidationService.test.js" />
+      <test-names>
+        <test-name value="FileController" />
+        <test-name value="handleFileRemove resets input and image" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="UUID Service.should generate an ID with the correct length" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/unit/utils/UUID.test.js" />
+      <test-names>
+        <test-name value="UUID Service" />
+        <test-name value="should generate an ID with the correct length" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="generateDate" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/tests/unit/utils/GenerateDate.test.js" />
+      <test-names>
+        <test-name value="generateDate" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.test" />
+        <item itemvalue="Jest.generateDate" />
+        <item itemvalue="Jest.UUID Service.should generate an ID with the correct length" />
+        <item itemvalue="Jest.FileController" />
+        <item itemvalue="Jest.FileController.handleFileRemove resets input and image" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -53,11 +159,120 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1758816651367</updated>
-      <workItem from="1758816655721" duration="1835000" />
+      <workItem from="1758816655721" duration="21716000" />
+      <workItem from="1758909182470" duration="41224000" />
+      <workItem from="1759134653288" duration="28552000" />
+      <workItem from="1759184651779" duration="8920000" />
+      <workItem from="1759273757537" duration="6759000" />
+      <workItem from="1759440283873" duration="25317000" />
+      <workItem from="1759773121299" duration="66950000" />
     </task>
+    <task id="LOCAL-00001" summary="`Feat:setup new style.css and refactor html code to remove redundants`">
+      <option name="closed" value="true" />
+      <created>1758907849961</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758907849961</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices">
+      <option name="closed" value="true" />
+      <created>1758914962972</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758914962972</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;">
+      <option name="closed" value="true" />
+      <created>1758915121365</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758915121365</updated>
+    </task>
+    <task id="LOCAL-00004" summary="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability">
+      <option name="closed" value="true" />
+      <created>1759013779291</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1759013779291</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability">
+      <option name="closed" value="true" />
+      <created>1759013840859</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1759013840859</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origine/dev" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origine/dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="LONG_EDGES_VISIBLE" value="true" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="`Feat:setup new style.css and refactor html code to remove redundants`" />
+    <MESSAGE value="`Feat:setup new style.css and refactor html code to remove redundants`&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;" />
+    <MESSAGE value="feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices" />
+    <MESSAGE value="feat(css): implement responsive background shapes with multiple backgrounds + image-set()&#10;&#10;- Replaced messy &lt;img&gt; tags with a single .bg-shapes layer&#10;- Used multiple backgrounds in CSS to position all decorative shapes&#10;- Applied media queries for layout-specific swaps (mobile / tablet / desktop)&#10;- Integrated image-set() for high-DPI screens to ensure crisp visuals&#10;- Result: cleaner HTML, more responsive backgrounds, and sharper assets on Retina devices&#10;&#10;Signed-off-by: mohammed el aouri &lt;mohammedelaouri@gmail.com&gt;" />
+    <MESSAGE value="`refactor(html): rebuild structure for SEO, performance, and accessibility`" />
+    <MESSAGE value="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(css): clean up reset, fonts, and variables layers&#10;&#10;- Group reset rules for better readability and consistency&#10;- Remove duplicate declarations (background, border, outline)&#10;- Simplify font-family variables (heading inherits body)&#10;- Organize CSS custom properties by category (fonts, colors, spacing, etc.)&#10;- Replace repeated HSL values with existing variables&#10;- Maintain clear layer separation for scalability" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/utils/DOMutils.js</url>
+          <line>14</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
