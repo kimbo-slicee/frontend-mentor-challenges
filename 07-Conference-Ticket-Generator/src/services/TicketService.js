@@ -1,9 +1,9 @@
 import {Store} from "../store/state.store.js";
 import Ticket from "../models/Ticket.model.js";
-import TicketUtils from "../utils/ticket.js";
+import TicketUtils from "../utils/TicketUtils.js";
 import {generateUUID} from "../utils/UUID.js";
-import {getFormatedDate} from "../utils/DateFormat.js";
-import {getRandomLocation} from "../utils/locationGenerator.js";
+import {generateDate} from "../utils/GenerateDate.js";
+import {getRandomLocation} from "../utils/LocationGenerator.js";
 
 export default class TicketService{
     // create new ticket and associate a ticket for the user
@@ -11,7 +11,7 @@ export default class TicketService{
         if (!user) throw new Error("Cannot generate ticket without user data");
 
         const ticketId = generateUUID(5); // from your utils
-        const createdAt = getFormatedDate();
+        const createdAt = generateDate();
         const image=URL.createObjectURL(Store.file);
         const location=getRandomLocation();
         const ticket = new Ticket(createdAt,location,ticketId,image, user.name, user.email, user.github);
@@ -22,7 +22,7 @@ export default class TicketService{
     }
     static displayTicket(ticket,ticketWrapper,highlightedName,highlightedEmail){
         const {name,email}=ticket;
-        TicketUtils.displayHighlightedText(highlightedName,name);
+            TicketUtils.displayHighlightedText(highlightedName,name);
         TicketUtils.displayHighlightedText(highlightedEmail,email)
         TicketUtils.displayGeneratedTicket(ticket,ticketWrapper);
     }

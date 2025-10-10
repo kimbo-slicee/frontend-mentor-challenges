@@ -1,6 +1,6 @@
 // UIService.test.js.js
 import DOMutils from "../utils/DOMutils.js";
-import FormUtils from "../utils/formUtils.js";
+import FormUtils from "../utils/FormUtils.js";
 
 export default class UIService {
     // Image preview

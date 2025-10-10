@@ -1,4 +1,4 @@
-export function getFormatedDate() {
+export function generateDate() {
         const DAYS=5
         const date = new Date();
         date.setDate(date.getDate() + DAYS);
