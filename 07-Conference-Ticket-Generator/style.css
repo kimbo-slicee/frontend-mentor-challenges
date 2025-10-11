@@ -609,8 +609,12 @@
     .hidden{
         display: none !important;
     }
+      
     .upload-actions.show{
         display: grid;
     }
 
+    .upload-actions.active {
+        display: grid;
+    }
 }
