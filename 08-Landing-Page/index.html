@@ -1,101 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Manage landing page</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="assets/images/logo.svg">
+  <link rel="stylesheet" href="styles/main.css"/>
+  <script src="scripts/main.js" defer></script>
+  <title>Manage landing page</title>
 </head>
 <body>
+<!-- Primary site header -->
+<header class="header wrapper">
+        <!-- Brand Logo -->
+        <div class="logo">
+            <a href="/" class="header__logo" aria-label="Manage Home">
+                <img src="assets/images/logo.svg" alt="Manage logo" />
+            </a>
+        </div>
 
-  Pricing
-  Product
-  About Us
-  Careers
-  Community
+        <! --- Navigation --- >
+        <nav class="header__navigation-menu" aria-label="Main navigation">
+            <!-- Main nav list -->
+            <ul id="primary-navigation" class="nav-list" role="list">
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#product">Product</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+        </nav>
 
-  Get Started
+        <! --- CTA --- >
+        <div class="cta">
+            <!-- Theme Switcher -->
+            <div class="header__theme-switch">
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                        <path
+                                d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm40-83q119-15 199.5-104.5T800-480q0-123-80.5-212.5T520-797v634Z"/>
+                    </svg>
+                </button>
+            </div>
+            <!-- Call-to-Action -->
+            <a class="btn btn-primary">Get Started</a>
+        </div>
 
-  Bring everyone together to build better products.
-
-  Manage makes it simple for software teams to plan day-to-day 
-  tasks while keeping the larger team goals in view.
-
-  Get Started
-
-  What’s different about Manage?
-
-  Manage provides all the functionality your team needs, without 
-  the complexity. Our software is tailor-made for modern digital 
-  product teams. 
-
-  01
-  Track company-wide progress
-  See how your day-to-day tasks fit into the wider vision. Go from 
-  tracking progress at the milestone level all the way done to the 
-  smallest of details. Never lose sight of the bigger picture again.
-
-  02
-  Advanced built-in reports
-  Set internal delivery estimates and track progress toward company 
-  goals. Our customisable dashboard helps you build out the reports 
-  you need to keep key stakeholders informed.
-
-  03
-  Everything you need in one place
-  Stop jumping from one service to another to communicate, store files, 
-  track tasks and share documents. Manage offers an all-in-one team 
-  productivity solution.
-
-  What they’ve said
-
-  Anisha Li
-  “Manage has supercharged our team’s workflow. The ability to maintain 
-  visibility on larger milestones at all times keeps everyone motivated.”
-
-  Ali Bravo
-  “We have been able to cancel so many other subscriptions since using 
-  Manage. There is no more cross-channel confusion and everyone is much 
-  more focused.”
-
-  Richard Watts
-  “Manage allows us to provide structure and process. It keeps us organized 
-  and focused. I can’t stop recommending them to everyone I talk to!”
-
-  Shanai Gough
-  “Their software allows us to track, manage and collaborate on our projects 
-  from anywhere. It keeps the whole team in-sync without being intrusive.”
-
-  Get Started
-
-  Simplify how your team works today.
-  Get Started
-
-  Home
-  Pricing
-  Products
-  About Us
-  Careers
-  Community
-  Privacy Policy
-
-  Updates in your inbox…
-  Go
-
-  Copyright 2020. All Rights Reserved
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+        <!-- Mobile navigation toggle -->
+        <div class="mobile-navigation">
+            <button class="hamburger-icon" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" role="img" aria-hidden="true">
+                    <path fill="currentColor" fill-rule="evenodd" d="M0 0h25v4H0zM0 7h25v4H0zM0 14h25v4H0z"/>
+                </svg>
+            </button>
+            <button class="close-icon hidden" aria-controls="primary-navigation" aria-expanded="true"
+                    aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="22" role="img" aria-hidden="true">
+                    <path fill="currentColor" fill-rule="evenodd"
+                          d="M17.925.747l2.828 2.828L13.328 11l7.425 7.425-2.828 2.828-7.425-7.425-7.425 7.425-2.828-2.828L7.671 11 .247 3.575 3.075.747 10.5 8.171 17.925.747z"/>
+                </svg>
+            </button>
+        </div>
+</header>
 </body>
 </html>

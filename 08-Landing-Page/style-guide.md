@@ -31,6 +31,10 @@ The designs were created to the following widths:
 ### Font
 
 - Family: [Be Vietnam Pro](https://fonts.google.com/specimen/Be+Vietnam+Pro)
+- Regular (400)
+- Italic (400 italic)
+- Bold (700)
+- Bold Italic (700 italic)
 - Weights: 400, 500, 700
 
 ## Icons

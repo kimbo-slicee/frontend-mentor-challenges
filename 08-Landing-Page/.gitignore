@@ -2,6 +2,9 @@
 *.sketch
 *.fig
 *.xd
+README-template.md
+style-guide.md
+/assets/design
 
 # Dependencies
 /node_modules

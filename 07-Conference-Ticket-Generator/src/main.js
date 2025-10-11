@@ -19,6 +19,7 @@ const errors=document.querySelectorAll("span.error-message");
 const highlightedName=document.querySelector(".name-highlighted");
 const highlightedEmail=document.querySelector(".email-highlighted");
 const ticketWrapper=document.querySelector(".ticket");
+const loader=document.querySelector(".loader")
 
 const fileController=new FileController({
     fileInput,
@@ -42,7 +43,8 @@ const formSubmitController=new FormSubmitController({
         generatedTicketSection,
         ticketWrapper,
         highlightedName,
-        highlightedEmail
+        highlightedEmail,
+        loader
 
     });
 fileController.init();

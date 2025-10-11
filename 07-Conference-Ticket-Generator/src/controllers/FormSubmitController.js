@@ -5,7 +5,7 @@ import {Store} from '../store/state.store.js';
 import TicketService from "../services/TicketService.js";
 
 export default class FormSubmitController {
-    constructor({form, inputs, errors, fileInput, formSection, generatedTicketSection,ticketWrapper,highlightedName,highlightedEmail}) {
+    constructor({form, inputs, errors, fileInput, formSection, generatedTicketSection,ticketWrapper,highlightedName,highlightedEmail,loader}) {
             this.form = form;
             this.inputs = inputs;
             this.errors = errors;
@@ -16,6 +16,8 @@ export default class FormSubmitController {
             this.ticketWrapper=ticketWrapper;
             this.highlightedName=highlightedName;
             this.highlightedEmail=highlightedEmail
+            // loader
+            this.loader=loader
 
     }
 
