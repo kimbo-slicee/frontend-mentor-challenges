@@ -4,7 +4,7 @@
 @import "reset.css" layer(reset);
 @import "fonts.css" layer(fonts);
 
-@layer reset, fonts, variables, base, layout, components, utilities;
+@layer reset, fonts, variables, theme,  base, layout, components, utilities;
 
 /* ==========================================================
    VARIABLES
@@ -13,7 +13,7 @@
     :root {
         /* ----- Font Families ----- */
         --ff-base: "BeVietnamPro", monospace;
-
+        
         /* ----- Font Sizes ----- */
         --fs-xs: 0.75rem;
         --fs-sm: 0.875rem;
@@ -56,9 +56,10 @@
         --primary-blue-900: hsl(228, 39%, 23%);
 
         /* ----- Neutral Colors ----- */
+
         --neutral-gray-950: hsl(233, 12%, 13%);
         --neutral-gray-100: hsl(0, 0%, 98%);
-        --text-color: hsl(240, 4%, 75%);
+
 
         /* ----- Line Heights ----- */
         --lh-xs: 1.1;
@@ -91,6 +92,50 @@
     }
 }
 
+@layer theme{
+    /* theme switch using data attribute and color scheme*/
+    ::view-transition-old(root) {animation-delay: 500ms;}
+
+    ::view-transition-new(root) {animation: circle-in 500ms;}
+
+    :root {
+        @media(prefers-color-scheme: dark){
+            color-scheme: dark;
+            --theme:dark;
+        }
+        @media(prefers-color-scheme: light){
+            color-scheme: light;
+            --theme:light;
+        }
+    }
+
+    body{
+        color-scheme: light;
+        --text-color: hsl(240, 4%, 75%);
+        --body-bg:var(--neutral-gray-100);
+        --heading-color:var(--primary-blue-900);
+        --anchor-color:var(--primary-blue-900);
+
+        @container style(--theme:dark){
+            color-scheme: dark;
+            --body-bg: var(--primary-blue-900);
+            --heading-color: var(--primary-orange-500);
+            --anchor-color:var(--text-color);
+        }
+    }
+    @keyframes move-in {
+        from { translate: 0 -100%; }
+        to { translate: 0  0; }
+    }
+
+    @keyframes circle-in {
+        from { clip-path: circle(0% at 50% 0%); }
+        to { clip-path: circle(120% at 50% 0%); }
+    }
+
+
+}
+
 /* ==========================================================
    BASE STYLES
    ========================================================== */
@@ -105,7 +150,6 @@
         font-size: var(--fs-md);
         font-weight: var(--fw-400);
         color: var(--text-color);
-        background-color: var(--neutral-gray-100);
     }
 
     svg {
@@ -113,6 +157,7 @@
         width: 30px;
     }
 
+    body,
     section,
     main,
     form,
@@ -128,7 +173,7 @@
     h4 {
         line-height: var(--lh-sm);
         font-weight: var(--fw-700);
-        color: var(--primary-blue-900);
+        color: var(--heading-color);
     }
 
     p {
@@ -136,7 +181,7 @@
     }
 
     a {
-        color: var(--primary-blue-900);
+        color: var(--anchor-color);
         font-weight: var(--fw-500);
         text-decoration: none;
     }
@@ -166,18 +211,20 @@
 @layer layout {
     /* Background patterns */
     body {
-        background: url("../assets/images/bg-tablet-pattern.svg")
-        top -10rem right / contain no-repeat;
+            background: url("../assets/images/bg-tablet-pattern.svg") top -5rem right -5rem / contain no-repeat,
+            url("../assets/images/bg-tablet-pattern.svg") bottom 1rem right -10rem/contain no-repeat
+            ,var(--body-bg)
     }
     @media screen and (max-width: 1023px) {
-        
+        var(--body-bg)
     }
 
     @media (min-width: 1024px) {
         body {
             background:
                     url("../assets/images/bg-tablet-pattern.svg") top -10rem right / contain no-repeat,
-                    url("../assets/images/bg-tablet-pattern.svg") top 80vh left -60% / contain no-repeat;
+                    url("../assets/images/bg-tablet-pattern.svg")  top 80vh left -60% / contain no-repeat,
+                    var(--body-bg)
         }
     }
 
