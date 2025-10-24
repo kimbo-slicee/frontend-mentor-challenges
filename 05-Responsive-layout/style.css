@@ -1,0 +1,172 @@
+/* ===========================MAIN FONTS========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* ========================VARIABLES======================== */
+:root{
+    /* main colors */
+    --clr-neutral--900:hsl(234, 12%, 34% );
+    --clr-neutral-400:hsl(212, 6%, 44%) ;
+    --clr-neutral-100:hsl(0, 0%, 100%);
+    /* primary colors */
+    --clr-red: hsl(0, 78%, 62%);
+    --clr-cyan: hsl(180, 62%, 55%);
+    --clr-orange: hsl(34, 97%, 64%);
+    --clr-blue: hsl(212, 86%, 64%);
+    /* main font family */
+    --ff:"Poppins", sans-serif;
+    /* Font Weights */
+    --fw-light:200;
+    --fw-normal:400;
+    --fw-bold:600;
+    /* font size */
+    --fs:0.9375rem;
+}
+/* ========================REST======================== */
+*,*::after,*::after{
+    box-sizing: border-box;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+h1,h2,h3{
+    line-height: 1.5;
+    color: var(--clr-neutral--900);
+}
+
+/* =========================BASED========================== */
+html{
+    font-family: var(--ff);
+    font-size: var(--fs);
+    scroll-behavior: smooth;
+    font-weight: var(--fw-normal);
+    color: var(--clr-neutral-400);
+    line-height: 1.7;
+}
+body{
+    background:var(--clr-neutral-100);
+}
+/* =========================HEADER========================== */
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5em 0;
+    text-align: center;
+}
+h1{
+    font-size: min(3.5rem, 2vw);
+    font-weight: var(--fw-light);
+}
+h1 span{
+    font-weight: var(--fw-bold);
+    display: block;
+}
+p{
+    font-weight: var(--fw-normal);
+    margin-block-end: 1.5em;
+}
+img{
+    max-width: 100%;
+    display: block;
+}
+/*=======================UTILS CLASSES======================= */
+.shadow{
+    box-shadow: 0 0.5em 1em -0.5em var(--clr-neutral--900);
+}
+/* ========================CARDS========================== */
+main{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-block-end:2rem;
+    padding-inline: 1.5rem;
+}
+section{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+@media (min-width:800px){
+    section{
+        grid-template-areas:
+            "... card2 ..."
+            "card1 card2 card4"
+            "card1 card3 card4"
+            "... card3 ...";
+    }
+    .card:nth-child(1){
+        grid-area: card1;
+    }
+    .card:nth-child(2){
+        grid-area: card2;
+    }
+    .card:nth-child(3){
+        grid-area: card3;
+    }
+    .card:nth-child(4){
+        grid-area: card4;
+    }
+}
+
+.card{
+    --_border-clr: var(--clr-cyan);
+    --_border:.289rem;
+    border-top: var(--_border) solid var(--_border-clr);
+    border-radius: var(--_border);
+    background: var(--clr-neutral-100);
+    padding: 1.5em;
+    box-shadow: 0 0.5em 1em -0.5em var(--clr-neutral--900);
+}
+.card h2{
+    font-size: 1rem;
+    font-weight: var(--fw-bold);
+    margin-block-end: 0.5em;
+}
+.card p{
+    font-weight: var(--fw-normal);
+    margin-block-end: 1.5em;
+
+}
+.card img{
+    width: 50px;
+    height: 50px;
+    margin-top: 2rem;
+    margin-left: auto;
+
+}
+.card:nth-child(2){
+    --_border-clr: var(--clr-red);
+}
+.card:nth-child(3){
+    --_border-clr: var(--clr-orange);
+}
+.card:nth-child(4){
+    --_border-clr: var(--clr-orange);
+}
+/*=================FOOTER STYLING================== */
+footer{
+    text-align: center;
+    margin-block-start: 2em;
+    font-weight: var(--fw-normal);
+    color: var(--clr-neutral--900);
+    background-color: var(--clr-neutral-100);
+    width: 100%;
+}
+footer ul{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+footer ul li{
+    font-size: 1.25rem;
+}
+footer ul li a{
+    color: var(--clr-neutral--900);
+}

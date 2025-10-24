@@ -1,0 +1,40 @@
+---
+const {class:className}=Astro.props
+---
+<h2 class="visually-hidden">Future Articles</h2>
+<div class:list={[className,"articles-container"]}>
+    <article>
+    <img src="/images/image-web-3-desktop.jpg" alt="artical-image">
+    <h3>The Bright Future of Web 3.0?</h3>
+    <div class="flow">
+        <p>
+            We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. But is it really fulfilling its promise?
+        </p>
+        <a href="#" class="button">Read more<span class="visually-hidden">about The Bright Future of Web</span></a>
+    </div>
+    </article>
+</div>
+<style>
+    .articles-container{
+        container-type: inline-size;
+    }
+
+    article{
+        display: grid;
+        gap: 2rem;
+    @container (width > calc(25ch * 2)) {
+        grid-template-columns: repeat(2,1fr);
+    }
+    }
+    img{
+        grid-column: 1 / -1 ;
+    }
+
+    h3{
+        font-weight: var(--fw-bold);
+        font-size: var(--fs-900);
+        color: var(--heading-clr);
+    }
+
+
+</style>

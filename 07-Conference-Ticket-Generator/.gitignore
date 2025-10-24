@@ -1,0 +1,6 @@
+# remove desigen files
+design
+README-template.md
+style-guide.md
+node_modules
+.idea

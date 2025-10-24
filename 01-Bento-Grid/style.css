@@ -1,0 +1,339 @@
+@layer reset, base, theme, utilities, layout ;
+
+/* ============= Fonts (Global) ============= */
+@font-face {
+    font-family: 'dm';
+    src: url('assets/fonts/DmSans-Regular.woff2') format('woff2'),
+    url('assets/fonts/DmSans-Regular.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'dm';
+    src: url('assets/fonts/DmSans-Italic.woff') format('woff2'),
+    url('assets/fonts/DmSans-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ============= Theme Variables ============= */
+@layer theme {
+    :root {
+        /*-----------------Main Colors-----------------*/
+        --purple-100: hsl(254, 88%, 90%);
+        --purple-500: hsl(256, 67%, 59%);
+        --yellow-100: hsl(31, 66%, 93%);
+        --yellow-500: hsl(39, 100%, 71%);
+        --white: hsl(0, 0%, 100%);
+        --black: hsl(0, 0%, 7%);
+        --gray-100: hsl(0, 0%, 95%);
+        --body-clr: var(--gray-100, #f5f5f5);
+        --text-clr: var(--black);
+        --heading-clr: hsl(0, 0%, 10%);
+        /*------------------Font-Family----------------*/
+        --font-family: 'dm', sans-serif;
+
+        /*------------------Font-Size------------------*/
+        --fs-xs: 0.75rem; /* 12px */
+        --fs-sm: 0.875rem; /* 14px */
+        --fs-md: 1rem; /* 16px */
+        --fs-lg: 1.125rem; /* 18px */
+        --fs-xl: 1.25rem; /* 20px */
+        --fs-2xl: 1.5rem; /* 24px */
+        --fs-3xl: 1.875rem; /* 30px */
+        --fs-4xl: 2.25rem; /* 36px */
+        --fs-5xl: 2.85rem; /* 48px */
+        --fs-6xl: 3.75rem; /* 60px */
+
+        /*------------------Font-Weight----------------*/
+        --fw-400: 400;
+        --fw-500: 500;
+        --fw-600: 600;
+        /*------------------Line-Height----------------*/
+        --lh-xs: 1.1;
+        --lh-sm: 1.375;
+        --lh-md: 1.5;
+        --lh-lg: 1.625;
+    }
+}
+
+/* ============= Reset Styles ============= */
+@layer reset {
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; padding: 0; }
+    img { max-width: 100%; display: block; }
+}
+
+/* ============= Base Styles ============= */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        line-height: var(--lh-md, 1.5);
+    }
+    body {
+        font-family:var(--font-family);
+        font-size: var(--fs-md);
+        background-color: var(--body-clr);
+        color: var(--text-clr);
+    }
+    h1, h2 {
+        font-size: var(--heading-font-size, var(--fs-3xl));
+        text-wrap: pretty;
+        line-height: var(--lh-xs, 1.2);
+        /*---bcs we have span only in side the heading we can use nested selected --*/
+        span {
+            color: var(--heading-span-color, var(--yellow-500));
+        }
+    }
+
+}
+
+/* ============= Utilities ============= */
+@layer utilities {
+
+}
+/* ============= Layout ============= */
+@layer layout {
+    .wrapper{
+        max-width: 1200px;
+        width: 100%;
+        padding: 1rem;
+
+        --_grid-gap:1rem;
+        margin-inline: auto;
+        display: grid;
+        gap: var(--_grid-gap, 1rem);
+        grid-template-areas:
+        "card1"
+        "card2"
+        "card3"
+        "card4"
+        "card5"
+        "card6"
+        "card7"
+        "card8"
+    ;
+        @media (min-height: 660px) {
+            grid-template-areas:
+            "card1 card1"
+            "card2 card3"
+            "card4 card6"
+            "card4 card7"
+            "card5 card8"
+        }
+
+        @media (width > 960px) {
+            grid-template-areas:
+                    "card7 card1 card1 card4"
+                    "card7 card2 card3 card4"
+                    "card8 card2 card3 card4"
+                    "card8 card6 card5 card5";
+        }
+
+
+
+    }
+    .wrapper > *{
+        overflow: clip;
+        display: grid;
+        /*-----------default-------------*/
+        gap: var(--bento-card-gap,1rem);
+        align-items: var(--bento-card-vertical-alignment,start);
+        justify-content: var(--bento-card-horizontal-alignment,start);
+        background-color:var(--card-bg-clr, var(--white));
+        color:var(--card-text-clr, var(--text-clr));
+        text-align: var(--text-alignement, left);
+        border-radius: var(--card-border-radius, 0.5rem);
+        padding:
+                var(--padding-block ,1rem)
+                var(--padding-inline, 1rem);
+        /*-----------Targeting image inside the card-------------*/
+        >img{
+            max-width: var(--card-image-width, 100%);
+            width: var(--image-size, 100%);
+            order: var(--image-order, 0);
+            margin: 0 auto;
+        }
+    }
+
+    .wrapper > :nth-child(1){
+        grid-area: card1;
+        --bento-card-gap: 0.5rem;
+        --bento-card-vertical-alignment: center;
+        --bento-card-horizontal-alignment: center;
+        --card-bg-clr: var(--purple-500);
+        --card-text-clr: var(--white);
+        --text-alignement: center;
+        --card-border-radius: 0.5rem;
+        --heading-clr: var(--white);
+        --heading-font-weight: var(--fw-600);
+        --heading-font-size: var(--fs-6xl);
+        --image-size:50%;
+        --image-order: 0;
+        --margin-block-end: 1px;
+        img{
+            margin-inline: auto;
+        }
+        @media (width  > 960px){
+            --padding-block: 1em;
+            --padding-inline: 2rem;
+            --image-size: 30%;
+            --heading-font-size: var(--fs-6xl);
+            --bento-card-gap: 1rem;
+        }
+    }
+    .wrapper > :nth-child(2){
+        grid-area: card2;
+        --heading-font-size: var(--fs-2xl);
+        img{
+            order: -1;
+            filter: drop-shadow(0 0 0.5rem hsl(0 0% 0% / 0.1));
+            border-radius: 100vw;
+        }
+        @media (width > 960px ) {
+            --card-image-width:140%;
+            --image-size: 150%;
+            --heading-font-size: var(--fs-4xl);
+        }
+    }
+    .wrapper > :nth-child(3){
+        grid-area: card3;
+        --card-bg-clr: var(--yellow-500);
+        --bento-card-horizontal-alignment: start;
+        --heading-font-size: var(--fs-2xl);
+        --image-size: 70%;
+        img{
+            margin:0 0 -40px 0;
+        }
+        @media (width > 960px ) {
+            --text-alignement: left;
+            --heading-font-size: var(--fs-4xl);
+            img{
+                margin:0 0 -90px 0;
+            }
+        }
+    }
+    .wrapper > :nth-child(4){
+        grid-area: card4;
+        --card-bg-clr: var(--purple-100);
+        --bento-card-vertical-alignment: center;
+        --bento-card-horizontal-alignment: center;
+        --text-alignement: center;
+        --heading-font-size: var(--fs-xl);
+        --image-size: 90%;
+        @media (width > 960px ) {
+            --heading-font-size: var(--fs-3xl);
+            --text-alignement:left;
+            --image-size: 150%;
+            --card-image-width: 150%;
+            img{
+                min-height: 110%;
+            }
+
+        }
+
+    }
+    .wrapper > :nth-child(5){
+        grid-area: card5;
+        --bento-card-vertical-alignment: center;
+        --bento-card-horizontal-alignment: center;
+        --text-alignement: center;
+        --padding-block:1.5rem;
+        --padding-inline: 2rem;
+        --card-bg-clr: var(--purple-500);
+        --heading-font-size: var(--fs-3xl);
+        --card-text-clr: var(--white);
+        --image-size: 80%;
+        --bento-card-gap:3rem;
+        @media (width > 960px ) {
+            grid-template-columns:1fr 1fr;
+            --bento-card-vertical-alignment: center;
+            --bento-card-horizontal-alignment: start;
+            --text-alignement: left;
+            --image-size: 90%;
+            --bento-card-gap: .5rem;
+            --padding-block:1rem;
+            --padding-inline: 1rem;
+            --heading-font-size: var(--fs-4xl);
+
+        }
+    }
+    .wrapper > :nth-child(6){
+        grid-area: card6;
+        --text-alignement: left;
+        --card-bg-clr: var(--white);
+        --heading-font-size: var(--fs-lg);
+        --image-size: 50%;
+        --card-text-clr: var(--text-clr);
+        --bento-card-gap: 1.5rem;
+        img{
+            margin-inline: 0;
+        }
+        span{
+            display: block;
+            font-size: var(--fs-5xl);
+            --heading-span-color: var(--black);
+            margin-block-end: .5rem;
+        }
+        @media (width>960px) {
+            --image-size: 80%;
+            --heading-font-weight: var(--fw-600);
+            --bento-card-gap: 1rem;
+        }
+
+    }
+    .wrapper > :nth-child(7){
+        grid-area: card7;
+        --bento-card-vertical-alignment: center;
+        --bento-card-horizontal-alignment: center;
+        --text-alignement: center;
+        --card-bg-clr: var(--yellow-100);
+        --heading-font-size: var(--fs-3xl);
+        --image-size: 60%;
+        --card-text-clr: var(--text-clr);
+        --heading-span-color: var(--purple-500);
+        line-height: var(--lh-lg);
+        font-size: var(--fs-md);
+        img{
+            margin-inline-start:  0;
+        }
+        span{
+            font-style: italic;
+        }
+        @media (width > 640px) {
+            --bento-card-vertical-alignment: center;
+            --bento-card-horizontal-alignment: center;
+            align-content: center;
+            --text-alignement: left;
+            --image-size: 80%;
+            --heading-font-size: var(--fs-4xl);
+            --heading-font-weight: var(--fw-600);
+            --padding-inline: 1.5rem;
+        }
+    }
+    .wrapper > :nth-child(8){
+        grid-area: card8;
+        --card-bg-clr: var(--yellow-500);
+        --heading-font-size: var(--fs-2xl);
+        --image-size: 60%;
+        img{
+            margin-inline-start:  0;
+        }
+        @media (width > 960px) {
+            --heading-font-size: var(--fs-3xl);
+            --bento-card-gap: 1.5rem;
+            img{
+                margin-inline-start:  auto;
+                margin-block-end: 0;
+                width: 90%;
+            }
+        }
+    }
+
+
+}
+
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <title>Frontend Mentor | Contact form</title>
+</head>
+<body>
+<main>
+  <!-- Contact Form Section -->
+  <section class="form-section" aria-labelledby="contact-heading">
+    <h1 id="contact-heading" class="form-heading">Contact Us</h1>
+
+    <form method="post" novalidate>
+      <!-- Name Row -->
+      <div class="form-row">
+        <div class="form-control col">
+          <label for="firstName">First Name <span aria-hidden="true">*</span></label>
+          <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  required
+                  autocomplete="given-name"
+          >
+        </div>
+
+        <div class="form-control col">
+          <label for="lastName">Last Name <span aria-hidden="true">*</span></label>
+          <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  required
+                  autocomplete="family-name"
+          >
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="">
+        <div class="form-control">
+          <label for="email">Email Address <span aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+      </div>
+
+      <!-- Query Type -->
+      <div class="row">
+        <fieldset class="form-row" aria-describedby="queryType-error">
+          <legend>Query Type <span aria-hidden="true">*</span></legend>
+          <div class="form-control">
+            <input type="radio" id="general-enquiry" name="queryType" value="general" required>
+            <label for="general-enquiry">General Enquiry</label>
+          </div>
+          <div class="form-control">
+            <input type="radio" id="support-request" name="queryType" value="support" required>
+            <label for="support-request">Support Request</label>
+          </div>
+        </fieldset>
+        <span class="error-message" aria-live="polite"></span>
+      </div>
+
+      <!-- Message -->
+      <div class="form-row">
+        <div class="form-control">
+          <label for="message">Message <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="8" required></textarea>
+        </div>
+      </div>
+
+      <!-- Terms & Consent -->
+      <div class="row">
+        <div class="form-row">
+          <div class="form-control checkbox-control">
+            <input type="checkbox" id="terms" name="terms" required aria-describedby="terms-error">
+            <label for="terms">I consent to being contacted by the team <span aria-hidden="true">*</span></label>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Submit -->
+      <div class="form-actions">
+        <button type="submit" class="btn" disabled>Submit</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Alert Section -->
+  <aside class="alert" aria-live="assertive">
+    <div class="alert-header">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="20" height="20" fill="currentColor" viewBox="0 0 20 21" focusable="false">
+        <path fill="currentColor"
+              d="M14.28 7.72a.748.748 0 0 1 0 1.06l-5.25 5.25a.748.748 0 0 1-1.06 0l-2.25-2.25a.75.75 0 1 1 1.06-1.06l1.72 1.72 4.72-4.72a.75.75 0 0 1 1.06 0Zm5.47 2.78A9.75 9.75 0 1 1 10 .75a9.76 9.76 0 0 1 9.75 9.75Zm-1.5 0A8.25 8.25 0 1 0 10 18.75a8.26 8.26 0 0 0 8.25-8.25Z"/>
+      </svg>
+      <h2 class="alert-title">Message Sent!</h2>
+    </div>
+    <p>Thanks for completing the form. We'll be in touch soon!</p>
+  </aside>
+</main>
+
+</body>
+</html>

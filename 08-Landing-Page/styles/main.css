@@ -1,0 +1,810 @@
+/* ==========================================================
+   Base Imports and Layers
+   ========================================================== */
+@import "reset.css" layer(reset);
+@import "fonts.css" layer(fonts);
+
+@layer reset, fonts, variables, theme,  base, layout, components, utilities;
+
+/* ==========================================================
+   VARIABLES
+   ========================================================== */
+@layer variables {
+    :root {
+        /* ----- Font Families ----- */
+        --ff-base: "BeVietnamPro", monospace;
+        
+        /* ----- Font Sizes ----- */
+        --fs-xs: 0.75rem;
+        --fs-sm: 0.875rem;
+        --fs-md: 1rem;
+        --fs-lg: 1.125rem;
+        --fs-xl: 1.25rem;
+        --fs-2xl: 1.5rem;
+        --fs-3xl: 1.875rem;
+        --fs-4xl: 2rem;
+        --fs-5xl: 2.5rem;
+        /* ----- Heading Size -------*/
+        --font-size-h1: clamp(2rem, 3vw + 1rem, 3.5rem);
+        --font-size-h2: clamp(1.5rem, 1.5vw + 0.5rem, 2rem);
+        --font-size-h3: clamp(1rem, 1vw + 0.2rem, 1.75rem);
+        --font-size-p: clamp(1rem, 0.5vw + 0.5rem, 1.125rem);
+
+        /* ----- Font Weights ----- */
+        --fw-400: 400;
+        --fw-500: 500;
+        --fw-700: 700;
+        --fw-800: 800;
+
+        /* ----- Primary Color Scale (Orange) ----- */
+        --primary-orange-50:  hsl(13, 100%, 96%);
+        --primary-orange-100: hsl(12, 95%, 91%);
+        --primary-orange-200: hsl(12, 90%, 83%);
+        --primary-orange-300: hsl(12, 88%, 70%);
+        --primary-orange-400: hsl(12, 88%, 59%);
+        --primary-orange-500: hsl(12, 88%, 52%);
+        --primary-orange-600: hsl(12, 88%, 45%);
+        --primary-orange-700: hsl(12, 88%, 39%);
+        --primary-orange-800: hsl(12, 88%, 32%);
+        --primary-orange-900: hsl(12, 88%, 25%);
+
+        /* ----- Primary Color Scale (Blue) ----- */
+        --primary-blue-50:  hsl(228, 45%, 96%);
+        --primary-blue-100: hsl(228, 39%, 91%);
+        --primary-blue-200: hsl(228, 39%, 82%);
+        --primary-blue-300: hsl(228, 39%, 70%);
+        --primary-blue-400: hsl(228, 39%, 59%);
+        --primary-blue-500: hsl(228, 39%, 50%);
+        --primary-blue-600: hsl(228, 39%, 43%);
+        --primary-blue-700: hsl(228, 39%, 35%);
+        --primary-blue-800: hsl(228, 39%, 28%);
+        --primary-blue-900: hsl(228, 39%, 23%);
+
+        /* ----- Neutral Colors ----- */
+
+        --neutral-gray-950: hsl(233, 12%, 13%);
+        --neutral-gray-100: hsl(0, 0%, 98%);
+        --links-color:var(--primary-blue-900);
+        --links-hover-color: var(--primary-blue-300);
+        --bg-shape-clr:var(--primary-orange-50);
+        /* --- colors  ---*/
+
+        --text-color: hsl(240, 4%, 75%);
+        --body-bg:var(--neutral-gray-100);
+        --heading-color:var(--primary-blue-900);
+        --anchor-color:var(--primary-blue-900);
+        --svg-color:var(--primary-blue-900);
+
+        /* ----- Line Heights ----- */
+        --lh-xs: 1.1;
+        --lh-sm: 1.25;
+        --lh-md: 1.5;
+        --lh-lg: 1.75;
+
+        /* ----- Border Radius ----- */
+        --radius-sm: 0.5rem;
+        --radius-md: 1rem;
+        --radius-lg: 1.5rem;
+        --radius-full: 100%;
+
+        /* ----- Spacing (fluid) ----- */
+        --space-xs: clamp(0.25rem, 0.5vw, 0.5rem);
+        --space-sm: clamp(0.5rem, 1vw, 1rem);
+        --space-md: clamp(1rem, 2vw, 2rem);
+        --space-lg: clamp(1.5rem, 3vw, 3rem);
+        --space-xl: clamp(2rem, 3.5vw, 3.5rem);
+
+        /* ----- Z-Index ----- */
+        --z-back: -1;
+        --z-base: 0;
+        --z-normal: 1;
+        --z-overlay: 5;
+        --z-top: 10;
+
+        /* ----- Shadows ----- */
+    }
+}
+
+@layer theme{
+    /* theme switch using data attribute and color scheme*/
+    ::view-transition-old(root) {animation-delay: 500ms;}
+
+    ::view-transition-new(root) {animation: circle-in 500ms;}
+
+    [data-theme="dark"] {
+         color-scheme: dark;
+        --body-bg: var(--primary-blue-900);
+        --heading-color: var(--primary-orange-400);
+        --svg-color:var(--primary-orange-400);
+        --links-color: var(--text-color);
+        --links-hover-color:var(--primary-orange-300);
+        --bg-shape-clr:var(--primary-orange-400);
+    }
+
+    body{
+        color-scheme: light dark;
+    }
+
+    @keyframes move-in {
+        from { translate: 0 100%; }
+        to { translate: 0  0; }
+    }
+
+    @keyframes circle-in {
+        from { clip-path: circle(0% at 50% 0%); }
+        to { clip-path: circle(120% at 50% 0%); }
+    }
+
+
+}
+
+/* ==========================================================
+   BASE STYLES
+   ========================================================== */
+@layer base {
+    html {
+        font-size: 100%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--ff-base);
+        font-size: var(--fs-md);
+        font-weight: var(--fw-400);
+        color: var(--text-color);
+    }
+
+
+    svg {
+        fill: var(--svg-color);
+        width: 30px;
+    }
+
+    body,
+    section,
+    main,
+    form,
+    fieldset,
+    article,
+    header{
+        container-type: inline-size;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        line-height: var(--lh-sm);
+        font-weight: var(--fw-700);
+        color: var(--heading-color);
+    }
+    h1 {
+        font-size: var(--font-size-h1);
+        font-weight: 700;
+    }
+
+    h2 {
+        font-size: var(--font-size-h2);
+        font-weight: 600;
+    }
+
+    h3 {
+        font-size: var(--font-size-h3);
+        font-weight: 600;
+    }
+
+    p {
+        font-size: var(--font-size-p);
+        line-height: var(--lh-lg);
+        text-wrap: pretty;
+    }
+
+    a {
+        color: var(--anchor-color);
+        font-weight: var(--fw-500);
+        text-decoration: none;
+    }
+
+    input {
+        background: var(--neutral-gray-100);
+        padding: 0.75rem var(--space-lg);
+        border-radius: var(--radius-lg);
+        border: none;
+        outline: none;
+    }
+
+    input::placeholder {
+        color: var(--text-color);
+    }
+
+    button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
+
+}
+
+/* ==========================================================
+   LAYOUT
+   ========================================================== */
+@layer layout {
+    body {
+        transition: background 0.5s ease, color 0.5s ease;
+        position: relative;
+        overflow-x:hidden ;
+        background: var(--body-bg);
+    }
+    /*
+        =======================================
+         ------- Background shapes ----------
+        =======================================
+    */
+
+    /* ---------- BG Container ---------- */
+    /* Add pseudo-elements for background shapes */
+    body::before,
+    body::after {
+        content: "";
+        position: absolute;
+        background: var(--bg-shape-clr);
+        width: 380px;
+        height: 800px;
+        border-radius: 220px;
+        transform: rotate(45deg);
+        clip-path: inset(0 round 220px);
+        transition: all 0.6s ease;
+        z-index: var(--z-back);
+    }
+
+    [data-theme="dark"] body::before,
+    [data-theme="dark"] body::after{
+        opacity: 0.4;
+    }
+
+    /* Top-left shape */
+    body::before {
+        top:-200px;
+        right: 0;
+    }
+
+    /* Bottom-right shape */
+    body::after {
+        bottom: 20%;
+        left: -15%;
+    }
+
+    /* ---------- Responsiveness ---------- */
+    /*!*!* Tablet *!*!*/
+    @media (max-width: 1024px) {
+        body::before {
+            width: 300px;
+            height: 600px;
+            top:-20%;
+            right: 0;
+        }
+
+        body::after {
+            width: 350px;
+            height: 650px;
+            bottom: 25%;
+            left: -15%;
+
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+        body::before {
+            width: 200px;
+            height: 400px;
+            top: -10%;
+            right: 0;
+        }
+        body::after {
+            width: 220px;
+            height: 420px;
+            top: 70%;
+            left: 70%;
+        }
+    }
+
+    .container {
+        width: min(85%,1500px);
+        margin-inline: auto;
+        padding-block:var(--space-sm);
+        margin-block-end:var(--space-md);
+        /*border: 1px solid red;*/
+    }
+
+    .wrapper{
+
+    }
+
+}
+
+/* ==========================================================
+   COMPONENTS
+   ========================================================== */
+@layer components {
+    /* ---------------------- Base Button Styles ---------------------- */
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 2rem;
+        border-radius: var(--radius-lg);
+        font-weight: var(--fw-700);
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn-primary {
+        background: var(--primary-orange-400);
+        color: var(--primary-orange-50);
+
+        &:hover {
+            background-color: var(--primary-orange-300);
+        }
+    }
+
+  /*
+  ======================================================
+      ------------- Header Section ---------------
+  ======================================================
+  */
+    .header,
+    .nav-list,
+    .user-action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-md);
+        z-index: var(--z-overlay);
+    }
+    .logo{
+        z-index: var(--z-overlay);
+    }
+
+    /* ---------------------- Navigation Menu ---------------------- */
+
+    /* Mobile: hidden menu overlay */
+    .header__navigation-menu {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
+        visibility: hidden;
+        z-index: var(--z-overlay);
+        transition: visibility 0.3s ease;
+        display: grid;
+        align-content: start;
+    }
+
+    .header__navigation-menu.open {
+        visibility: visible;
+    }
+
+    /* Tablet and Desktop */
+    @media (min-width: 1024px) {
+        .header__navigation-menu {
+            position: static;
+            background: none;
+            visibility: visible;
+            backdrop-filter: none;
+        }
+    }
+
+    /* ---------------------- Nav List ---------------------- */
+    /* Mobile layout (column) */
+    .nav-list {
+        width: min(85%, 500px);
+        margin-top: 25%;
+        margin-inline: auto;
+        background: var(--body-bg);
+        padding: 2rem;
+        flex-direction: column;
+        gap: var(--space-md);
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .header__navigation-menu.open .nav-list {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Tablet: semi-expanded version */
+    @media (min-width: 600px) and (max-width: 1023px) {
+        .nav-list {
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            background: var(--body-bg);
+            padding: 1rem;
+            margin-top: 0;
+        }
+    }
+
+    /* Desktop: full horizontal navigation */
+    @media (min-width: 1024px) {
+        .nav-list {
+            flex-direction: row;
+            background: transparent;
+            padding: 0;
+            opacity: 1;
+            transform: none;
+            width: auto;
+            margin-top: 0;
+        }
+    }
+
+    /* Nav items */
+    .nav-list li:first-child,
+    .nav-list li:last-child {
+        @media (max-width: 1023px) {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            direction: rtl;
+        }
+    }
+
+    .nav-list a {
+        color: var(--links-color);
+        font-weight: var(--fw-500);
+        transition: color 0.3s linear;
+
+        &:hover,
+        &:focus-visible {
+            color: var(--links-hover-color);
+        }
+    }
+
+    /* ---------------------- User Actions ---------------------- */
+    /* Hidden by default (mobile) */
+    .user-action {
+        display: none;
+    }
+
+    /* Visible only on desktop */
+    @media (min-width: 1024px) {
+        .user-action {
+            display: flex;
+        }
+    }
+
+    /* ---------------------- Theme Switch ---------------------- */
+    .theme-switch {
+        position: relative;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transition: background 0.3s ease;
+
+        .icon {
+            position: absolute;
+            opacity: 0;
+            scale: 0.5;
+            transform: rotate(-90deg);
+            transition:
+                    opacity 0.5s ease,
+                    transform 0.6s ease,
+                    scale 0.4s ease;
+
+            &.active {
+                opacity: 1;
+                scale: 1;
+                transform: rotate(0deg);
+            }
+        }
+    }
+
+    /* ---------------------- Theme Checkbox (Mobile Switch) ---------------------- */
+    #theme-checkbox {
+        display: none;
+
+        + label {
+            font-size: 2rem;
+            height: 1em;
+            width: 2.5em;
+            border-radius: 0.5em;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--text-color);
+            position: relative;
+
+            &:active {
+                transform: scale(0.85);
+                transition: transform 0.2s;
+            }
+
+            div {
+                width: 0.8em;
+                height: 0.8em;
+                border-radius: inherit;
+                position: absolute;
+                top: 0.1em;
+                left: 0.1em;
+                z-index: 10;
+                background-color: #f2f2f2;
+                transition: 0.5s cubic-bezier(1, 0.33, 0.11, 1.34);
+            }
+
+            span {
+                display: flex;
+
+                &:first-of-type {
+                    color: #3a3a3a;
+                }
+
+                &:last-of-type {
+                    color: #cecece;
+                }
+
+                svg {
+                    height: 1em;
+                    width: 1em;
+                    padding: 0.15em;
+                    box-sizing: border-box;
+                }
+            }
+        }
+
+        &:checked + label {
+            background-color: var(--primary-blue-800);
+
+            div {
+                left: 1.6em;
+                background-color: var(--text-color);
+            }
+        }
+    }
+
+    /* ---------------------- Mobile Navigation Icon ---------------------- */
+    .mobile-navigation {
+        z-index: var(--z-overlay);
+        display: block;
+
+        @media (min-width: 1024px) {
+            display: none;
+        }
+    }
+
+    /*
+====================================================
+    ---------- HERO SECTION STYLE ----------
+====================================================
+*/
+
+    .hero-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: var(--space-md);
+        @container (max-width: 1023px) {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            align-items: flex-start;
+            gap: var(--space-sm);
+        }
+    }
+
+    .hero-image {
+        max-width: 500px;
+        width: 100%;
+        /* Ensures consistent scaling */
+
+        @container (max-width: 1023px) {
+            min-width: 350px;
+        }
+
+        @container (max-width: 850px) {
+            margin-inline: auto;
+        }
+    }
+
+    .hero-image img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        display: block; /* Removes inline gap issues */
+    }
+
+    .hero-content {
+        display: grid;
+        gap: var(--space-md);
+        justify-items: center;
+        align-content: center;
+        text-align: center;
+
+        @container (min-width: 1023px) {
+            justify-items: start;
+            text-align: start;
+        }
+    }
+
+    .hero-content p{
+        max-width: 35ch;
+    }
+
+    /*
+    ====================================================
+       -------- FEATURES SECTION STYLE -------------
+    ====================================================
+    */
+    .features-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: stretch;
+        gap: var(--space-xl);
+
+        @container (max-width: 1023px) {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            align-items: flex-start;
+        }
+    }
+
+    /* Content Wrapper */
+    .features-content .wrapper {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--space-md);
+        @container (max-width: 1023px) {
+            align-content: center;
+            justify-items: center;
+            text-align: center;
+        }
+    }
+
+    /* Headings & Paragraphs */
+    .features-content h2 {
+        font-size: var(--fs-5xl);
+        text-align: start;
+        @container (max-width:1023px) { text-align: center;}
+    }
+
+    .features-content .wrapper p {
+        max-width: 35ch;
+    }
+
+    /* Features List Container */
+    .features-list {
+        display: grid;
+        gap: var(--space-md);
+        justify-self: center;
+        @container (max-width:1023px) {
+            justify-self: start;
+            min-width: 100%;
+        }
+    }
+
+    /* Reset and Style List */
+    .features-list ul {
+        counter-reset: featuresListCounter;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Feature Item Heading */
+    .features-list h3 {
+        position: relative;
+        counter-increment: featuresListCounter;
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+
+        @container (max-width: 1023px) {
+            background-color: var(--primary-orange-50);
+            border-radius: var(--radius-lg);
+        }
+    }
+
+    /* Feature Number Badge */
+    .features-list h3::before {
+        content: counter(featuresListCounter, decimal-leading-zero);
+        width: 3.5rem;
+        height: 2.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary-orange-400);
+        color: var(--neutral-gray-100);
+        border-radius: var(--radius-lg);
+    }
+
+    /* Feature Paragraph */
+    .features-list li p {
+        margin-inline-start: 4.5rem;
+
+        @container (max-width: 1023px) {
+            margin-inline-start: 0;
+        }
+    }
+
+
+
+}
+
+/* ==========================================================
+   UTILITIES
+   ========================================================== */
+@layer utilities {
+    .sr-only {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    .flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .flex-between {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .grid {
+        display: grid;
+    }
+    .grid-2 {
+        grid-template-columns: 1fr;
+        @media (min-width: 600px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content:space-between;
+            gap: var(--space-md);
+        }
+    }
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .grid-center {
+        align-items: center;
+        justify-items: center;
+    }
+    .reverse {
+        direction: rtl;
+        text-align: start;
+    }
+    .reverse > * {
+        direction: ltr;
+    }
+
+    .gap-sm { gap: var(--space-sm); }
+    .gap-md { gap: var(--space-md); }
+
+    .text-center { text-align: center; }
+    .text-left { text-align: left; }
+    .text-right { text-align: right; }
+
+    .flow{
+        > *{
+           margin-bottom: var(--space-sm);
+        }
+    }
+}
+

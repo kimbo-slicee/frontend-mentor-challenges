@@ -1,0 +1,617 @@
+@layer reset, fonts, variables, base, layout, components, utilities;
+
+/* ========== RESET ========== */
+@layer reset {
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        -moz-text-size-adjust: none;
+        -webkit-text-size-adjust: none;
+        text-size-adjust: none;
+    }
+
+    body, h1, h2, h3, h4, p,
+    figure, blockquote, dl, dd {
+        margin-block-end: 0;
+    }
+
+
+    ul[role="list"],
+    ol[role="list"] {
+        list-style: none;
+    }
+
+    body {
+        min-height: 100vh;
+        line-height: 1.5;
+    }
+
+
+    h1, h2, h3, h4,
+    button, input, label {
+        line-height: 1.1;
+    }
+    /* Remove default autocomplete background in Chrome / Edge / Safari */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow:none;
+        box-shadow: none;
+        -webkit-text-fill-color: var(--neutral-300);
+        caret-color: var(--neutral-300);
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    h1, h2, h3, h4 {
+        text-wrap: pretty;
+    }
+
+
+    a:not([class]) {
+        text-decoration-skip-ink: auto;
+        color: currentColor;
+    }
+
+    img,
+    picture {
+        max-width: 100%;
+        display: block;
+    }
+
+
+    input, button,
+    textarea, select,fieldset {
+        font: inherit;
+        background: none;
+        border: 0;
+        outline: 0;
+    }
+
+    textarea:not([rows]) {
+        min-height: 10em;
+    }
+
+    :target {
+        scroll-margin-block: 5ex;
+    }
+}
+
+/* ========== FONTS ========== */
+@layer fonts {
+    @font-face {
+        font-family: "Inconsolata";
+        src: local("Inconsolata"),
+        url("assets/fonts/Inconsolata-VariableFont.ttf") format("truetype");
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+    }
+}
+
+/* ========== VARIABLES ========== */
+@layer variables {
+    :root {
+        /* ----- Font Families ----- */
+        --ff-body: "Inconsolata", monospace;
+        --ff-heading: "Inconsolata", monospace;
+
+        /* ----- Font Sizes ----- */
+        --fs-xs: 0.75rem;
+        --fs-sm: 0.875rem;
+        --fs-md: 1rem;
+        --fs-lg: 1.125rem;
+        --fs-xl: 1.25rem;
+        --fs-2xl: 1.5rem;
+        --fs-3xl: 1.875rem;
+        --fs-4xl: 2rem;
+        --fs-5xl: 2.5rem;
+
+        /* ----- Font Weights ----- */
+        --fw-400: 400;
+        --fw-500: 500;
+        --fw-700: 700;
+        --fw-800: 800;
+
+        /* ----- Colors ----- */
+        --primary-500: hsl(7, 88%, 67%);
+        --primary-700: hsl(7, 71%, 60%);
+        --neutral-100: hsl(0, 0%, 100%);
+        --neutral-300: hsl(252, 6%, 83%);
+        --neutral-500: hsl(245, 15%, 58%);
+        --neutral-700: hsl(245, 19%, 35%);
+        --neutral-900: hsl(248, 70%, 10%);
+        --error: hsl(7, 88%, 67%);
+        --success: hsl(152, 80%, 44%);
+
+        /* ----- Gradients & Shadows ----- */
+        --text-gradient: linear-gradient(to right, hsl(7, 86%, 67%), hsl(0, 0%, 100%));
+        --hover-border: 0 0 0 3px var(--neutral-900), 0 0 0 4px var(--neutral-300);
+
+        /* ----- Line Heights ----- */
+        --lh-xs: 1.1;
+        --lh-sm: 1.25;
+        --lh-md: 1.5;
+        --lh-lg: 1.75;
+
+        /* ----- Border Radius ----- */
+        --radius-sm: 0.5rem;
+        --radius-md: 1rem;
+        --radius-lg: 1.5rem;
+        --radius-full: 100%;
+
+        /* ----- Spacing ----- */
+        --space-xs: clamp(0.25rem,.5vw,.5rem);
+        --space-sm: clamp(0.5rem, 1vw, 1rem);
+        --space-md: clamp(1rem, 2vw, 2rem);
+        --space-lg: clamp(1.5rem, 3vw, 3rem);
+        --space-xl: clamp(2rem, 3.5vw, 3.5rem);
+        /* --------- Z-Index --------- */
+        --z-back: -1;
+        --z-base: 0;
+        --z-normal: 1;
+        --z-overlay: 5;
+        --z-top: 10;
+    }
+}
+
+/* ========== BASE ========== */
+@layer base {
+    html {
+        font-size: 100%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--ff-body);
+        background: var(--neutral-100);
+        color: var(--neutral-100);
+    }
+    section,
+    main,
+    form,
+    fieldset,
+    article{
+        container-type: inline-size;
+    }
+    svg path{
+        color: var(--neutral-500);
+    }
+
+    h1, h2, h3, h4 {
+        font-family: var(--ff-heading);
+    }
+    h1{
+        font-size: clamp(
+                var(--fs-5xl),
+                calc(var(--fs-4xl) + 2vw), var(--fs-5xl));
+    }
+    h2{
+        font-size: clamp(
+                var(--fs-3xl),
+                calc(var(--fs-3xl) + 2vw),
+                var(--fs-4xl));
+    }
+
+    h3 {
+        font-size: clamp(
+                var(--fs-2xl),
+                calc(var(--fs-2xl) + 2vw),
+                var(--fs-3xl));
+    }
+    p{
+        font-size: var(--fs-lg);
+        color: var(--neutral-300);
+    }
+
+    label {
+        display: block;
+        font-weight: var(--fw-400);
+    }
+
+    input, .upload-area{
+        width: 100%;
+        padding: var(--space-xs) var(--space-sm);
+        border: 1px solid var(--neutral-500);
+        background: hsl(245, 15%, 58%, .1);
+        border-radius: 8px;
+        color: var(--neutral-300);
+        cursor: pointer;
+        &:focus-visible,
+        &:focus {
+            box-shadow: var(--hover-border);
+        }
+        &:hover{
+            background: hsl(245, 15%, 58%, .3)
+        }
+    }
+
+    button {
+        width: 100%;
+        &:focus-visible, &:hover {
+            box-shadow: var(--hover-border);
+        };
+    }
+
+
+}
+
+
+/* ========== LAYOUT ========== */
+@layer layout {
+    body {
+        background: url("assets/images/pattern-lines.svg"),
+        url("assets/images/background-mobile.png") center/cover no-repeat;
+    }
+
+    @media (min-width: 600px) and (max-width: 996px) {
+        body {
+            background: url("assets/images/pattern-lines.svg"),
+            url("assets/images/background-tablet.png") center/cover no-repeat;
+        }
+    }
+
+    @media (min-width: 997px) {
+        body {
+            background: url("assets/images/pattern-lines.svg"),
+            url("assets/images/background-desktop.png") center/cover no-repeat;
+        }
+    }
+
+    .bg-shapes {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: var(--z-back);
+
+        background:
+                url("assets/images/pattern-circle.svg") top -5% left -15% / 150px no-repeat,
+                url("assets/images/pattern-circle.svg") bottom 20% right -35% / 180px no-repeat,
+                url("assets/images/pattern-squiggly-line-top.svg") right top 5% / 30% no-repeat,
+                url("assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg") bottom left / max(35%, 300px) no-repeat;
+
+        @container (width > 996px) {
+            background:
+                    url("assets/images/pattern-circle.svg") top -15% left 10% / 150px no-repeat,
+                    url("assets/images/pattern-circle.svg") top 70% right 20% / 180px no-repeat,
+                    url("assets/images/pattern-squiggly-line-top.svg") right top 15% / 30% no-repeat,
+                    url("assets/images/pattern-squiggly-line-bottom-desktop.svg") bottom left / max(50%,350px) no-repeat;
+        }
+    }
+
+    /* Step 1 — make .wrapper a container */
+    .wrapper {
+        text-align: center;
+        margin-inline: auto;
+        padding: var(--space-sm);
+        @container (min-width:650px) {
+            width: 55%;
+        }
+    }
+
+    form {
+        padding: var(--space-md);
+    }
+
+    fieldset {
+        display: grid;
+        gap: var(--space-md);
+    }
+}
+
+
+/* ========== COMPONENTS ========== */
+@layer components {
+    .site-header {
+        padding: var(--space-sm);
+    }
+
+    .site-logo img {
+        display: inline-block;
+    }
+    /* ----- Hero Title ------ */
+    h2 + p{
+        margin-inline: auto;
+        max-width: 80%;
+        min-width: 60%;
+    }
+    /* --- form-styling --- */
+    .form-group {
+        text-align: left;
+        z-index: var(--z-normal);
+        display: grid;
+        gap: 5px;
+    }
+
+    .form-group > * {
+        margin-bottom: var(--space-xs);
+    }
+
+    .upload-area {
+        position: relative;
+        text-align: center;
+        border: 2px dashed var(--neutral-500);
+        min-height: 100px;
+        padding-block: var(--space-sm);
+    }
+
+    .form-help {
+        font-size: var(--fs-sm);
+        color: var(--neutral-300);
+    }
+
+    input[type="file"] {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        opacity: 0;
+        appearance: none;
+    }
+
+    img[alt="upload-file"] {
+        background-color: hsl(245, 15%, 58%, .3);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--neutral-500);
+        cursor: pointer;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+    }
+    .upload-actions{
+        display: none;
+        grid-template-columns: repeat(2,max-content);
+        justify-content:center;
+        gap: var(--space-sm);
+        margin-top: var(--space-sm);
+    }
+    button[type='button']{
+        background-color: hsl(245, 15%, 58%, .3);
+        color: var(--neutral-300);
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: var(--fs-sm);
+        padding:3px 8px;
+        z-index: var(--z-normal);
+    }
+    .upload-actions button:first-child{
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+    }
+
+    button[type="submit"] {
+        cursor: pointer;
+        background: var(--primary-700);
+        color: var(--neutral-900);
+        padding: var(--space-sm) var(--space-md);
+        font-weight: var(--fw-800);
+        border-radius: 8px;
+    }
+    /* ===================================================
+       COMPONENTS – Gendered ticket Section
+       Description: Styles for Gendered ticket Section
+    ===================================================
+    */
+
+    article.ticket {
+        position: relative;
+        margin-inline: auto;
+        margin-block-start: 3rem;
+        background: url("assets/images/pattern-ticket.svg") center/cover no-repeat;
+        display: grid;
+        padding: var(--space-md);
+        gap: clamp(0.75rem, 1.5vw, 1.5rem);
+        max-width: 400px;
+        min-width: 250px;
+        width: 100%;
+        aspect-ratio: 2 / 1;
+    }
+
+    /* --- Logo ---- */
+    header .ticket__logo {
+        width: 30px;
+    }
+
+    .ticket__id {
+        position: absolute;
+        left:80%;
+        top: 50%;
+        transform:translateY(-50%) rotate(90deg) ;
+    }
+    .ticket__id span{
+        color: var(--neutral-500);
+        font-size: var(--fs-3xl);
+    }
+
+    .ticket__header,
+    .ticket__user {
+        display: flex;
+        align-items: flex-start;
+        text-align: start;
+        gap: var(--space-sm);
+    }
+
+
+    /* --- ticket user info --- */
+    .ticket__user {
+        align-items: center;
+    }
+
+    .ticket__user img {
+        max-width: 50px;
+        border-radius: var(--radius-md);
+    }
+
+    .ticket__user-details h4 {
+        margin-bottom: var(--space-xs);
+    }
+
+    .ticket__user-github img {
+        width: 18px;
+    }
+
+    .ticket__user-github {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--space-xs);
+        font-size: var(--fs-sm);
+        color: var(--neutral-500);
+    }
+
+    /*======= Loader Stying ==========*/
+    .loader {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: none;
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        border: 3px solid;
+        border-color: #FFF #FFF transparent transparent;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+    }
+    .loader::after,
+    .loader::before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border: 3px solid;
+        border-color: transparent transparent var(--primary-700) var(--primary-700);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        box-sizing: border-box;
+        animation: rotationBack 0.5s linear infinite;
+        transform-origin: center center;
+    }
+    .loader::before {
+        width: 32px;
+        height: 32px;
+        border-color: #FFF #FFF transparent transparent;
+        animation: rotation 1.5s linear infinite;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes rotationBack {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(-360deg);
+        }
+    }
+
+
+
+}
+
+/* ========== UTILITIES ========== */
+@layer utilities {
+    .sr-only {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .m-auto {
+        margin-inline: auto
+    }
+
+    .mt-sm {
+        margin-top: var(--space-sm);
+    }
+
+    .mt-md {
+        margin-top: var(--space-md);
+    }
+
+    .mt-lg {
+        margin-top: var(--space-lg);
+    }
+
+    .p-sm {
+        padding: var(--space-sm);
+    }
+
+    .p-md {
+        padding: var(--space-md);
+    }
+
+    .p-lg {
+        padding: var(--space-lg);
+    }
+
+    .flow {
+        > * {
+            margin-bottom: var(--space-md);
+        }
+    }
+    .name-highlighted,
+    .email-highlighted {
+        background: var(--text-gradient);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+    }
+    /*input states styling */
+
+    .messages{
+        color: var(--neutral-500);
+        font-size: var(--fs-sm);
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+    }
+
+    .error-message{
+        color: var(--error);
+    }
+
+    svg.icon-info.error path{
+        stroke:var(--error);
+    }
+    .show{
+        display: block ;
+    }
+    .hidden{
+        display: none !important;
+    }
+    .upload-actions.show{
+        display: grid;
+    }
+
+}
