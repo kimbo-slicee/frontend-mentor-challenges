@@ -208,9 +208,8 @@
     input {
         background: var(--neutral-gray-100);
         padding: 0.75rem var(--space-lg);
-        border-radius: var(--radius-lg);
-        border: none;
-        outline: none;
+        border-radius: 20px;
+        min-width: 100%;
     }
 
     input::placeholder {
@@ -343,6 +342,14 @@
 
         &:hover {
             background-color: var(--primary-orange-300);
+        }
+    }
+    .btn-secondary{
+        background: var(--neutral-gray-100);
+        color: var(--primary-orange-400);
+
+        &:hover {
+            color: var(--primary-orange-300);
         }
     }
 
@@ -740,16 +747,15 @@
         text-align: center;
         padding-block: var(--space-xl);
         overflow: hidden;
-        > * {
-            margin-bottom: 1.5rem;
-        }
+
     }
 
     /* ✅ Desktop view - keep your grid */
     .testimonial-list {
         display: grid;
-        grid-template-columns: repeat(4, minmax(250px, 1fr));
+        grid-template-columns: repeat(4, minmax(450px, 1fr));
         gap: var(--space-md);
+        margin-block: 5rem 2rem;
     }
 
     /* ✅ Testimonial card */
@@ -763,7 +769,7 @@
     .testimonial-item img {
         width: 70px;
         border-radius: 50%;
-        margin-top: -30px;
+        margin-top: -60px;
     }
 
     /* ✅ Mobile slider layout */
@@ -783,8 +789,178 @@
         }
 
     }
+    /*
+    ==============================================
+        ---------- FEATURE SECTION -----------
+    ==============================================
+    */
+    /* ================================================
+   FOOTER BASE
+================================================ */
+    .footer {
+        color: var(--neutral-gray-100);
+        font-size: var(--fs-sm);
+    }
+
+    .footer-top {
+        position: relative;
+        background-color: var(--primary-orange-400);
+        overflow: hidden;
+    }
+
+    .footer-top::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("../assets/images/bg-simplify-section-desktop.svg")
+        bottom center / cover no-repeat;
+    }
+
+    @container (max-width: 1024px) {
+        .footer-top::before {
+            background: url("../assets/images/bg-simplify-section-mobile.svg")
+            left center / contain no-repeat;
+        }
+    }
+
+    .cta {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(300px, 50%) auto;
+        align-items: center;
+        padding-block: 3.5rem;
+        z-index: var(--z-top);
+    }
+
+    .cta h2 {
+        font-size: var(--fs-5xl);
+        line-height: 1.2;
+        color: var(--neutral-gray-100);
+    }
+
+    .cta .btn-secondary {
+        justify-self: end;
+    }
+
+    @container (max-width: 1024px) {
+        .cta {
+            grid-template-columns: 1fr;
+            text-align: center;
+            row-gap: var(--space-md);
+            justify-items: center;
+        }
+
+        .cta .btn-secondary {
+            justify-self: center;
+        }
+    }
+
+    /* ================================================
+       FOOTER BOTTOM
+    ================================================ */
+    .footer-bottom {
+        background-color: hsl(240, 12%, 13%);
+    }
+
+    .footer-container {
+        display: grid;
+        gap: var(--space-xl);
+        padding-block: var(--space-lg);
+        text-align: center;
+
+        grid-template-areas:
+    "form"
+    "links"
+    "social"
+    "logo"
+    "copy";
+    }
+
+    @container (min-width: 1024px) {
+        .footer-container {
+            text-align: left;
+            align-items: start;
+            grid-template-columns: repeat(4, auto);
+            grid-template-areas:
+      "logo links links form"
+      "social links links copy";
+        }
+    }
+
+    /* ---------- LOGO ---------- */
+    .footer-logo {
+        grid-area: logo;
+        justify-self: center;
+    }
+
+    @container (min-width: 1024px) {
+        .footer-logo {
+            justify-self: start;
+        }
+    }
+
+    /* ---------- LINKS ---------- */
+    .footer-links {
+        grid-area: links;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+        justify-content: space-between;
+    }
+
+    .footer-links li{
+        margin-bottom: .5rem;
+    }
+    .footer-links a {
+        color: var(--neutral-gray-100);
+        font-weight: 300;
+        transition: color 0.2s ease;
+    }
 
 
+    .footer-links a:hover {
+        color: var(--primary-orange-400);
+    }
+
+    /* ---------- FORM ---------- */
+    .footer-form {
+        grid-area: form;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--space-sm);
+    }
+
+    .footer-form input {
+        border-radius: 30px;
+        padding: 0.75rem 1rem;
+        border: none;
+    }
+
+    /* ---------- SOCIAL ---------- */
+    .footer-social {
+        grid-area: social;
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        gap: var(--space-sm);
+    }
+
+    .footer-social img {
+        transition: opacity 0.2s ease;
+    }
+
+    .footer-social a:hover img {
+        opacity: 0.7;
+    }
+
+    /* ---------- COPYRIGHT ---------- */
+    .footer-copy {
+        grid-area: copy;
+    }
+    .footer-copy p{
+        font-size: var(--fs-sm);
+        font-weight: var(--fw-400);
+        color: var(--text-color);
+    }
 
 
 }
