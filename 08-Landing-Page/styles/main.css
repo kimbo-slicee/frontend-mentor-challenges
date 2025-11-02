@@ -64,16 +64,17 @@
 
         --neutral-gray-950: hsl(233, 12%, 13%);
         --neutral-gray-100: hsl(0, 0%, 98%);
+
+        /* --- colors  ---*/
         --links-color:var(--primary-blue-900);
         --links-hover-color: var(--primary-blue-300);
         --bg-shape-clr:var(--primary-orange-50);
-        /* --- colors  ---*/
-
+        --footer-color: hsl(240, 12%, 13%);
         --text-color: hsl(240, 4%, 75%);
-        --body-bg:#fff;
         --heading-color:var(--primary-blue-900);
         --anchor-color:var(--primary-blue-900);
         --svg-color:var(--primary-blue-900);
+        --card-color:hsl(0, 0%, 98%);
 
         /* ----- Line Heights ----- */
         --lh-xs: 1.1;
@@ -113,12 +114,14 @@
 
     [data-theme="dark"] {
          color-scheme: dark;
-        --body-bg: var(--primary-blue-900);
+        --body-bg: var(--neutral-gray-950);
         --heading-color: var(--primary-orange-400);
         --svg-color:var(--primary-orange-400);
         --links-color: var(--text-color);
         --links-hover-color:var(--primary-orange-300);
         --bg-shape-clr:var(--primary-orange-400);
+        --footer-color:black;
+        --card-color:var(--primary-orange-400);
     }
 
     body{
@@ -132,7 +135,7 @@
 
     @keyframes circle-in {
         from { clip-path: circle(0% at 50% 0%); }
-        to { clip-path: circle(120% at 50% 0%); }
+        to {  clip-path: circle(120% at 50% 0%); }
     }
 
 
@@ -224,24 +227,14 @@
 
 }
 
-/* ==========================================================
-   LAYOUT
-   ========================================================== */
 @layer layout {
+
     body {
         transition: background 0.5s ease, color 0.5s ease;
         position: relative;
-        overflow-x:hidden ;
-        background: var(--body-bg);
+        overflow-x:hidden;
     }
-    /*
-        =======================================
-         ------- Background shapes ----------
-        =======================================
-    */
 
-    /* ---------- BG Container ---------- */
-    /* Add pseudo-elements for background shapes */
     body::before,
     body::after {
         content: "";
@@ -258,7 +251,7 @@
 
     [data-theme="dark"] body::before,
     [data-theme="dark"] body::after{
-        opacity: 0.4;
+        opacity: .1;
     }
 
     /* Top-left shape */
@@ -274,7 +267,7 @@
     }
 
     /* ---------- Responsiveness ---------- */
-    /*!*!* Tablet *!*!*/
+
     @media (max-width: 1024px) {
         body::before {
             width: 300px;
@@ -315,15 +308,8 @@
         margin-block-end:var(--space-md);
     }
 
-    .wrapper{
-
-    }
-
 }
 
-/* ==========================================================
-   COMPONENTS
-   ========================================================== */
 @layer components {
     /* ---------------------- Base Button Styles ---------------------- */
     .btn {
@@ -378,6 +364,7 @@
         position: absolute;
         inset: 0;
         background-color: rgba(0, 0, 0, 0.4);
+        -webkit-backdrop-filter:blur(4px);
         backdrop-filter: blur(4px);
         visibility: hidden;
         z-index: var(--z-overlay);
@@ -700,11 +687,12 @@
         padding: 0;
         margin: 0;
     }
-
+    .features-list li{
+        counter-increment: featuresListCounter;
+    }
     /* Feature Item Heading */
     .features-list h3 {
         position: relative;
-        counter-increment: featuresListCounter;
         display: flex;
         align-items: center;
         gap: var(--space-sm);
@@ -746,33 +734,76 @@
     .testimonials {
         text-align: center;
         padding-block: var(--space-xl);
-        overflow: hidden;
 
     }
 
-    /* ✅ Desktop view - keep your grid */
+    .testimonials h2{
+        font-size: var(--fs-3xl);
+    }
+
     .testimonial-list {
+        position: relative;
         display: grid;
-        grid-template-columns: repeat(4, minmax(450px, 1fr));
+        grid-template-columns: repeat(4,minmax(450px,1fr));
         gap: var(--space-md);
-        margin-block: 5rem 2rem;
+        margin-block: 4rem 1rem;
+        padding-block:var(--space-xl);
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
-    /* ✅ Testimonial card */
-    .testimonial-item {
-        background-color: white;
-        padding: var(--space-md);
+     .testimonial-item {
+        background-color: hsl(0, 0%, 98%);
+        padding: 1.5rem .75rem;
         transition: transform 0.3s ease;
     }
 
-    /* ✅ Image style */
+     .testimonial-item:hover{
+        cursor:grab;
+     }
+
+    .testimonial-item.dragging{
+        cursor: grabbing;
+    }
+
+
+
+    .testimonials::-webkit-scrollbar {
+        display: none;
+    }
+
+
     .testimonial-item img {
-        width: 70px;
+        width: 60px;
         border-radius: 50%;
         margin-top: -60px;
     }
 
-    /* ✅ Mobile slider layout */
+    .testimonial-item p{
+        font-size: var(--fs-sm);
+        line-height: var(--lh-md);
+    }
+
+    .testimonial-navigation{
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap:var(--space-sm);
+        margin-bottom: .75rem;
+    }
+    .testimonial-navigation span{
+        background-color: var(--body-bg);
+        border: 1px solid var(--primary-orange-400);
+        border-radius: var(--radius-full);
+        width: .5rem;
+        height: .5rem;
+        padding: 2px;
+    }
+    .testimonial-navigation span.active{
+        background-color: var(--primary-orange-400);
+    }
     @media (max-width: 768px) {
         .testimonials{
             max-width: 90%;
@@ -787,16 +818,16 @@
             min-width: 100%;
             flex-shrink: 0;
         }
+        .testimonial-navigation{
+            display: flex;
+        }
 
     }
-    /*
-    ==============================================
-        ---------- FEATURE SECTION -----------
-    ==============================================
+
+    /* ==========================================
+          ----------- FOOTER BASE ------------
+       ==========================================
     */
-    /* ================================================
-   FOOTER BASE
-================================================ */
     .footer {
         color: var(--neutral-gray-100);
         font-size: var(--fs-sm);
@@ -859,7 +890,7 @@
        FOOTER BOTTOM
     ================================================ */
     .footer-bottom {
-        background-color: hsl(240, 12%, 13%);
+        background-color: var(--footer-color);
     }
 
     .footer-container {
@@ -931,17 +962,22 @@
     }
 
     .footer-form input {
-        border-radius: 30px;
+        border-radius: 30px     ;
         padding: 0.75rem 1rem;
         border: none;
     }
 
     /* ---------- SOCIAL ---------- */
+
     .footer-social {
-        grid-area: social;
-        display: grid;
-        grid-template-columns: repeat(5, auto);
+        display: flex;
+        align-items: center;
         gap: var(--space-sm);
+        grid-area: social;
+        @container (max-width:1024px) {
+            gap: var(--space-md);
+            justify-self: center;
+        }
     }
 
     .footer-social img {

@@ -23,6 +23,36 @@ menuIcons.addEventListener("click",()=>{
     mobileNavBar()
 })
 
+/*-------------Testimonials Logic-------------*/
 
+const testimonials = document.querySelector(".testimonial-list");
+const testimonialItems = document.querySelectorAll(".testimonial-item");
 
+let isDragging = false;
+let startX;
+let scrollLeft;
 
+testimonials.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  testimonials.classList.add("dragging");
+  startX = e.pageX - testimonials.offsetLeft;
+  scrollLeft = testimonials.scrollLeft;
+});
+
+testimonials.addEventListener("mouseleave", () => {
+  isDragging = false;
+  testimonials.classList.remove("dragging");
+});
+
+testimonials.addEventListener("mouseup", () => {
+  isDragging = false;
+  testimonials.classList.remove("dragging");
+});
+
+testimonials.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - testimonials.offsetLeft;
+  const walk = (x - startX) * 2;
+  testimonials.scrollLeft = scrollLeft - walk;
+});
