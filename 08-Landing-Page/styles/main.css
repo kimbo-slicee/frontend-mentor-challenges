@@ -13,7 +13,7 @@
     :root {
         /* ----- Font Families ----- */
         --ff-base: "BeVietnamPro", monospace;
-        
+
         /* ----- Font Sizes ----- */
         --fs-xs: 0.75rem;
         --fs-sm: 0.875rem;
@@ -117,7 +117,7 @@
     ::view-transition-new(root) {animation: circle-in 500ms;}
 
     [data-theme="dark"] {
-         color-scheme: dark;
+        color-scheme: dark;
         --footer-color:black;
         --testimonials-card-clr: var(--neutral-gray-950);
         --body-bg: var(--neutral-gray-950);
@@ -264,7 +264,7 @@
 
     /* Top-left shape */
     body::before {
-        top:-200px;
+        top:-10%;
         right: 0;
     }
 
@@ -332,11 +332,11 @@
         }
     }
 
-  /*
-  ======================================================
-      ------------- Header Section ---------------
-  ======================================================
-  */
+    /*
+    ======================================================
+        ------------- Header Section ---------------
+    ======================================================
+    */
     .header,
     .nav-list,
     .user-action {
@@ -754,7 +754,7 @@
         -ms-overflow-style: none;
     }
 
-     .testimonial-item {
+    .testimonial-item {
         background-color: var(--testimonials-card-clr);
         padding: 1.5rem .75rem;
         transition: transform 0.3s ease;
@@ -1062,8 +1062,7 @@
 
     .flow{
         > *{
-           margin-bottom: var(--space-sm);
+            margin-bottom: var(--space-sm);
         }
     }
 }
-
