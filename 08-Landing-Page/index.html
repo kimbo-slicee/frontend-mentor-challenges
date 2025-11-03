@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="assets/images/logo.svg">
   <link rel="stylesheet" href="styles/main.css"/>
-  <script src="scripts/main.js" defer></script>
-  <script src="scripts/theme.js" defer></script>
+  <script src="scripts/main.js" type="module" defer></script>
+  <script src="scripts/theme.js" type="module" defer></script>
   <title>Manage landing page</title>
 </head>
 <body>
  <header id="header" class="header container">
-        <div class="logo">
+        <div class="logo flex">
                 <img src="" alt="Manage logo"/>
         </div>
         <! --- Navigation --- >
@@ -20,7 +20,7 @@
             <!-- Main nav list -->
             <ul id="primary-navigation" class="nav-list" role="list">
                 <li class="theme-switch-mobile" hidden>
-                        <input type="checkbox" id="theme-checkbox" />
+                        <input type="checkbox" id="theme-checkbox"/>
                         <label for="theme-checkbox">
                             <div></div>
                             <span>
@@ -50,13 +50,13 @@
         <!--- Themes switch and CTA  --->
         <div class="user-action">
             <div class="theme-switch">
-                <button class="icon icon-sun">
+                <button class="icon icon-sun flex">
                     <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px"
                          fill="currentColor"><path
                             d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/>
                     </svg>
                 </button>
-                <button class="icon icon-moon">
+                <button class="icon icon-moon flex">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path
                             d="M600-640 480-760l120-120 120 120-120 120Zm200 120-80-80 80-80 80 80-80 80ZM483-80q-84 0-157.5-32t-128-86.5Q143-253 111-326.5T79-484q0-146 93-257.5T409-880q-18 99 11 193.5T520-521q71 71 165.5 100T879-410q-26 144-138 237T483-80Zm0-80q88 0 163-44t118-121q-86-8-163-43.5T463-465q-61-61-97-138t-43-163q-77 43-120.5 118.5T159-484q0 135 94.5 229.5T483-160Zm-20-305Z"/>
                     </svg>

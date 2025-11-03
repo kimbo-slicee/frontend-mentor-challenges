@@ -26,6 +26,8 @@ menuIcons.addEventListener("click",()=>{
     mobileNavBar()
 })
 
+/*-------------Testimonials Logic-------------*/
+
 /*------------- Testimonials Logic -------------*/
 
 const testimonials = document.querySelector(".testimonial-list");
@@ -43,19 +45,19 @@ if (testimonials && testimonialItems.length && navigation) {
     let startX = 0;
     let scrollStart = 0;
 
-    const startDrag = (e) => {
+     const startDrag = (e) => {
         isDragging = true;
         testimonials.classList.add("dragging");
         startX = e.pageX - testimonials.offsetLeft;
         scrollStart = testimonials.scrollLeft;
     };
 
-    const stopDrag = () => {
+     const stopDrag = () => {
         isDragging = false;
         testimonials.classList.remove("dragging");
     };
 
-    const onDrag = (e) => {
+     const onDrag = (e) => {
         if (!isDragging) return;
         e.preventDefault();
         const x = e.pageX - testimonials.offsetLeft;
@@ -87,5 +89,3 @@ if (testimonials && testimonialItems.length && navigation) {
         });
     });
 }
-
-
