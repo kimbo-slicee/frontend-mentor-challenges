@@ -761,11 +761,11 @@
     }
 
      .testimonial-item:hover{
-        cursor:grab;
+        /*cursor:grab;*/
      }
 
     .testimonial-item.dragging{
-        cursor: grabbing;
+        /*cursor: grabbing;*/
     }
 
 
@@ -797,9 +797,12 @@
         background-color: var(--body-bg);
         border: 1px solid var(--primary-orange-400);
         border-radius: var(--radius-full);
+        cursor: pointer;
         width: .5rem;
         height: .5rem;
         padding: 2px;
+        &:hover,
+        &:focus-within{background-color: var(--primary-orange-400)}
     }
     .testimonial-navigation span.active{
         background-color: var(--primary-orange-400);

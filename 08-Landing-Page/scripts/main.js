@@ -15,6 +15,9 @@ const mobileNavBar=()=>{
     toggleVisibility(navigationMenu,"open");
     toggleVisibility(navBar,"open");
 
+    // toggle body scroll
+    toggleVisibility(document.body,"no-scroll");
+
 }
 
 /* --- Mobile navBar Functionalities --- */
@@ -23,36 +26,66 @@ menuIcons.addEventListener("click",()=>{
     mobileNavBar()
 })
 
-/*-------------Testimonials Logic-------------*/
+/*------------- Testimonials Logic -------------*/
 
 const testimonials = document.querySelector(".testimonial-list");
 const testimonialItems = document.querySelectorAll(".testimonial-item");
+const navigation = document.querySelector(".testimonial-navigation");
 
-let isDragging = false;
-let startX;
-let scrollLeft;
+if (testimonials && testimonialItems.length && navigation) {
+    // --- Build navigation dynamically ---
+    navigation.innerHTML = Array.from(testimonialItems, () => `<span></span>`).join('');
+    const navDots = Array.from(navigation.children);
+    navDots[0].classList.add("active");
 
-testimonials.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  testimonials.classList.add("dragging");
-  startX = e.pageX - testimonials.offsetLeft;
-  scrollLeft = testimonials.scrollLeft;
-});
+    // --- Drag scroll logic ---
+    let isDragging = false;
+    let startX = 0;
+    let scrollStart = 0;
 
-testimonials.addEventListener("mouseleave", () => {
-  isDragging = false;
-  testimonials.classList.remove("dragging");
-});
+    const startDrag = (e) => {
+        isDragging = true;
+        testimonials.classList.add("dragging");
+        startX = e.pageX - testimonials.offsetLeft;
+        scrollStart = testimonials.scrollLeft;
+    };
 
-testimonials.addEventListener("mouseup", () => {
-  isDragging = false;
-  testimonials.classList.remove("dragging");
-});
+    const stopDrag = () => {
+        isDragging = false;
+        testimonials.classList.remove("dragging");
+    };
 
-testimonials.addEventListener("mousemove", (e) => {
-  if (!isDragging) return;
-  e.preventDefault();
-  const x = e.pageX - testimonials.offsetLeft;
-  const walk = (x - startX) * 2;
-  testimonials.scrollLeft = scrollLeft - walk;
-});
+    const onDrag = (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - testimonials.offsetLeft;
+        const walk = (x - startX) * 2; // Adjust scroll speed here
+        testimonials.scrollLeft = scrollStart - walk;
+    };
+
+    testimonials.addEventListener("mousedown", startDrag);
+    testimonials.addEventListener("mouseleave", stopDrag);
+    testimonials.addEventListener("mouseup", stopDrag);
+    testimonials.addEventListener("mousemove", onDrag);
+
+    // --- Update active dot on scroll ---
+    testimonials.addEventListener("scroll", () => {
+        const itemWidth = testimonialItems[0].getBoundingClientRect().width;
+        const currentIndex = Math.round(testimonials.scrollLeft / itemWidth);
+
+        navDots.forEach(dot => dot.classList.remove("active"));
+        if (navDots[currentIndex]) navDots[currentIndex].classList.add("active");
+    });
+
+    // --- Optional: click on navigation dot to scroll ---
+    navDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            testimonials.scrollTo({
+                left: testimonialItems[0].offsetWidth * index,
+                behavior: "smooth"
+            });
+        });
+    });
+}
+
+
