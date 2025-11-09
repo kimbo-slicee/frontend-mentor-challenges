@@ -169,7 +169,7 @@
 
     svg {
         fill: var(--svg-color);
-        width: 30px;
+        width: 1.5rem;
     }
 
     body,
@@ -240,7 +240,7 @@
     body {
         transition: background 0.5s ease, color 0.5s ease;
         position: relative;
-        overflow-x:hidden;
+        overflow:hidden;
     }
 
     body::before,
