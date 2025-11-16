@@ -164,6 +164,7 @@
         font-size: var(--fs-md);
         font-weight: var(--fw-400);
         color: var(--text-color);
+        overflow-x: hidden;
     }
 
 
@@ -238,9 +239,7 @@
 
 @layer layout {
     body {
-        transition: background 0.5s ease, color 0.5s ease;
         position: relative;
-        overflow:hidden;
     }
 
     body::before,

@@ -26,7 +26,7 @@ menuIcons.addEventListener("click",()=>{
     mobileNavBar()
 })
 
-/*-------------Testimonials Logic-------------*/
+
 
 /*------------- Testimonials Logic -------------*/
 
