@@ -22,7 +22,11 @@
     margin: 0;
     padding: 0;
 }
-
+button[disabled]{
+    opacity: .5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
 
 :root{
     --main-ff:"Roboto",sans-serif;
@@ -99,16 +103,14 @@ body{
     line-height: 1.5;
     display: grid;
     place-items: center;
-    min-height: 100vh;
     color: var(--text-clr);
     font-weight: 500;
     font-size: 18px;
-    background: var(--neutral-clr-800);
 }
+
 .container{
     background:var(--neutral-clr-100);
     min-width: 100%;
-
 }
 
 .wrapper{
@@ -118,7 +120,7 @@ body{
     padding:1rem;
 }
 .wrapper h1{
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem,2.5rem + 3vw, 3rem);
     margin-top: 2rem;
 }
 .wrapper p{
@@ -146,7 +148,21 @@ body{
 .newsletter__form{
     margin-bottom: 1rem;
 }
-
+.newsletter__form-label{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.newsletter__error{
+    color: var(--accent-clr-400);
+    font-weight: 600;
+    font-size: 15px;
+}
+input.inValid{
+    border-color:2px solid var(--accent-clr-400);
+    color: var(--accent-clr-400);
+    background:hsl(4 100% 67% / .2) ;
+}
 .btn{
     position: relative;
     background: var(--neutral-clr-800);
@@ -174,32 +190,44 @@ body{
     opacity: 0.5;
     filter: blur(30px);
 }
-@media (min-width: 900px) {
-    .container{
-        display: grid;
-        grid-template-columns:1fr 350px;
-        place-items: center;
-        border-radius:20px;
-        padding: 1rem;
-        gap: 1rem;
-        min-width: min(90%,900px);
-    }
-    .wrapper{
-        row-gap: .5rem;
-        padding:1rem 2rem;
-        width: 90%;
-    }
+/*   */
 
+.newsletter-success{
+    background: var(--neutral-clr-100);
+    text-align: center;
+    display: grid;
+    place-items:center ;
+}
+.newsletter-success__button{
+
+}
+
+
+@media (min-width: 900px) {
+    body{
+        background: var(--neutral-clr-800);
+        min-height: 100vh;
+    }
+    .container{
+        display: grid ;
+        grid-template-columns: 1fr 380px;
+        place-items: center;
+        padding: .5rem;
+        min-width: min(80%,800px);
+        border-radius: 20px;
+    }
     .main-image{
         order: 2;
+        width: 95%;
     }
-    .main-image img{
-        object-fit: cover;
+    .wrapper{
+        padding: 1rem 1.5rem;
+        row-gap: .5rem;
+        width: 90%;
     }
-    .wrapper ul li{
-        margin-bottom: .5rem;
-    }
+    /* newsLetter popup */
 }
+
 
 
 

@@ -9,12 +9,10 @@
     <title>Newsletter sign-up form</title>
 </head>
 <body>
-        <div class="container">
+        <div class="container" style="display: none">
             <picture class="main-image">
-                <source srcset="assets/images/illustration-sign-up-tablet.svg"
-                        media="(min-width:350px and max-width:900px)">
-                <source srcset="assets/images/illustration-sign-up-desktop.svg"
-                        media="(min-width:900px)">
+                <source srcset="assets/images/illustration-sign-up-desktop.svg" media="(min-width: 900px)">
+                <source srcset="assets/images/illustration-sign-up-tablet.svg" media="(min-width: 750px) and (max-width: 900px)">
                 <img src="assets/images/illustration-sign-up-mobile.svg" alt="newsletter sign-up">
             </picture>
 
@@ -25,12 +23,12 @@
                     <li class="newsletter__list-item">Product discovery and building what matters</li>
                     <li class="newsletter__list-item">Measuring to ensure updates are a success</li>
                     <li class="newsletter__list-item">And much more!</li>
-                </ul>
-                <form class="newsletter__form" novalidate>
-                    <div class="newsletter__form-group">
+                    </ul>
+                    <form class="newsletter__form" novalidate>
+                        <div class="newsletter__form-group">
                         <div class="newsletter__form-label">
                             <label for="email" class="newsletter__label" aria-errormessage="email-error">Email address</label>
-                            <span id="email-error" class="newsletter__error" aria-live="polite" hidden>Valid email required</span>
+                            <span id="email-error" class="newsletter__error" aria-live="polite"></span>
                         </div>
                         <input
                                 type="email"
@@ -42,15 +40,14 @@
                                 aria-describedby="email-error"
                         >
                     </div>
-                    <button type="submit" class="btn btn--primary newsletter__button">
+                    <button type="submit" class="btn btn--primary newsletter__button" disabled>
                         Subscribe to monthly newsletter
                     </button>
                 </form>
             </div>
         </div>
         <!-- Success Popup -->
-        <div class="newsletter-success wrapper" role="alertdialog" aria-modal="true" aria-hidden="true"
-             style="display: none">
+        <div class="newsletter-success container" role="alertdialog" aria-modal="true" aria-hidden="true">
             <div class="newsletter-success-container">
                 <svg class="newsletter-success__icon" aria-hidden="false" focusable="false">
                     <use href="assets/images/icon-success.svg"></use>
