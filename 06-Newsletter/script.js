@@ -36,6 +36,7 @@ const handelEmailValidation=(e)=>{
 const handelFormSubmit=(e)=>{
         e.preventDefault();
         toggleClasses();
+        emailInput.value=""
 }
 dissmiseMessage.addEventListener("click",toggleClasses);
 
