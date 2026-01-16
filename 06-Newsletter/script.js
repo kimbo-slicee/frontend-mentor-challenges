@@ -2,8 +2,15 @@ const emailInput=document.querySelector("input[type='email']");
 const messageError=document.querySelector(".newsletter__error");
 const input=document.querySelector("input");
 const button=document.querySelector("button[type='submit']");
+const successPopupMessage=document.querySelector(".newsletter-success");
+const container=document.querySelector(".container");
+const dissmiseMessage=document.querySelector(".newsletter-success__button");
 
 const changeBorderColor=(valid,input)=>input.classList[valid?"remove":"add"]("inValid");
+const toggleClasses=()=>{
+    successPopupMessage.classList.toggle("hide");
+    container.classList.toggle("hide");
+}
 
 const validation=(email)=>{
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -25,9 +32,12 @@ const handelEmailValidation=(e)=>{
     button.disabled=true;
     validation(email);
 }
-const handelFormSubmit=(e)=>{
 
+const handelFormSubmit=(e)=>{
+        e.preventDefault();
+        toggleClasses();
 }
+dissmiseMessage.addEventListener("click",toggleClasses);
 
 
 /**/

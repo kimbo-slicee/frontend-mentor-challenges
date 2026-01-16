@@ -108,10 +108,14 @@ body{
     font-size: 18px;
 }
 main{
-    position: relative; 
+    /*position: relative;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
 }
 .container{
     background:var(--neutral-clr-100);
+    transition: all .5s ease-in-out;
     min-width: 100%;
 }
 
@@ -235,7 +239,10 @@ input.inValid{
         min-height: 50%;
         max-width: 400px;
         padding: 2rem;
+        transform-origin: center center;
+        transition: all .5s ease-in-out;
     }
+
     .newsletter-success-container{
         gap: 0;
     }
@@ -274,6 +281,18 @@ input.inValid{
 }
 
 
+.hide{
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    scale: 0;
+}
 
+.show{
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    scale: 1;
+}
 
 
