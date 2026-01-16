@@ -9,58 +9,61 @@
     <title>Newsletter sign-up form</title>
 </head>
 <body>
-        <div class="container" style="display: none">
-            <picture class="main-image">
-                <source srcset="assets/images/illustration-sign-up-desktop.svg" media="(min-width: 900px)">
-                <source srcset="assets/images/illustration-sign-up-tablet.svg" media="(min-width: 750px) and (max-width: 900px)">
-                <img src="assets/images/illustration-sign-up-mobile.svg" alt="newsletter sign-up">
-            </picture>
+        <main>
+            <div class="container" >
+                <picture class="main-image">
+                    <source srcset="assets/images/illustration-sign-up-desktop.svg" media="(min-width: 900px)">
+                    <source srcset="assets/images/illustration-sign-up-tablet.svg"
+                            media="(min-width: 500px) and (max-width: 1024px)">
+                    <img src="assets/images/illustration-sign-up-mobile.svg" alt="newsletter sign-up">
+                </picture>
 
-            <div class="newsletter wrapper">
-                <h1>Stay Updated !</h1>
-                <p>Join 60,000+ product manager receiving monthly updated on:</p>
-                <ul class="newsletter__list">
-                    <li class="newsletter__list-item">Product discovery and building what matters</li>
-                    <li class="newsletter__list-item">Measuring to ensure updates are a success</li>
-                    <li class="newsletter__list-item">And much more!</li>
+                <div class="newsletter wrapper">
+                    <h1>Stay Updated !</h1>
+                    <p>Join 60,000+ product manager receiving monthly updated on:</p>
+                    <ul class="newsletter__list">
+                        <li class="newsletter__list-item">Product discovery and building what matters</li>
+                        <li class="newsletter__list-item">Measuring to ensure updates are a success</li>
+                        <li class="newsletter__list-item">And much more!</li>
                     </ul>
                     <form class="newsletter__form" novalidate>
                         <div class="newsletter__form-group">
-                        <div class="newsletter__form-label">
-                            <label for="email" class="newsletter__label" aria-errormessage="email-error">Email address</label>
-                            <span id="email-error" class="newsletter__error" aria-live="polite"></span>
+                            <div class="newsletter__form-label">
+                                <label for="email" class="newsletter__label" aria-errormessage="email-error">Email address</label>
+                                <span id="email-error" class="newsletter__error" aria-live="polite"></span>
+                            </div>
+                            <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="newsletter__input"
+                                    placeholder="email@company.com"
+                                    required
+                                    aria-describedby="email-error"
+                            >
                         </div>
-                        <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                class="newsletter__input"
-                                placeholder="email@company.com"
-                                required
-                                aria-describedby="email-error"
-                        >
-                    </div>
-                    <button type="submit" class="btn btn--primary newsletter__button" disabled>
-                        Subscribe to monthly newsletter
-                    </button>
-                </form>
+                        <button type="submit" class="btn btn--primary newsletter__button" disabled>
+                            Subscribe to monthly newsletter
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <!-- Success Popup -->
-        <div class="newsletter-success container" role="alertdialog" aria-modal="true" aria-hidden="true">
-            <div class="newsletter-success-container">
-                <svg class="newsletter-success__icon" aria-hidden="false" focusable="false">
-                    <use href="assets/images/icon-success.svg"></use>
-                </svg>
-                <h2 class="newsletter-success__title">Thanks for subscribing!</h2>
-                <p class="newsletter-success__message">
-                    A Confirm email has been Sent to <strong>ash@loremcompany.com</strong> Please open it and click th button to confirm your subscription
-                </p>
-            </div>
+            <!-- Success Popup -->
+            <div class="newsletter-success" role="alertdialog" aria-modal="true" aria-hidden="true">
+                <div class="newsletter-success-container">
+                    <svg class="newsletter-success__icon" aria-hidden="false" focusable="false">
+                        <use href="assets/images/icon-success.svg"></use>
+                    </svg>
+                    <h2 class="newsletter-success__title">Thanks for subscribing!</h2>
+                    <p class="newsletter-success__message">
+                        A Confirm email has been Sent to <strong>ash@loremcompany.com</strong> Please open it and click th button to confirm your subscription
+                    </p>
+                </div>
 
-            <button class="btn btn--secondary newsletter-success__button" aria-label="Dismiss success message">
-                Dismiss message
-            </button>
-        </div>
+                <button class="btn btn--secondary newsletter-success__button" aria-label="Dismiss success message">
+                    Dismiss message
+                </button>
+            </div>
+        </main>
 </body>
 </html>
