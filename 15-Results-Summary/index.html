@@ -2,46 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Results summary component</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/icon-memory.svg">
+  <link rel="stylesheet" href="main.css"/>
+  <script src="script.js" defer></script>
+  <title>Results summary component</title>
 </head>
 <body>
+<main class="container">
+  <article class="results-card">
 
-  Your Result
-  76
-  of 100
+    <!-- Result Section -->
+    <section class="result" aria-labelledby="result-title">
+      <h1 id="result-title">Your Result</h1>
 
-  Great
-  You scored higher than 65% of the people who have taken these tests.
-  
-  Summary
+      <p class="result__score">
+        <strong class="result__value">76</strong>
+        <span class="result__max">of 100</span>
+      </p>
+      <div class="result__label">
+        <h2>Great</h2>
+        <p class="result__description">
+          You scored higher than 65% of the people who have taken these tests.
+        </p>
+      </div>
+    </section>
 
-  Reaction
-  80 / 100
+    <!-- Summary Section -->
+    <section class="summary" aria-labelledby="summary-title">
+      <h2 id="summary-title">Summary</h2>
 
-  Memory
-  92 / 100
+      <ul class="summary__list">
+        <li class="summary__item summary__item--reaction">
+          <article class="summary__row">
+            <div class="summary__type">
+              <img src="assets/images/icon-reaction.svg" alt="Reaction icon">
+              <span>Reaction</span>
+            </div>
+            <span class="summary__score"><strong>80</strong> / 100</span>
+          </article>
+        </li>
 
-  Verbal
-  61 / 100
+        <li class="summary__item summary__item--memory">
+          <article class="summary__row">
+            <div class="summary__type">
+              <img src="assets/images/icon-memory.svg" alt="Memory icon">
+              <span>Memory</span>
+            </div>
+            <span class="summary__score"><strong>92</strong> / 100</span>
+          </article>
+        </li>
 
-  Visual
-  72 / 100
+        <li class="summary__item summary__item--verbal">
+          <article class="summary__row">
+            <div class="summary__type">
+              <img src="assets/images/icon-verbal.svg" alt="Verbal icon">
+              <span>Verbal</span>
+            </div>
+            <span class="summary__score"><strong>61</strong> / 100</span>
+          </article>
+        </li>
 
-  Continue
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+        <li class="summary__item summary__item--visual">
+          <article class="summary__row">
+            <div class="summary__type">
+              <img src="assets/images/icon-visual.svg" alt="Visual icon">
+              <span>Visual</span>
+            </div>
+            <span class="summary__score"><strong>73</strong> / 100</span>
+          </article>
+        </li>
+      </ul>
+
+      <button type="button" class="btn btn--primary">
+        Continue
+      </button>
+    </section>
+
+  </article>
+</main>
 </body>
 </html>

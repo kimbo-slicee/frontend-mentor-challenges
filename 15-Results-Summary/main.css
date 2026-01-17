@@ -1,0 +1,256 @@
+/* 1. Declare layer order */
+@layer reset, fonts, variables, theme, base, layout, components, utilities;
+
+/* 2. Reset */
+@layer reset {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    /* Headings reset */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font: inherit;
+    }
+
+    /* Button reset */
+    button {
+        all: unset;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+
+    button:disabled {
+        cursor: not-allowed;
+    }
+}
+
+/* 3. Fonts */
+@layer fonts {
+    @font-face {
+        font-family: 'Hanken Grotesk';
+        src: url('./assets/fonts/HankenGrotesk-Regular.woff2') format('woff2'),
+        url('./assets/fonts/HankenGrotesk-Regular.woff') format('woff');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+    }
+}
+
+    @layer variables {
+        :root {
+            /* ----- Font Families ----- */
+            --ff-base: 'Hanken Grotesk', system-ui, sans-serif;
+
+            /* =====================
+              Primary colors
+           ====================== */
+            --clr-primary-red: hsl(0 100% 67%);
+            --clr-primary-yellow: hsl(39 100% 56%);
+            --clr-primary-green: hsl(166 100% 37%);
+            --clr-primary-blue: hsl(234 85% 45%);
+
+            /* =====================
+               Gradient colors
+            ====================== */
+            --clr-gradient-slate-blue: hsl(252 100% 67%);
+            --clr-gradient-royal-blue: hsl(241 81% 54%);
+            --clr-gradient-violet-blue: hsla(256 72% 46% / 1);
+            --clr-gradient-persian-blue: hsla(241 72% 46% / 0);
+
+            /* =====================
+               Neutral colors
+            ====================== */
+            --clr-neutral-white: hsl(0 0% 100%);
+            --clr-neutral-pale-blue: hsl(221 100% 96%);
+            --clr-neutral-lavender: hsl(241 100% 89%);
+            --clr-neutral-dark-blue: hsl(224 30% 27%);
+
+            /**/
+            --fs-md:1rem;
+            --fs-xl:1.125rem;
+
+        }
+    }
+
+/* 5. Theme (dark/light) */
+@layer theme {
+    :root {
+        --color-bg-main: var(--clr-neutral-white);
+        --color-text-main: var(--clr-neutral-dark-blue);
+        --color-text-muted: var(--clr-neutral-lavender);
+
+        --color-accent-red: var(--clr-primary-red);
+        --color-accent-yellow: var(--clr-primary-yellow);
+        --color-accent-green: var(--clr-primary-green);
+        --color-accent-blue: var(--clr-primary-blue);
+        --clr-bg: var(--clr-neutral-pale-blue);
+    }
+
+}
+
+/* 6. Base (semantic elements) */
+@layer base {
+    /* =====================
+     Headings (Titles)
+  ====================== */
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--color-text-main);
+    }
+    h1 {
+        font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+    }
+    h2 {
+        font-size: clamp(1.5rem, 2vw, 1.875rem);
+    }
+    h3 {
+        font-size: 1.25rem;
+    }
+
+
+    /* =====================
+       Buttons (Base)
+    ====================== */
+    button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75em 1.25em;
+        border-radius: 9999px;
+
+        font-weight: 700;
+        font-size: 1rem;
+
+        background: var(--color-accent-blue);
+        color: var(--clr-neutral-white);
+
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover:not(:disabled) {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 12px hsl(234 85% 45% / 0.3);
+    }
+
+    button:active:not(:disabled) {
+        transform: translateY(0);
+        box-shadow: 0 3px 6px hsl(234 85% 45% / 0.3);
+    }
+
+    button:focus-visible {
+        outline: 3px solid var(--color-accent-blue);
+        outline-offset: 3px;
+    }
+    body {
+        font-family: "Inter", sans-serif;
+        font-size: var(--ff-base);
+        background: var(--clr-bg);
+        color: var(--color-text-muted);
+    }
+
+    h1, h2, h3 {
+        line-height: 1.2;
+    }
+}
+
+/* 7. Layout */
+@layer layout {
+    .container {
+        width: 100%;
+        min-height: 100%;
+        container-type: inline-size;
+    }
+}
+
+/* 8. Components */
+@layer components {
+   .result{
+       background: linear-gradient(180deg, var(--clr-gradient-slate-blue) 13%,var(--clr-primary-blue));
+       display: grid;
+       place-items: center;
+       padding: 1.5rem 2.5rem;
+       border-radius: 0 0 30px 30px;
+       gap: 1.75rem;
+       isolation: isolate;
+   }
+    #result-title{
+        text-transform:capitalize;
+        color: var(--color-text-muted);
+        font-size:var(--fs-md);
+    }
+    .result__score{
+        position: relative;
+        background: var(--clr-gradient-persian-blue);
+        display: grid;
+        place-items: center;
+        place-content: center;
+        gap: .25rem;
+    }
+    .result__score::before{
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: linear-gradient(0deg, var(--clr-gradient-persian-blue), var(--clr-gradient-violet-blue));
+        width: 5rem;
+        height: 5rem;
+        padding:4.5rem;
+        border-radius: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
+    .result__value,
+    .result__label h2{
+        font-size: 3.5rem;
+        color:var(--clr-neutral-white);
+        font-weight: 800;
+    }
+    .result__max{
+    }
+    .result__label h2{
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: .5rem;
+    }
+    .result__description{
+        text-align: center;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    .summary{
+        padding: 1rem 2rem;
+    }
+    .summary-title{
+        font-size: var(--fs-md);
+    }
+}
+
+/* 9. Utilities */
+@layer utilities {
+    .text-center {
+        text-align: center;
+    }
+
+    .flow > * + * {
+        margin-top: 1rem;
+    }
+}
+
