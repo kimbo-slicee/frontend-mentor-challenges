@@ -3,6 +3,8 @@ const buttons=menuIcons.querySelectorAll("button");
 const navigationMenu=document.querySelector(".header__navigation-menu");
 const navBar=document.querySelector(".nav-list");
 
+console.log(document.documentElement.scrollWidth > window.innerWidth);
+
 // mobile navBar
 const toggleVisibility=(ele,className)=>{
     if(!ele) return;
