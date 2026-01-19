@@ -9,12 +9,10 @@
   <title>Results summary component</title>
 </head>
 <body>
-<main class="container">
-  <article class="results-card">
-
+  <div class="container">
     <!-- Result Section -->
-    <section class="result" aria-labelledby="result-title">
-      <h1 id="result-title">Your Result</h1>
+    <section class="result__wrapper" aria-labelledby="result-title">
+      <h1 class="result-title">Your Result</h1>
 
       <p class="result__score">
         <strong class="result__value">76</strong>
@@ -27,17 +25,16 @@
         </p>
       </div>
     </section>
-
     <!-- Summary Section -->
-    <section class="summary" aria-labelledby="summary-title">
-      <h2 id="summary-title">Summary</h2>
+    <section class="summary__wrapper" aria-labelledby="summary-title">
+      <h2 class="summary-title">Summary</h2>
 
       <ul class="summary__list">
         <li class="summary__item summary__item--reaction">
           <article class="summary__row">
             <div class="summary__type">
-              <img src="assets/images/icon-reaction.svg" alt="Reaction icon">
-              <span>Reaction</span>
+              <img src="assets/images/icon-reaction.svg" alt="Reaction icon" class="summary__icon">
+              <span class="summary__name">Reaction</span>
             </div>
             <span class="summary__score"><strong>80</strong> / 100</span>
           </article>
@@ -46,8 +43,8 @@
         <li class="summary__item summary__item--memory">
           <article class="summary__row">
             <div class="summary__type">
-              <img src="assets/images/icon-memory.svg" alt="Memory icon">
-              <span>Memory</span>
+              <img src="assets/images/icon-memory.svg" alt="Memory icon" class="summary__icon">
+              <span class="summary__name">Memory</span>
             </div>
             <span class="summary__score"><strong>92</strong> / 100</span>
           </article>
@@ -56,8 +53,8 @@
         <li class="summary__item summary__item--verbal">
           <article class="summary__row">
             <div class="summary__type">
-              <img src="assets/images/icon-verbal.svg" alt="Verbal icon">
-              <span>Verbal</span>
+              <img src="assets/images/icon-verbal.svg" alt="Verbal icon" class="summary__icon">
+              <span class="summary__name">Verbal</span>
             </div>
             <span class="summary__score"><strong>61</strong> / 100</span>
           </article>
@@ -66,8 +63,8 @@
         <li class="summary__item summary__item--visual">
           <article class="summary__row">
             <div class="summary__type">
-              <img src="assets/images/icon-visual.svg" alt="Visual icon">
-              <span>Visual</span>
+              <img src="assets/images/icon-visual.svg" alt="Visual icon" class="summary__icon">
+              <span class="summary__name">Visual</span>
             </div>
             <span class="summary__score"><strong>73</strong> / 100</span>
           </article>
@@ -78,8 +75,6 @@
         Continue
       </button>
     </section>
-
-  </article>
-</main>
+  </div>
 </body>
 </html>
