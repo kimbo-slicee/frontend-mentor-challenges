@@ -1,110 +1,28 @@
-/*
-=============
-Utilities CSS
-=============
-*/
-/* Utility classes for common styles */
-.flex-center {
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+
+/* general */
+
+.flex {
+    --gap:1rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: var(--gap, 1rem);
 }
 
-.flex-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.flex-between {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.flex-align-center {
-    display: flex;
-    align-items: center;
-}
-
-/*
-==================
- Grid Utilities
-==================
-*/
-.gird{
+.grid {
     display: grid;
-}
-.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap, 1rem);
 }
 
-
-.gap-1 {
-    gap: 0.25rem;
-}
-.gap-2 {
-    gap: 0.5rem;
-}
-.gap-3 {
-    gap: 0.75rem;
+.flow > *:where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1rem);
 }
 
-
-
-.text-center {
-    text-align: center;
-}
-.text-right {
-    text-align: right;
-}
-.text-left {
-    text-align: left;
-}
-
-/*
-==================
-Margin Utilities
-==================
-*/
-
-.mt-1 {
-    margin-top: 0.25rem;
-}
-.mt-2 {
-    margin-top: 0.5rem;
-}
-.mt-3 {
-    margin-top: 0.75rem;
-}
-
-.mb-1 {
-    margin-bottom: 0.25rem;
-}
-.mb-2 {
-    margin-bottom: 0.5rem;
-}
-.mb-3 {
-    margin-bottom: 0.75rem;
-}
-
-/*
-    ==================
-    Padding Utilities
-    ==================
-*/
-
-.p-1 {
-    padding: 0.25rem;
-}
-.p-2 {
-    padding: 0.5rem;
-}
-.p-3 {
-    padding: 0.75rem;
+.container {
+    padding-inline: 2em;
+    margin-inline: auto;
+    max-width: 80rem;
 }
 
 .sr-only {
@@ -115,5 +33,57 @@ Margin Utilities
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
     border: 0;
+}
+
+/* colors */
+
+.bg-dark { background-color: hsl( var(--clr-dark) );}
+.bg-accent { background-color: hsl( var(--clr-light) );}
+.bg-white { background-color: hsl( var(--clr-white) );}
+
+.text-dark { color: hsl( var(--clr-dark) );}
+.text-accent { color: hsl( var(--clr-light) );}
+.text-white { color: hsl( var(--clr-white) );}
+
+/* typography */
+
+.ff-barlow-condensed { font-family: var(--ff-barlow-condensed); }
+.ff-bellefair { font-family: var(--ff-bellefair); }
+.ff-barlow { font-family: var(--ff-barlow); }
+
+.letter-spacing-1 { letter-spacing: 4.75px; }
+.letter-spacing-2 { letter-spacing: 2.7px; }
+.letter-spacing-3 { letter-spacing: 2.35px; }
+
+.uppercase { text-transform: uppercase; }
+
+.fs-900 { font-size: var(--fs-900); }
+.fs-800 { font-size: var(--fs-800); }
+.fs-700 { font-size: var(--fs-700); }
+.fs-600 { font-size: var(--fs-600); }
+.fs-500 { font-size: var(--fs-500); }
+.fs-400 { font-size: var(--fs-400); }
+.fs-300 { font-size: var(--fs-300); }
+.fs-200 { font-size: var(--fs-200); }
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+    line-height: 1.1;
+}
+
+.numbered-title {
+    font-family: var(--ff-barlow-condensed);
+    font-size: var(--fs-500);
+    text-transform: uppercase;
+    letter-spacing: 4.72px;
+}
+
+.numbered-title span {
+    margin-right: .5em;
+    font-weight: 700;
+    color: hsl( var(--clr-white) / .25);
 }
