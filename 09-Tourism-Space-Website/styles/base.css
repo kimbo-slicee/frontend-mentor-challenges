@@ -1,0 +1,17 @@
+body{
+    font-family: var(--ff-barlow);
+    color:var(--clr-light);
+    background: url("../assets/home/background-home-desktop.jpg") no-repeat center center/cover;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: var(--ff-bellefair);
+    color: var(--clr-light);
+    line-height: 1.1;
+}
+
+p{
+    font-family: var(--ff-barlow);
+    color: var(--clr-light);
+}
+

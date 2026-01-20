@@ -1,13 +1,24 @@
-/* ------------------- */
-/* Utility classes     */
-/* ------------------- */
-
-/* general */
-
 .flex {
     --gap:1rem;
     display: flex;
     gap: var(--gap, 1rem);
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .grid {
@@ -74,6 +85,7 @@
 .fs-600 {
     line-height: 1.1;
 }
+.fw-800 { font-weight: 600; }
 
 .numbered-title {
     font-family: var(--ff-barlow-condensed);
@@ -86,4 +98,51 @@
     margin-right: .5em;
     font-weight: 700;
     color: hsl( var(--clr-white) / .25);
+}
+/* =============| PADDING UTILITIES |============ */
+.p-0 { padding: 0; }
+.p-1 { padding: 1rem; }
+.p-2 { padding: 2rem; }
+.p-3 { padding: 3rem; }
+.p-4 { padding: 4rem; }
+
+.py-0 { padding-top: 0; padding-bottom: 0; }
+.py-1 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-2 { padding-top: 2rem; padding-bottom: 2rem; }
+.py-3 { padding-top: 3rem; padding-bottom: 3rem; }
+.py-4 { padding-top: 4rem; padding-bottom: 4rem; }
+
+.px-0 { padding-left: 0; padding-right: 0; }
+.px-1 { padding-left: 1rem; padding-right: 1rem; }
+.px-2 { padding-left: 2rem; padding-right: 2rem; }
+.px-3 { padding-left: 3rem; padding-right: 3rem; }
+.px-4 { padding-left: 4rem; padding-right: 4rem; }
+
+.pt-0 { padding-top: 0; }
+.pt-1 { padding-top: 1rem; }
+.pt-2 { padding-top: 2rem; }
+.pt-3 { padding-top: 3rem; }
+.pt-4 { padding-top: 4rem; }
+
+.pb-0 { padding-bottom: 0; }
+.pb-1 { padding-bottom: 1rem; }
+.pb-2 { padding-bottom: 2rem; }
+.pb-3 { padding-bottom: 3rem; }
+.pb-4 { padding-bottom: 4rem; }
+
+.pl-0 { padding-left: 0; }
+.pl-1 { padding-left: 1rem; }
+.pl-2 { padding-left: 2rem; }
+.pl-3 { padding-left: 3rem; }
+.pl-4 { padding-left: 4rem; }
+
+/* ============| MARGIN UTILITIES |============ */
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mt-3 { margin-top: 3rem; }
+.mt-4 { margin-top: 4rem; }
+/* ============| JS USE ONLY |============ */
+.hidden{
+    display: none;
 }

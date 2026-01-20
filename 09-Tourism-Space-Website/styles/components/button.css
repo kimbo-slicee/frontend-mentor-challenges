@@ -1,0 +1,8 @@
+.btn{
+    --btn-bg-clr:var(--clr-white);
+    --btn-fg-clr:var(--clr-dark);
+    --btn-font:var(--ff-barlow-condensed);
+    --btn-ls:var(--ls-200);
+    --btn-padding:var(--sp-16) var(--sp-32);
+    --btn-fs:var(--fs-400);
+}

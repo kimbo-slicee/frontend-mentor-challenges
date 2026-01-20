@@ -28,7 +28,22 @@
     --lh-300: 3.75rem;
     --lh-200: 2.75rem;
     --lh-100: 1.75rem;
-    /* -------- Spacing --------- */
-    --flow-space: 1rem;
-
+    /* -------- SPACING --------- */
+    --sp-128: 8rem;
+    --sp-96: 6rem;
+    --sp-80: 5rem;
+    --sp-64: 4rem;
+    --sp-48: 3rem;
+    --sp-40: 2.5rem;
+    --sp-32: 2rem;
+    --sp-24: 1.5rem;
+    --sp-16: 1rem;
+    --sp-8: 0.5rem;
+    --sp-4: 0.25rem;
+    --sp-2: 0.125rem;
+    /* -------- BREAKPOINTS --------- */
+    --bp-600: 37.5em; /* 600px */
+    --bp-900: 56.25em; /* 900px */
+    /* -========= OTHER ========- */
+    --transition: all 0.3s ease-in-out;
 }
