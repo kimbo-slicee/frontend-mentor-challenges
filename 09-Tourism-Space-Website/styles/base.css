@@ -2,6 +2,7 @@ body{
     font-family: var(--ff-barlow);
     color:var(--clr-light);
     background: url("../assets/home/background-home-desktop.jpg") no-repeat center center/cover;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6{
