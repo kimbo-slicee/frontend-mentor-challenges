@@ -1,237 +1,151 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Manage Landing Page</title>
-    <link rel="icon" href="assets/images/logo.svg" />
-    <link rel="stylesheet" href="styles/main.css" />
-    <script type="module" src="scripts/main.js" defer></script>
-    <script type="module" src="scripts/theme.js" defer></script>
 </head>
 <body>
- <header id="header" class="header container">
-        <div class="logo flex">
-                <img src="" alt="Manage logo"/>
+<header class="header">
+
+    <!-- Logo -->
+    <div class="header__logo">
+        <a href="/" aria-label="Homepage">
+            <img src="./assets/images/logo.svg" alt="Manage homepage logo">
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="header__nav" aria-label="Main Navigation">
+        <ul class="nav__list">
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#community">Community</a></li>
+        </ul>
+    </nav>
+
+    <!-- Call to Action -->
+    <div class="header__cta">
+        <a href="#get-started" class="btn">Get Started</a>
+    </div>
+
+</header>
+<section class="hero" id="hero">
+    <div class="hero__content">
+        <h1 class="hero__title">Bring everyone together to build better products.</h1>
+        <p class="hero__description">Manage makes it simple for software teams to plan day-to-day tasks while keeping the larger team goals in view.</p>
+        <a href="#get-started" class="btn btn--primary">Get Started</a>
+    </div>
+    <img src="assets/images/illustration-intro.svg" alt="Illustration of people collaborating" class="hero__image">
+</section>
+<section class="about" id="about" aria-labelledby="about-heading">
+
+    <div class="about__container">
+
+        <!-- Intro Content -->
+        <div class="about__intro">
+            <h2 id="about-heading">
+                What’s different about Manage?
+            </h2>
+            <p>
+                Manage provides all the functionality your team needs without the complexity.
+                Our software is tailor-made for modern digital product teams.
+            </p>
         </div>
-        <!-- Navigation -->
-        <nav class="header__navigation-menu" aria-label="Main navigation">
-            <!-- Main nav list -->
-            <ul id="primary-navigation" class="nav-list" role="list">
-                <li class="theme-switch-mobile" hidden>
-                        <input type="checkbox" id="theme-checkbox"/>
-                        <label for="theme-checkbox">
-                            <div></div>
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                                    <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd">
-                                    </path>
-                                </svg>
-                            </span>
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                                    <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z">
-                                    </path>
-                                </svg>
-                            </span>
-                        </label>
+
+        <!-- Features List -->
+        <div class="about__features">
+            <ol class="features-list">
+
+                <li class="feature">
+                    <article class="feature__item">
+                        <h3 class="feature__title">
+                            Track company-wide progress
+                        </h3>
+                        <p>
+                            See how your day-to-day tasks fit into the wider vision.
+                            Go from tracking progress at the milestone level all the way
+                            down to the smallest details.
+                        </p>
+                    </article>
                 </li>
 
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#product">Product</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#careers">Careers</a></li>
-                <li><a href="#community">Community</a></li>
-                <li class="user-action-mobile" hidden><button class="btn btn-primary">Get started</button></li>
-            </ul>
-        </nav>
+                <li class="feature">
+                    <article class="feature__item">
+                        <h3 class="feature__title">
+                            Advanced built-in reports
+                        </h3>
+                        <p>
+                            Set internal delivery estimates and track progress toward
+                            company goals. Our customizable dashboard helps you build
+                            the reports you need to keep key stakeholders informed.
+                        </p>
+                    </article>
+                </li>
 
-        <!--- Themes switch and CTA  --->
-        <div class="user-action">
-            <div class="theme-switch">
-                <button class="icon icon-sun flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px"
-                         fill="currentColor"><path
-                            d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/>
-                    </svg>
-                </button>
-                <button class="icon icon-moon flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path
-                            d="M600-640 480-760l120-120 120 120-120 120Zm200 120-80-80 80-80 80 80-80 80ZM483-80q-84 0-157.5-32t-128-86.5Q143-253 111-326.5T79-484q0-146 93-257.5T409-880q-18 99 11 193.5T520-521q71 71 165.5 100T879-410q-26 144-138 237T483-80Zm0-80q88 0 163-44t118-121q-86-8-163-43.5T463-465q-61-61-97-138t-43-163q-77 43-120.5 118.5T159-484q0 135 94.5 229.5T483-160Zm-20-305Z"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="cta-buttons">
-                <button type="button" class="btn btn-primary">Get Started</button>
-            </div>
+                <li class="feature">
+                    <article class="feature__item">
+                        <h3 class="feature__title">
+                            Everything you need in one place
+                        </h3>
+                        <p>
+                            Stop jumping between tools. Manage offers an all-in-one
+                            solution for communication, file storage, task tracking,
+                            and collaboration.
+                        </p>
+                    </article>
+                </li>
+
+            </ol>
         </div>
 
-        <!-- Mobile navigation toggle -->
-        <div class="mobile-navigation" hidden>
-            <button class="hamburger-icon" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="25" height="18" role="img" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M0 0h25v4H0zM0 7h25v4H0zM0 14h25v4H0z"/>
-                </svg>
-            </button>
-            <button class="close-icon hidden" aria-controls="primary-navigation" aria-expanded="true"
-                    aria-label="Close menu">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"  width="21" height="22" role="img" aria-hidden="true">
-                    <path fill-rule="evenodd"
-                          d="M17.925.747l2.828 2.828L13.328 11l7.425 7.425-2.828 2.828-7.425-7.425-7.425 7.425-2.828-2.828L7.671 11 .247 3.575 3.075.747 10.5 8.171 17.925.747z"/>
-                </svg>
-            </button>
-        </div>
+    </div>
 
-    </header>
-    <main id="main">
-        <!-- HERO SECTION -->
-        <section class="hero-section" id="hero">
-            <div class="hero-container container reverse">
-                <div class="hero-image">
-                    <img src="assets/images/illustration-intro.svg" alt="hero image">
-                </div>
-                <div class="hero-content wrapper">
-                    <h1>Bring everyone together to build better products.</h1>
-                    <p>
-                        Manage makes it simple for software teams to plan day-to-day tasks while keeping the larger team goals in view.
-                    </p>
-                    <button type="button" class="btn btn-primary">Get Started</button>
-                </div>
-            </div>
-        </section>
+</section>
+<!-- TESTIMONIALS SECTION -->
+<section id="testimonials" class="testimonials">
+    <h2>What they’ve said</h2>
 
-        <!-- FEATURES SECTION -->
-        <section id="features" class="features">
-            <div class="features-content container">
-                <div class="features-content wrapper">
-                    <h2>What’s different about Manage?</h2>
-                    <p>
-                        Manage provides all the functionality your team needs, without the complexity. Our software is tailor-made for modern digital product teams.
-                    </p>
-                </div>
-                <ol class="features-list" role="list">
-                    <li class="flow">
-                        <h3>Track company-wide progress</h3>
-                        <p>
-                            See how your day-to-day tasks fit into the wider vision. Go from tracking progress at the milestone level all the way down to the smallest details.
-                        </p>
-                    </li>
-                    <li class="flow">
-                        <h3>Advanced built-in reports</h3>
-                        <p>
-                            Set internal delivery estimates and track progress toward company goals. Our customizable dashboard helps you build out the reports you need to keep key stakeholders informed.
-                        </p>
-                    </li>
-                    <li class="flow">
-                        <h3>Everything you need in one place</h3>
-                        <p>
-                            Stop jumping between tools. Manage offers an all-in-one solution for communication, file storage, task tracking, and collaboration.
-                        </p>
-                    </li>
-                </ol>
-            </div>
-        </section>
+    <div class="testimonial-list">
+        <article class="testimonial-item flow" data-index="1">
+            <img src="assets/images/avatar-anisha.png" alt="Portrait of Anisha Li"/>
+            <h3>Anisha Li</h3>
+            <p>
+                “Manage has supercharged our team's workflow. the ability to mention visibility on large milestones at ali times keeps everyone motivation”
+            </p>
+        </article>
 
-        <!-- TESTIMONIALS SECTION -->
-        <section id="testimonials" class="testimonials">
-            <h2>What they’ve said</h2>
+        <article class="testimonial-item flow" data-index="2">
+            <img src="assets/images/avatar-ali.png" alt="Portrait of Anisha Li" />
+            <h3>Ali Bravo</h3>
+            <p>
+                “We have been able to cancel so many other subscriptions since using Manage. There is no more cross-channel confusion and everyone is much more focused.”
+            </p>
+        </article>
 
-                <div class="testimonial-list">
-                    <article class="testimonial-item flow" data-index="1">
-                        <img src="assets/images/avatar-anisha.png" alt="Portrait of Anisha Li"/>
-                        <h3>Anisha Li</h3>
-                        <p>
-                            “Manage has supercharged our team's workflow. the ability to mention visibility on large milestones at ali times keeps everyone motivation”
-                        </p>
-                    </article>
+        <article class="testimonial-item flow" data-index="3">
+            <img src="assets/images/avatar-richard.png" alt="Portrait of Richard Watts" />
+            <h3>Richard Watts</h3>
+            <p>
+                “Manage allows us to provide structure and process. It keeps us organized and focused. I can’t stop recommending them to everyone I talk to!”
+            </p>
+        </article>
 
-                    <article class="testimonial-item flow" data-index="2">
-                        <img src="assets/images/avatar-ali.png" alt="Portrait of Anisha Li" />
-                        <h3>Ali Bravo</h3>
-                        <p>
-                            “We have been able to cancel so many other subscriptions since using Manage. There is no more cross-channel confusion and everyone is much more focused.”
-                        </p>
-                    </article>
+        <article class="testimonial-item flow" data-index="4">
+            <img src="assets/images/avatar-shanai.png" alt="Portrait of Shanai Gough" />
+            <h3>Shanai Gough</h3>
+            <p>
+                “Their software allows us to track, manage, and collaborate on our projects from anywhere. It keeps the whole team in sync without being intrusive.”
+            </p>
+        </article>
+    </div>
+    <div class="testimonial-navigation"></div>
+    <button type="button" class="btn btn-primary">Get Started</button>
+</section>
 
-                    <article class="testimonial-item flow" data-index="3">
-                        <img src="assets/images/avatar-richard.png" alt="Portrait of Richard Watts" />
-                        <h3>Richard Watts</h3>
-                        <p>
-                            “Manage allows us to provide structure and process. It keeps us organized and focused. I can’t stop recommending them to everyone I talk to!”
-                        </p>
-                    </article>
-
-                    <article class="testimonial-item flow" data-index="4">
-                        <img src="assets/images/avatar-shanai.png" alt="Portrait of Shanai Gough" />
-                        <h3>Shanai Gough</h3>
-                        <p>
-                            “Their software allows us to track, manage, and collaborate on our projects from anywhere. It keeps the whole team in sync without being intrusive.”
-                        </p>
-                    </article>
-                </div>
-                <div class="testimonial-navigation"></div>
-            <button type="button" class="btn btn-primary">Get Started</button>
-        </section>
-    </main>
- <footer id="footer" class="footer">
-     <!-- ======= CTA SECTION ======= -->
-     <section class="footer-top">
-         <div class="cta container">
-             <h2>Simplify how your team works today.</h2>
-             <button type="button" class="btn btn-secondary">Get Started</button>
-         </div>
-     </section>
-
-     <!-- ======= MAIN FOOTER ======= -->
-     <section class="footer-bottom">
-         <div class="footer-container container">
-             <!-- Logo -->
-             <div class="footer-logo">
-                 <img src="assets/images/logo-white.svg" alt="Manage logo" />
-             </div>
-
-             <!-- Links -->
-             <nav class="footer-links">
-                 <ul role="list">
-                     <li><a href="#">Home</a></li>
-                     <li><a href="#">Pricing</a></li>
-                     <li><a href="#">Products</a></li>
-                     <li><a href="#">About Us</a></li>
-                 </ul>
-                 <ul role="list">
-                     <li><a href="#">Careers</a></li>
-                     <li><a href="#">Community</a></li>
-                     <li><a href="#">Privacy Policy</a></li>
-                 </ul>
-             </nav>
-
-             <!-- Subscription form -->
-             <form class="footer-form">
-                 <input
-                         type="email"
-                         placeholder="Updates in your inbox…"
-                         aria-label="Email address"
-                         required
-                 />
-                 <button type="submit" class="btn btn-primary">Go</button>
-             </form>
-
-             <!-- Social icons -->
-             <div class="footer-social">
-                 <a href="#"><img src="assets/images/icon-facebook.svg" alt="Facebook" /></a>
-                 <a href="#"><img src="assets/images/icon-youtube.svg" alt="YouTube" /></a>
-                 <a href="#"><img src="assets/images/icon-twitter.svg" alt="Twitter" /></a>
-                 <a href="#"><img src="assets/images/icon-pinterest.svg" alt="Pinterest" /></a>
-                 <a href="#"><img src="assets/images/icon-instagram.svg" alt="Instagram" /></a>
-             </div>
-
-             <!-- Copyright -->
-             <div class="footer-copy">
-                 <p>© 2020 Manage. All rights reserved.</p>
-             </div>
-         </div>
-     </section>
- </footer>
 </body>
+
 </html>
