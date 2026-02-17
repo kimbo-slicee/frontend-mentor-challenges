@@ -1,0 +1,16 @@
+/* ------------- Headings ------------- */
+.first-heading{
+    color: var(--heading-clr);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
+}
+.second-heading{
+    color: var(--heading-clr);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+}
+.third-heading{
+    color: var(--heading-clr);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+}
