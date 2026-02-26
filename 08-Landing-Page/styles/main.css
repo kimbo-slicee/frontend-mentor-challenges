@@ -1,17 +1,19 @@
-@import "reset.css";
-@import "typography.css";
-@import "utilities.css";
+@import "./reset.css";
+@import "./utilities.css";
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root{
     /* ------------- FF ------------- */
-    --ff-snas:'variables.css', sans-serif;
+    /*--ff:'BeVietnamPro', sans-serif;*/
+    --ff-sans: "Be Vietnam Pro", sans-serif;
     /* ------------- Colors ------------- */
     --primary-clr:hsl(13, 86%, 59%);
     --secondary-clr:hsl(220, 13%, 13%);
-    --text-color:hsl(240, 8%, 82%);
-    --bg-color:hsl(0, 0%, 100%);
+    --text-color:hsl(240, 5%, 63%);
+    --white-clr: hsl(0, 0%, 100%);
     --hover-clr:hsl(13, 86%, 69%);
-    --heading-clr:hsl(220, 13%, 13%);
+    --heading-clr:hsl(227, 42%, 23%);
+    --hover-blue:hsl(227, 42%, 33%);
     /* -------------- FONT SIZE ------------- */
     --fs-xxs:0.75rem;
     --fs-xs:0.875rem;
@@ -19,16 +21,244 @@
     --fs-md:1.25rem;
     --fs-lg:1.5rem;
     --fs-xl:2rem;
+    --fs-2xl:3rem;
+    --fs-3xl:4rem;
     /* ------------- FONT WEIGHT ------------- */
     --fw-normal:400;
+    --fw-medium:500;
     --fw-bold:700;
 }
+h1,h2,h3,h4,h5,h6,a{
+    color: var(--heading-clr);
+}
+
+ul,ol{
+    list-style: none;
+}
+p{
+    line-height: 1.7;
+}
+
 body,
 html{
-    font-family: var(--ff-snas);
+    font-family: var(--ff-sans);
     color: var(--text-color);
-    background-color: var(--bg-color);
+    background-color: var(--white-clr);
+    font-size: var(--fs-sm);
+    overflow-x: hidden;
+    position: relative;
+    isolation: isolate;
 }
+.bg-tablet-pattern{
+    position: absolute;
+    right: -200px;
+    top: -300px;
+    z-index: -1;
+}
+
+.header__nav{
+    position: relative;
+}
+
+.nav__list{
+    display: flex;
+    gap: 2rem;
+}
+
+.list__anchor{
+    font-weight: var(--fw-medium);
+    font-size: var(--fs-xs);
+    transition: color 0.3s ease;
+}
+
+.list__anchor:is(:hover , :focus-visible){
+    color: var(--text-color);
+}
+
+/* --------------- HERO SECTION --------------- */
+
+.hero{
+   display: flex;
+   align-content: center;
+   gap: 2rem;
+    margin-bottom: 3rem;
+}
+.hero__content{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.hero__description{
+    width: 35ch;
+}
+
+.hero__image{
+    width: 50%;
+    justify-self: end;
+}
+
+
+/* =============== ABOUT SECTION =============== */
+.about{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    justify-content: space-between;
+    gap: 9rem;
+    margin-bottom: 3rem;
+
+}
+
+.about__intro{
+    display: flex;
+    flex-direction: column;
+}
+
+.about__features{
+    display: flex;
+    flex-direction: column;
+}
+
+.features-list {
+    counter-reset: feature;
+}
+
+.about__features .feature__title{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    border-radius: 20px;
+    align-items: center;
+    gap: 1rem;
+    transform: translateX(-4rem);
+}
+.about__features .feature__title::before{
+    content: counter(feature, decimal-leading-zero);
+    counter-increment: feature;
+    background-color: var(--primary-clr);
+    padding: 0.5rem 1rem;
+    color: var(--white-clr);
+    font-size: var(--fs-xs);
+    font-family: var(--ff-sans);
+    border-radius: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* ================= TESTIMONIALS ================== */
+.testimonials{
+    text-align: center;
+    
+}
+
+
+
+
+/* =================== FOOTER =================== */
+
+/* Tablets and up */
+@media (max-width: 855px) {
+    #header{
+        padding-block-start:  3rem;
+        margin-bottom: 1rem;
+    }
+    .toggle-navigation-menu{
+        display: block;
+        z-index: 100;
+    }
+
+    .nav-menu{
+       position: fixed;
+       inset: 0;
+       min-height: 100%;
+       min-width: 100%;
+       background: linear-gradient(to bottom, hsla(120, 1%, 27%, 0.1), hsl(0, 0%, 9%, .5));
+       opacity: 0;
+       visibility: hidden;
+       transition: opacity 0.3s ease, visibility 0.3s ease;
+       z-index: 10;
+
+    }
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav__list{
+        opacity: 0;
+        visibility: hidden;
+        scale: 0;
+        z-index: 0;
+        background-color: var(--white-clr);
+        position: inherit;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%,-20%);
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem;
+        min-width: 350px;
+        width: 50%;
+        text-align: center;
+        transition: opacity 0.3s ease, visibility 0.3s ease, scale 0.3s ease;
+    }
+    .nav-menu.active .nav__list {
+        opacity: 1;
+        visibility: visible;
+        scale: 1;
+        z-index: 100;
+    }
+
+    .header__cta{
+        display: none;
+    }
+    /* ===== hero in tablet and mobile style ====== */
+    .hero{
+        flex-direction: column-reverse;
+        text-align: center;
+        justify-content: center;
+        justify-items: center;
+        gap: .5rem;
+        /*background: red;*/
+    }
+    .hero__image{
+        width: 100%;
+        margin-inline: auto;
+    }
+    .hero__content{
+        text-align: center;
+        align-items: center;
+        gap: .25rem;
+    }
+    .hero__description{
+        width: auto;
+        max-width: 35ch;
+        margin-bottom: 1rem;
+    }
+    /* ================= ABOUT IN SMALL SCREENS ============== */
+    .about{
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    .about__features{
+        text-align: start;
+    }
+    .about__features .feature__title{
+        background: hsl(13 86% 69% / 0.25);
+         transform: translateX(0);
+
+
+    }
+    .about__features .feature__title::before{
+
+    }
+
+
+
+
+
+}
+
 
 
 
