@@ -145,12 +145,47 @@ html{
     align-items: center;
 }
 /* ================= TESTIMONIALS ================== */
-.testimonials{
+#testimonials{
     text-align: center;
-    
 }
 
+.testimonial-wrapper{
+    display: flex;
+    justify-content: center;
+}
 
+.testimonial-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    gap: 2rem;
+    background: aquamarine;
+    overflow-x: scroll;
+}
+.testimonial-item{
+    background: hsl(0, 0%, 98%);
+    padding: 2rem;
+    position: relative;
+    min-width: 500px;
+}
+.testimonial-item article {
+     padding: 1rem;
+     border-radius: 10px;
+     margin-top: 1.5rem;
+}
+
+.testimonial-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
 
 
 /* =================== FOOTER =================== */

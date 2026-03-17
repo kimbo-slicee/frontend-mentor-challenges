@@ -118,43 +118,123 @@
 
 </section>
 <!-- TESTIMONIALS SECTION -->
-<section id="testimonials" class="testimonials">
-    <h2>What they’ve said</h2>
-    <div class="testimonial-list">
-        <article class="testimonial-item flow" data-index="1">
-            <img src="assets/images/avatar-anisha.png" alt="Portrait of Anisha Li"/>
-            <h3>Anisha Li</h3>
-            <p>
-                “Manage has supercharged our team's workflow. the ability to mention visibility on large milestones at ali times keeps everyone motivation”
-            </p>
-        </article>
+<section id="testimonials"
+         class="testimonials"
+         aria-labelledby="testimonials-heading"
+         aria-roledescription="carousel">
 
-        <article class="testimonial-item flow" data-index="2">
-            <img src="assets/images/avatar-ali.png" alt="Portrait of Anisha Li" />
-            <h3>Ali Bravo</h3>
-            <p>
-                “We have been able to cancel so many other subscriptions since using Manage. There is no more cross-channel confusion and everyone is much more focused.”
-            </p>
-        </article>
+    <h2 id="testimonials-heading" class="mb-4">What they’ve said</h2>
 
-        <article class="testimonial-item flow" data-index="3">
-            <img src="assets/images/avatar-richard.png" alt="Portrait of Richard Watts" />
-            <h3>Richard Watts</h3>
-            <p>
-                “Manage allows us to provide structure and process. It keeps us organized and focused. I can’t stop recommending them to everyone I talk to!”
-            </p>
-        </article>
+    <!-- Screen reader instructions -->
+    <p class="visually-hidden sr-only" id="testimonial-instructions">
+        Use the previous and next buttons to navigate through testimonials.
+    </p>
 
-        <article class="testimonial-item flow" data-index="4">
-            <img src="assets/images/avatar-shanai.png" alt="Portrait of Shanai Gough" />
-            <h3>Shanai Gough</h3>
-            <p>
-                “Their software allows us to track, manage, and collaborate on our projects from anywhere. It keeps the whole team in sync without being intrusive.”
-            </p>
-        </article>
+    <div class="testimonial-wrapper"
+         role="region"
+         aria-describedby="testimonial-instructions">
+
+        <ul class="testimonial-list" role="list">
+
+            <li class="testimonial-item" role="group" aria-label="Testimonial 1 of 4">
+                <article>
+                    <figure>
+                        <img src="assets/images/avatar-anisha.png"
+                             alt="Anisha Li"  class="testimonial-image"/>
+                        <figcaption>
+                            <h3>Anisha Li</h3>
+                        </figcaption>
+                    </figure>
+                    <blockquote>
+                        <p>
+                            “Manage has supercharged our team's workflow. The ability to
+                            maintain visibility on large milestones at all times keeps
+                            everyone motivated.”
+                        </p>
+                    </blockquote>
+                </article>
+            </li>
+
+            <li class="testimonial-item" role="group" aria-label="Testimonial 2 of 4">
+                <article>
+                    <figure>
+                        <img src="assets/images/avatar-ali.png"
+                             alt="Ali Bravo" class="testimonial-image"/>
+                        <figcaption>
+                            <h3>Ali Bravo</h3>
+                        </figcaption>
+                    </figure>
+                    <blockquote>
+                        <p>
+                            “We have been able to cancel so many other subscriptions since
+                            using Manage. There is no more cross-channel confusion and
+                            everyone is much more focused.”
+                        </p>
+                    </blockquote>
+                </article>
+            </li>
+
+            <li class="testimonial-item" role="group" aria-label="Testimonial 3 of 4">
+                <article>
+                    <figure>
+                        <img src="assets/images/avatar-richard.png"
+                             alt="Richard Watts" class="testimonial-image"/>
+                        <figcaption>
+                            <h3>Richard Watts</h3>
+                        </figcaption>
+                    </figure>
+                    <blockquote>
+                        <p>
+                            “Manage allows us to provide structure and process. It keeps us
+                            organized and focused. I can’t stop recommending them to
+                            everyone I talk to!”
+                        </p>
+                    </blockquote>
+                </article>
+            </li>
+
+            <li class="testimonial-item" role="group" aria-label="Testimonial 4 of 4">
+                <article>
+                    <figure>
+                        <img src="assets/images/avatar-shanai.png"
+                             alt="Shanai Gough" class="testimonial-image"/>
+                        <figcaption>
+                            <h3>Shanai Gough</h3>
+                        </figcaption>
+                    </figure>
+                    <blockquote>
+                        <p>
+                            “Their software allows us to track, manage, and collaborate on
+                            our projects from anywhere. It keeps the whole team in sync
+                            without being intrusive.”
+                        </p>
+                    </blockquote>
+                </article>
+            </li>
+
+        </ul>
+
+        <!-- Navigation Controls -->
+        <div class="testimonial-navigation">
+            <button type="button"
+                    class="testimonial-prev"
+                    aria-label="Previous testimonial">
+                ‹
+            </button>
+
+            <button type="button"
+                    class="testimonial-next"
+                    aria-label="Next testimonial">
+                ›
+            </button>
+        </div>
+
     </div>
-    <div class="testimonial-navigation"></div>
-    <button type="button" class="btn btn-primary">Get Started</button>
+
+    <button type="button" class="btn btn-primary">
+        Get Started
+    </button>
+
 </section>
 <!-- FOOTER -->
 </body>
